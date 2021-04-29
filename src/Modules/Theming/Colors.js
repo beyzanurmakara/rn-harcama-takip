@@ -3,7 +3,16 @@ const constantColors = {
     white: '#FFFFFF',
     black: '#000000',
     transparent: 'transparent',
-    pink: '#ff9cf7'
+    mainColor1:'#73B5C9', //blue
+    mainColor2:'#FF9257',
+    greys: {
+        1: '#383838', //koyu gri
+        2: '#ACACAC', //orta ayar gri
+        3: '#868686', //orta  koyu arası gri
+        4: '#BCBCBC', // açık gri
+    },
+    delete:'#FF5739', //red
+    today:'#0036C7', //lacivert
 };
 
 const toRGBA = (hexCode, opacity) => {
@@ -33,14 +42,144 @@ export const colorNames = {
         paleButtonText: 'auth/paleButtonText',
         appNameText: 'auth/appNameText',
     },
+    homePage:{
+        background:'homePage/background',
+        shoppingItemBackround:'homePage/shoppingItemBackround',
+        shoppingItemBorder:'homePage/shoppingItemBorder',
+        shoppingItemHeaderText:'homePage/shoppingItemHeaderText',
+        shoppingItemPriceText:'homePage/shoppingItemPriceText',
+        shoppingItemDateText:'homePage/shoppingItemDateText',
+        shoppingItemDayText:'homePage/shoppingItemDayText',
+        shoppingItemCheckIconSelectedBackground:'homePage/shoppingItemCheckIconBackground',
+        shoppingItemCheckIconUnSelectedBackground:'homePage/shoppingItemCheckIconBackground',
+        addButtonBackground:'homePage/addButtonBackground',
+        deleteButtonBackground:'homePage/deleteButtonBackground',
+        buttonText:'homePage/buttonText'
+    },
+    addNew:{
+        background:'homePage/background',
+        textInputBackground:'homePage/textInputBackground',
+        textInputPlaceHolder:'homePage/textInputPlaceHolder',
+        textInputText:'homePage/textInputText',
+        calendarIcon:'homePage/calendarIcon',
+        todayText:'homePage/todayText',
+        addButtonBackground:'homePage/addButtonBackground',
+        addButtonText:'homePage/addButtonText',
+        
+    },
+    settings:{
+        background: 'settings/background',
+        usernameText: 'settings/usernameText',
+        userEmailText: 'setting/userEmailText',
+        titleText: 'settings/titleText',
+        radioButtonUnselectedIcon: 'settings/radioButtonUnselectedIcon',
+        radioButtonSelectedIcon: 'settings/radioButtonSelectedIcon',
+        radioButtonText: 'settings/radioButtonText',
+        signOutButtonBackground: 'settings/signOutButtonBackground',
+        signOutButtonBorder: 'settings/signOutButtonBorder',
+        signOutButtonText: 'settings/signOutButtonText',
+    },
+    header:{
+        background: 'header/background',
+        text: 'header/text',
+        backIcon: 'header/backIcon',
+        rightIcon: 'header/rightIcon',
+    }
 };
 
 export const darkColors = {
     // auth
-    [colorNames.auth.background]: constantColors.pink, // örnek
+    //[colorNames.auth.background]: constantColors.pink, // örnek
+    [colorNames.auth.background]: constantColors.mainColor1,
+    [colorNames.auth.inputBorder]: constantColors.greys[1],
+    [colorNames.auth.inputBackground]: toRGBA(constantColors.greys[1], 10),
+    [colorNames.auth.inputText]: constantColors.greys[1],
+    [colorNames.auth.inputPlaceholder]: toRGBA(constantColors.greys[1], 40),
+    [colorNames.auth.coloredButtonBackground]: constantColors.greys[1],
+    [colorNames.auth.coloredButtonText]: constantColors.white,
+    [colorNames.auth.paleButtonBackground]: constantColors.transparent,
+    [colorNames.auth.paleButtonText]: constantColors.greys[1],
+    [colorNames.auth.appNameText]: constantColors.greys[1],
+    //homepage
+    [colorNames.homePage.background]:constantColors.greys[1],
+    [colorNames.homePage.shoppingItemBackround]:constantColors.transparent,
+    [colorNames.homePage.shoppingItemBorder]:constantColors.greys[2],
+    [colorNames.homePage.shoppingItemHeaderText]:constantColors.mainColor2,
+    [colorNames.homePage.shoppingItemPriceText]:constantColors.black,
+    [colorNames.homePage.shoppingItemDateText]:constantColors.greys[2],
+    [colorNames.homePage.shoppingItemDayText]:constantColors.greys[2],
+    [colorNames.homePage.shoppingItemCheckIconSelectedBackground]:constantColors.mainColor2,
+    [colorNames.homePage.shoppingItemCheckIconUnSelectedBackground]:constantColors.greys[2],
+    [colorNames.homePage.addButtonBackground]:constantColors.mainColor2,
+    [colorNames.homePage.deleteButtonBackground]:constantColors.delete,
+    [colorNames.homePage.buttonText]:constantColors.white,
+    //addNew
+    [colorNames.addNew.background]:colorNames.greys[1],
+    [colorNames.addNew.textInputBackground]:colorNames.transparent,
+    [colorNames.addNew.textInputPlaceHolder]:toRGBA(colorNames.black,40),
+    [colorNames.addNew.textInputText]:colorNames.white,
+    [colorNames.addNew.calendarIcon]:colorNames.white,
+    [colorNames.addNew.todayText]:colorNames.mainColor1,
+    [colorNames.addNew.addButtonBackground]:colorNames.mainColor2,
+    [colorNames.addNew.addButtonText]:colorNames.white,
+    //settings
+    [colorNames.settings.background]: constantColors.greys[1],
+    [colorNames.settings.usernameText]: constantColors.white,
+    [colorNames.settings.userEmailText]: constantColors.white,
+    [colorNames.settings.titleText]: constantColors.mainColor2,
+    [colorNames.settings.radioButtonUnselectedIcon]: constantColors.greys[2],
+    [colorNames.settings.radioButtonSelectedIcon]: constantColors.mainColor2,
+    [colorNames.settings.radioButtonText]: constantColors.white,
+    [colorNames.settings.signOutButtonBackground]: constantColors.transparent,
+    [colorNames.settings.signOutButtonBorder]: constantColors.mainColor2,
+    [colorNames.settings.signOutButtonText]: constantColors.white,
+    //header
+    [colorNames.header.background]: constantColors.mainColor1,
+    [colorNames.header.text]: constantColors.greys[1],
+    [colorNames.header.backIcon]: constantColors.greys[1],
+    [colorNames.header.rightIcon]: constantColors.greys[1],
+
 };
 
 export const lightColors = {
     // auth
-    [colorNames.auth.background]: constantColors.pink, // örnek
+    [colorNames.auth.background]: constantColors.mainColor1,
+    [colorNames.auth.inputBorder]: constantColors.white,
+    [colorNames.auth.inputBackground]: toRGBA(constantColors.white, 20),
+    [colorNames.auth.inputText]: constantColors.white,
+    [colorNames.auth.inputPlaceholder]: toRGBA(constantColors.white, 60),
+    [colorNames.auth.coloredButtonBackground]: constantColors.white,
+    [colorNames.auth.coloredButtonText]: constantColors.mainColor2,
+    [colorNames.auth.paleButtonBackground]: constantColors.transparent,
+    [colorNames.auth.paleButtonText]: constantColors.white,
+    [colorNames.auth.appNameText]: constantColors.white,
+    //homepage
+    [colorNames.homePage.background]:constantColors.white,
+    [colorNames.homePage.shoppingItemBackround]:constantColors.transparent,
+    [colorNames.homePage.shoppingItemBorder]:constantColors.greys[2],
+    [colorNames.homePage.shoppingItemHeaderText]:constantColors.mainColor2,
+    [colorNames.homePage.shoppingItemPriceText]:constantColors.black,
+    [colorNames.homePage.shoppingItemDateText]:constantColors.greys[2],
+    [colorNames.homePage.shoppingItemDayText]:constantColors.greys[2],
+    [colorNames.homePage.shoppingItemCheckIconSelectedBackground]:constantColors.mainColor2,
+    [colorNames.homePage.shoppingItemCheckIconUnSelectedBackground]:constantColors.greys[2],
+    [colorNames.homePage.addButtonBackground]:constantColors.mainColor2,
+    [colorNames.homePage.deleteButtonBackground]:constantColors.delete,
+    [colorNames.homePage.buttonText]:constantColors.white,
+    //settings
+    [colorNames.settings.background]: constantColors.white,
+    [colorNames.settings.usernameText]: constantColors.black,
+    [colorNames.settings.userEmailText]: constantColors.black,
+    [colorNames.settings.titleText]: constantColors.mainColor2,
+    [colorNames.settings.radioButtonUnselectedIcon]: constantColors.greys[2],
+    [colorNames.settings.radioButtonSelectedIcon]: constantColors.mainColor2,
+    [colorNames.settings.radioButtonText]: constantColors.black,
+    [colorNames.settings.signOutButtonBackground]: constantColors.transparent,
+    [colorNames.settings.signOutButtonBorder]: constantColors.mainColor2,
+    [colorNames.settings.signOutButtonText]: constantColors.black,
+    // header
+    [colorNames.header.background]: constantColors.mainColor1,
+    [colorNames.header.text]: constantColors.white,
+    [colorNames.header.backIcon]: constantColors.white,
+    [colorNames.header.rightIcon]: constantColors.white,
 };

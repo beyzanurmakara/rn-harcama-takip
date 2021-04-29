@@ -15,19 +15,19 @@ const constantColors = {
     today:'#0036C7', //lacivert
 };
 
-const toRGBA = (hexCode, opacity) => {
-    let hex = hexCode.replace('#', '');
+// const toRGBA = (hexCode, opacity) => {
+//     let hex = hexCode.replace('#', '');
 
-    if (hex.length === 3) {
-        hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
-    }
+//     if (hex.length === 3) {
+//         hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+//     }
 
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
+//     const r = parseInt(hex.substring(0, 2), 16);
+//     const g = parseInt(hex.substring(2, 4), 16);
+//     const b = parseInt(hex.substring(4, 6), 16);
 
-    return `rgba(${r},${g},${b},${opacity / 100})`;
-};
+//     return `rgba(${r},${g},${b},${opacity / 100})`;
+// };
 
 export const colorNames = {
     auth: {
@@ -92,9 +92,9 @@ export const darkColors = {
     //[colorNames.auth.background]: constantColors.pink, // örnek
     [colorNames.auth.background]: constantColors.mainColor1,
     [colorNames.auth.inputBorder]: constantColors.greys[1],
-    [colorNames.auth.inputBackground]: toRGBA(constantColors.greys[1], 10),
+    [colorNames.auth.inputBackground]: 'rgba(56, 56, 56, 10)',
     [colorNames.auth.inputText]: constantColors.greys[1],
-    [colorNames.auth.inputPlaceholder]: toRGBA(constantColors.greys[1], 40),
+    [colorNames.auth.inputPlaceholder]: 'rgba(56, 56, 56, 40)',
     [colorNames.auth.coloredButtonBackground]: constantColors.greys[1],
     [colorNames.auth.coloredButtonText]: constantColors.white,
     [colorNames.auth.paleButtonBackground]: constantColors.transparent,
@@ -114,9 +114,9 @@ export const darkColors = {
     [colorNames.homePage.deleteButtonBackground]:constantColors.delete,
     [colorNames.homePage.buttonText]:constantColors.white,
     //addNew
-    [colorNames.addNew.background]:colorNames.greys[1],
+    [colorNames.addNew.background]:constantColors.greys[1],
     [colorNames.addNew.textInputBackground]:colorNames.transparent,
-    [colorNames.addNew.textInputPlaceHolder]:toRGBA(colorNames.black,40),
+    [colorNames.addNew.textInputPlaceHolder]:'rgba(255,255,255,0.4)',
     [colorNames.addNew.textInputText]:colorNames.white,
     [colorNames.addNew.calendarIcon]:colorNames.white,
     [colorNames.addNew.todayText]:colorNames.mainColor1,
@@ -145,9 +145,9 @@ export const lightColors = {
     // auth
     [colorNames.auth.background]: constantColors.mainColor1,
     [colorNames.auth.inputBorder]: constantColors.white,
-    [colorNames.auth.inputBackground]: toRGBA(constantColors.white, 20),
+    [colorNames.auth.inputBackground]: 'rgba(255,255,255,0.2)',//toRGBA(constantColors.white, 20)
     [colorNames.auth.inputText]: constantColors.white,
-    [colorNames.auth.inputPlaceholder]: toRGBA(constantColors.white, 60),
+    [colorNames.auth.inputPlaceholder]: 'rgba(255,255,255,0.6)',
     [colorNames.auth.coloredButtonBackground]: constantColors.white,
     [colorNames.auth.coloredButtonText]: constantColors.mainColor2,
     [colorNames.auth.paleButtonBackground]: constantColors.transparent,

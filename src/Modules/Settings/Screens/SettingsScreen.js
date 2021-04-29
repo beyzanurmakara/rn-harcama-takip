@@ -2,10 +2,13 @@ import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 
 import { useLocalization, Texts } from '../../Localization';
+import { useThemedStyles } from '../../Theming';
 
-import styles from '../styles/SettingsScreenStyles';
+import getStyles from '../styles/SettingsScreenStyles';
 
 const SettingsScreen = props => {
+
+    const styles = useThemedStyles(getStyles);
 
     const loc=useLocalization();
 
@@ -15,7 +18,7 @@ const SettingsScreen = props => {
                 <Text style={styles.nameText}>
                     BEYZA NUR MAKARA
                 </Text>
-                <Text style={styles.nameText}>
+                <Text style={styles.emailText}>
                     beyzamakara@mail.com
                 </Text>
                 <View>

@@ -9,17 +9,41 @@ export default Colors => StyleSheet.create({
         backgroundColor:Colors[colorNames.settings.background],
         padding:Metrics.marginHorizontal,
         //padding: Metrics.marginHorizontal,
+    }, 
+    columnWrapperStyle: {
+        // backgroundColor: 'yellow',
+        justifyContent: 'space-between',
+        marginVertical: Metrics.width * 0.015,
     },
-    boxContainer:{
+    contentContainerStyle: {
+        backgroundColor:'yellow',
+        marginTop: Metrics.width * 0.035,
+    },
+    boxContainer:{ 
+        //flex:1, 
+        padding:10,
+        flexDirection:'row',
+        //justifyContent:'space-around'
+    },
+    box:{
         backgroundColor:Colors[colorNames.homePage.shoppingItemBackround],
         borderColor:Colors[colorNames.homePage.shoppingItemBorder],
         borderWidth:1,
         borderRadius:Metrics.borderRadiusStandard,
-        padding:Metrics.width * 0.03,
-        height:Metrics.width * 0.3,
-        width:Metrics.width * 0.3,
+        padding:Metrics.width * 0.02,
+        height:undefined,//Metrics.width * 0.3,
+        width:Metrics.width * 0.4,
+        aspectRatio:1,
         justifyContent:'center',
         alignItems:'center',
+        flexDirection:'row',
+    },       
+    iconContainer:{
+        position:'absolute',
+        left:Metrics.width * 0.03,
+        top:Metrics.width * 0.03,
+        width:Metrics.width * 0.04,
+        height:Metrics.width * 0.04,
     },
     headerText:{
         color:Colors[colorNames.homePage.shoppingItemHeaderText],
@@ -43,17 +67,19 @@ export default Colors => StyleSheet.create({
         fontSize:Fonts.size(14),
     },
     button:{
-        backgroundColor:'pink',
-        width:Metrics.width * 0.1,
+        backgroundColor:Colors[colorNames.homePage.addButtonBackground],
+        width:Metrics.width * 0.15,
         height:undefined,
         aspectRatio:1,
         justifyContent:'center',
         alignItems:'center',
         borderRadius:Metrics.borderRadiusFullRound,
+        padding:Metrics.width * 0.03,
     },
     buttonContainer:{
-        flex:0.1, 
-        justifyContent:'flex-end',
-        alignItems:'flex-end'
-    }
+        position:'absolute',
+        left:Metrics.width * 0.75,
+        top:Metrics.height * 0.8,
+       //flex:0.2,
+    },
 });

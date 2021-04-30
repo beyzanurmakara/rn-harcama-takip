@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { colorNames } from '../../Theming';
-import { Metrics } from '../../../StylingConstants';
+import { Fonts, Metrics } from '../../../StylingConstants';
 
 export default Colors => StyleSheet.create({
     container:{
@@ -23,16 +23,24 @@ export default Colors => StyleSheet.create({
     },
     headerText:{
         color:Colors[colorNames.homePage.shoppingItemHeaderText],
+        fontFamily:Fonts.type.semiBold,
+        fontSize:Fonts.size(16),
 
     },
     priceText:{
         color:Colors[colorNames.homePage.shoppingItemPriceText],
+        fontFamily:Fonts.type.regular,
+        fontSize:Fonts.size(16),
     },
     dateText:{
         color:Colors[colorNames.homePage.shoppingItemDateText],
+        fontFamily:Fonts.type.regular,
+        fontSize:Fonts.size(14),
     },
     dayText:{
-        color:Colors[colorNames.homePage.shoppingItemDayText]
+        color:Colors[colorNames.homePage.shoppingItemDayText],
+        fontFamily:Fonts.type.regular,
+        fontSize:Fonts.size(14),
     },
     button:{
         backgroundColor:'pink',

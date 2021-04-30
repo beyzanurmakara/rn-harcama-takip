@@ -6,7 +6,9 @@ import SettingsScreen from '../Settings/Screens/SettingsScreen';
 import HomepageScreen from '../Homepage/Screens/HomepageScreen';
 import { useThemedColors, colorNames, useThemedStyles } from '../Theming';
 import { useLocalization, Texts } from '../Localization';
+
 import SettingsIcon from './IconComponents/SettingsIcon';
+
 import { TouchableOpacity, Text } from 'react-native';
 import { Metrics, Svgs} from '../../StylingConstants';
 import Icon from '../../Components/Icon';
@@ -69,6 +71,12 @@ const AppNavigation = props => {
                     headerTitleStyle:{
                         color: colors[colorNames.header.text]
                     },
+                    headerBackTitleVisible:false,
+                    headerLeftContainerStyle:{
+                        marginLeft:Metrics.marginHorizontal * 0.2,
+                    },
+                    headerTintColor:colors[colorNames.header.backIcon]
+                   // headerLeft : BackIcon,
                 }}
             />
             

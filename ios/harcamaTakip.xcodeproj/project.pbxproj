@@ -12,6 +12,18 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		DF8E9E5373D041D48FDD6477 /* Neuton-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0035F2E39BEF4FBEB4E3D1DE /* Neuton-Bold.ttf */; };
+		E65F59B71CE547DEA6D79082 /* Neuton-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F577BC503544683AB83347C /* Neuton-ExtraBold.ttf */; };
+		E81038D33B1C4E02AFE3ECA1 /* Neuton-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F6BC59F5AA7497681846405 /* Neuton-ExtraLight.ttf */; };
+		2011CE069F124841943352E7 /* Neuton-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DE2139E195A4A66AE19F1DF /* Neuton-Italic.ttf */; };
+		5F7CDDB1CA514CC1A47B106F /* Neuton-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EFD38E4611B45BC895A4296 /* Neuton-Light.ttf */; };
+		15500DF62A2E445E9ECA89C5 /* Neuton-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA0B8BA6C414E7EB973DC79 /* Neuton-Regular.ttf */; };
+		71EC4F124FF249CB87520A02 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 922496D6206141AA8136081D /* OpenSans-Bold.ttf */; };
+		4A6C5E54B1F34C7C97205486 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA3097CFD2FE44FFB3C5922D /* OpenSans-ExtraBold.ttf */; };
+		727D32501CB241E0AFC77427 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99C4B84216664C4FA0070450 /* OpenSans-Italic.ttf */; };
+		96D591B82B6A4FF598BCD95E /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12040F749A474C9D9EDF7F41 /* OpenSans-Light.ttf */; };
+		6EA84AAB42F84A6CBF966A50 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4297877FDC3849629896A23C /* OpenSans-Regular.ttf */; };
+		93FED3F1109A45A093BD85A2 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54DF655AF32A404BAC21EC44 /* OpenSans-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +48,18 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = harcamaTakip/main.m; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = harcamaTakip/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		0035F2E39BEF4FBEB4E3D1DE /* Neuton-Bold.ttf */ = {isa = PBXFileReference; name = "Neuton-Bold.ttf"; path = "../src/Assets/Fonts/Neuton-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0F577BC503544683AB83347C /* Neuton-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Neuton-ExtraBold.ttf"; path = "../src/Assets/Fonts/Neuton-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5F6BC59F5AA7497681846405 /* Neuton-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Neuton-ExtraLight.ttf"; path = "../src/Assets/Fonts/Neuton-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5DE2139E195A4A66AE19F1DF /* Neuton-Italic.ttf */ = {isa = PBXFileReference; name = "Neuton-Italic.ttf"; path = "../src/Assets/Fonts/Neuton-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8EFD38E4611B45BC895A4296 /* Neuton-Light.ttf */ = {isa = PBXFileReference; name = "Neuton-Light.ttf"; path = "../src/Assets/Fonts/Neuton-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3DA0B8BA6C414E7EB973DC79 /* Neuton-Regular.ttf */ = {isa = PBXFileReference; name = "Neuton-Regular.ttf"; path = "../src/Assets/Fonts/Neuton-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		922496D6206141AA8136081D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; name = "OpenSans-Bold.ttf"; path = "../src/Assets/Fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DA3097CFD2FE44FFB3C5922D /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-ExtraBold.ttf"; path = "../src/Assets/Fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		99C4B84216664C4FA0070450 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; name = "OpenSans-Italic.ttf"; path = "../src/Assets/Fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		12040F749A474C9D9EDF7F41 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; name = "OpenSans-Light.ttf"; path = "../src/Assets/Fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4297877FDC3849629896A23C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; name = "OpenSans-Regular.ttf"; path = "../src/Assets/Fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		54DF655AF32A404BAC21EC44 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBold.ttf"; path = "../src/Assets/Fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +133,7 @@
 				00E356EF1AD99517003FC87E /* harcamaTakipTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				501AB6DD6895469E90AB3C38 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -123,6 +148,26 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		501AB6DD6895469E90AB3C38 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				0035F2E39BEF4FBEB4E3D1DE /* Neuton-Bold.ttf */,
+				0F577BC503544683AB83347C /* Neuton-ExtraBold.ttf */,
+				5F6BC59F5AA7497681846405 /* Neuton-ExtraLight.ttf */,
+				5DE2139E195A4A66AE19F1DF /* Neuton-Italic.ttf */,
+				8EFD38E4611B45BC895A4296 /* Neuton-Light.ttf */,
+				3DA0B8BA6C414E7EB973DC79 /* Neuton-Regular.ttf */,
+				922496D6206141AA8136081D /* OpenSans-Bold.ttf */,
+				DA3097CFD2FE44FFB3C5922D /* OpenSans-ExtraBold.ttf */,
+				99C4B84216664C4FA0070450 /* OpenSans-Italic.ttf */,
+				12040F749A474C9D9EDF7F41 /* OpenSans-Light.ttf */,
+				4297877FDC3849629896A23C /* OpenSans-Regular.ttf */,
+				54DF655AF32A404BAC21EC44 /* OpenSans-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -214,6 +259,18 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				DF8E9E5373D041D48FDD6477 /* Neuton-Bold.ttf in Resources */,
+				E65F59B71CE547DEA6D79082 /* Neuton-ExtraBold.ttf in Resources */,
+				E81038D33B1C4E02AFE3ECA1 /* Neuton-ExtraLight.ttf in Resources */,
+				2011CE069F124841943352E7 /* Neuton-Italic.ttf in Resources */,
+				5F7CDDB1CA514CC1A47B106F /* Neuton-Light.ttf in Resources */,
+				15500DF62A2E445E9ECA89C5 /* Neuton-Regular.ttf in Resources */,
+				71EC4F124FF249CB87520A02 /* OpenSans-Bold.ttf in Resources */,
+				4A6C5E54B1F34C7C97205486 /* OpenSans-ExtraBold.ttf in Resources */,
+				727D32501CB241E0AFC77427 /* OpenSans-Italic.ttf in Resources */,
+				96D591B82B6A4FF598BCD95E /* OpenSans-Light.ttf in Resources */,
+				6EA84AAB42F84A6CBF966A50 /* OpenSans-Regular.ttf in Resources */,
+				93FED3F1109A45A093BD85A2 /* OpenSans-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

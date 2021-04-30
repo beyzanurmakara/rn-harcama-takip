@@ -18,7 +18,7 @@ const SettingsScreen = props => {
                 <View  style={{ flexGrow:1, padding:10}}>
                     <View style={styles.boxContainer}>
                         <Text style={styles.headerText}>Market</Text>
-                        <Text style={styles.priceText}>100.00</Text>
+                        <Text style={styles.priceText}>100.00 TL </Text>
                         <Text style={styles.dateText}>30.04.2021</Text>
                         <Text style={styles.dayText}>Pzt</Text>
                     </View>

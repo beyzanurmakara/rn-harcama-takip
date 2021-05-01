@@ -1,12 +1,18 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import DummyNavigation from './DummyNavigation';
 import AppNavigation from './AppNavigation';
+import AuthNavigation from './AuthNavigation';
 
 const MainNavigation = (props) => {
+    const loggedInUser = false;
     return (
         <NavigationContainer>
-            <AppNavigation/>
+            {
+                loggedInUser ?
+                <AppNavigation/>
+                :
+                <AuthNavigation/>
+            }
         </NavigationContainer>
     );
 };

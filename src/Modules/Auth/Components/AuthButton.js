@@ -4,7 +4,7 @@ import { Text, TouchableOpacity } from 'react-native';
 import BorderedBox from '../../../Components/BorderedBox';
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 
-import getStyles from '../styles/AuthButtonStyles';
+import getStyles from '../Styles/AuthButtonStyles';
 
 const AuthButton = (props) => {
     //const {colors, styles} = useThemedValues(getStyles);

@@ -42,10 +42,13 @@ export default Colors => StyleSheet.create({
     },       
     iconContainer:{
         position:'absolute',
-        left:Metrics.width * 0.03,
-        top:Metrics.width * 0.03,
-        width:Metrics.width * 0.04,
-        height:Metrics.width * 0.04,
+        left:Metrics.width * 0.023,
+        top:Metrics.width * 0.023,
+        width:Metrics.width * 0.07,
+        height:Metrics.width * 0.07,
+        //backgroundColor:'pink',
+        padding:Metrics.width * 0.01,
+
     },
     headerText:{
         color:Colors[colorNames.homePage.shoppingItemHeaderText],
@@ -69,7 +72,7 @@ export default Colors => StyleSheet.create({
         fontSize:Fonts.size(14),
     },
     button:{
-        backgroundColor:Colors[colorNames.homePage.addButtonBackground],
+        //backgroundColor:Colors[colorNames.homePage.addButtonBackground],
         width:Metrics.width * 0.15,
         height:undefined,
         aspectRatio:1,

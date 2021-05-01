@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 
 import { useLocalization, Texts } from '../../Localization';
@@ -11,16 +11,23 @@ import { Svgs } from '../../../StylingConstants';
 
 const SettingsScreen = props => {
 
+    const [isVisble,setIsVisible]=useState(true);
+
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
     const loc=useLocalization();
 
     const _renderShoppingList =({item})=>{
         console.log(item.id);
+        //()=>setIsVisible(true)
+        
         return(
-            <View key={item.id} style={styles.box}>
-                <TouchableOpacity style={styles.iconContainer}>
-                    <Icon svg={Svgs.CheckboxUnSelected} iconStyle={{ color: colors[colorNames.homePage.shoppingItemCheckIconUnSelectedBackground] }} />
+            <TouchableOpacity key={item.id} style={styles.box} onLongPress={()=>setIsVisible(false)} onPress={()=>setIsVisible(true)} > 
+                <TouchableOpacity style={styles.iconContainer} disabled={isVisble ? true : false} >
+                    <Icon svg={Svgs.CheckboxUnSelected} iconStyle={{ color: isVisble ? 
+                                colors[colorNames.homePage.shoppingItemBackround] 
+                                : 
+                                colors[colorNames.homePage.shoppingItemCheckIconUnSelectedBackground] }} />
                 </TouchableOpacity>
                 <View style={{justifyContent:'center',alignItems:'center'}}>
                     <Text style={styles.headerText}>{item.title}</Text>
@@ -28,7 +35,7 @@ const SettingsScreen = props => {
                     <Text style={styles.dateText}>{item.date}</Text>
                     <Text style={styles.dayText}>{item.day}</Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         );
     }
 
@@ -47,8 +54,11 @@ const SettingsScreen = props => {
                     />
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button}>
-                        <Icon svg={Svgs.AddIcon} iconStyle={{color:colors[colorNames.homePage.buttonText]}}/>
+                    <TouchableOpacity style={[styles.button,{backgroundColor: isVisble ? 
+                                            colors[colorNames.homePage.addButtonBackground] 
+                                            : 
+                                            colors[colorNames.homePage.deleteButtonBackground]}]}>
+                        <Icon svg={isVisble ? Svgs.AddIcon : Svgs.DeleteIcon} iconStyle={{color:colors[colorNames.homePage.buttonText]}}/>
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>

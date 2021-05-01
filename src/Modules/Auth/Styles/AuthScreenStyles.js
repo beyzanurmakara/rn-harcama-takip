@@ -54,7 +54,7 @@ export default (Colors)=>StyleSheet.create({
         paddingBottom:Metrics.width * 0.02,
     },
     appNameText:{
-        fontFamily:Fonts.type.extraBold,
+        fontFamily:Fonts.type.logo,
         fontSize:Fonts.size(30),
         color:Colors[colorNames.auth.appNameText],
     }

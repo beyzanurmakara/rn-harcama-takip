@@ -7,6 +7,7 @@ const type={
     italic:'OpenSans-Itlic',
     light:'OpenSans-Light',
     regular:'OpenSans-Regular',
+    logo:'Righteous-Regular',
 };
 
 const step = Metrics.width * 0.0025;

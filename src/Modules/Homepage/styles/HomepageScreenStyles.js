@@ -12,8 +12,8 @@ export default Colors => StyleSheet.create({
     }, 
     columnWrapperStyle: {
         // backgroundColor: 'yellow',
-        justifyContent: 'space-between',
-        marginVertical: Metrics.width * 0.015,
+        justifyContent: 'space-around',
+        marginVertical: Metrics.width * 0.025,
     },
     contentContainerStyle: {
         backgroundColor:'yellow',
@@ -21,8 +21,10 @@ export default Colors => StyleSheet.create({
     },
     boxContainer:{ 
         //flex:1, 
-        padding:10,
+        paddingVertical:Metrics.width * 0.05,
         flexDirection:'row',
+        //backgroundColor:'pink',
+        flexShrink:1,
         //justifyContent:'space-around'
     },
     box:{
@@ -32,7 +34,7 @@ export default Colors => StyleSheet.create({
         borderRadius:Metrics.borderRadiusStandard,
         padding:Metrics.width * 0.02,
         height:undefined,//Metrics.width * 0.3,
-        width:Metrics.width * 0.4,
+        width:Metrics.width * 0.36,
         aspectRatio:1,
         justifyContent:'center',
         alignItems:'center',
@@ -80,6 +82,7 @@ export default Colors => StyleSheet.create({
         position:'absolute',
         left:Metrics.width * 0.75,
         top:Metrics.height * 0.8,
-       //flex:0.2,
+        //flex:0.2,
+        //backgroundColor:'yellow'
     },
 });

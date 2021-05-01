@@ -22,7 +22,7 @@ const SettingsScreen = props => {
                 <TouchableOpacity style={styles.iconContainer}>
                     <Icon svg={Svgs.CheckboxUnSelected} iconStyle={{ color: colors[colorNames.homePage.shoppingItemCheckIconUnSelectedBackground] }} />
                 </TouchableOpacity>
-                <View>
+                <View style={{justifyContent:'center',alignItems:'center'}}>
                     <Text style={styles.headerText}>{item.title}</Text>
                     <Text style={styles.priceText}>{item.price} </Text>
                     <Text style={styles.dateText}>{item.date}</Text>
@@ -42,6 +42,7 @@ const SettingsScreen = props => {
                         keyExtractor={(item, index) => item.id}
                         numColumns={2}
                         columnWrapperStyle={styles.columnWrapperStyle}
+                        style={{flex:1}}
                         //columnContainerStyle={styles.columnContainerStyle}
                     />
                 </View>

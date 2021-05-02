@@ -41,6 +41,7 @@ export default Colors => StyleSheet.create({
     signOutText:{
         fontFamily:Fonts.type.semiBold,
         fontSize:Fonts.size(16),
+        color:Colors[colorNames.settings.signOutButtonText],
     },
     
 });

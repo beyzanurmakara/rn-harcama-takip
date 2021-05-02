@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 
 import { useLocalization, Texts, Locales, useLocale, useChangeLocale, useLocaleOptions } from '../../Localization';
-import { ThemeModes, useTheme, useThemedStyles } from '../../Theming';
+import { ThemeModes, useTheme, useThemedStyles, useThemeOptions, useDispatchChangeTheme, useChangeTheme } from '../../Theming';
 import Icon from '../../../Components/Icon';
 
 import getStyles from '../styles/SettingsScreenStyles';
@@ -13,17 +13,20 @@ const SettingsScreen = props => {
 
     const styles = useThemedStyles(getStyles);
     const currentTheme = useTheme();
+    const changeTheme = useChangeTheme();
+    const themeOptions = useThemeOptions();
 
     const loc=useLocalization();
     const currentLocale = useLocale(); 
     const changeLocale = useChangeLocale();   
     const localeOptions = useLocaleOptions();
 
-    //console.log(currentLocale);
+
     const _onSelect_Locale=(key)=>{
-        //console.log(key, "bastım")
-        changeLocale(key);
-       
+        changeLocale(key);       
+    }
+    const _onSelect_Theme=(key)=>{
+        changeTheme(key);
     }
 
     return (
@@ -44,21 +47,12 @@ const SettingsScreen = props => {
                         selectedOptionKey={currentLocale}
                         onSelect={_onSelect_Locale}
                     />
-                    {/* <OptionMenu 
+                    <OptionMenu 
                         menuTitle={loc.t(Texts.colorTheme)}
-                        options={[
-                            {
-                                key:ThemeModes.dark,
-                                title:loc.t(Texts.dark)
-                            },
-                            {
-                                key:ThemeModes.light,
-                                title:loc.t(Texts.light)
-                            }
-                        ]}
+                        options={themeOptions}
                         selectedOptionKey={currentTheme}
-                        onSelect={()=>console.log("jsdhsjdh")}
-                    /> */}
+                        onSelect={_onSelect_Theme}
+                    />
                 </View>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.signOutTouchable} onPress={() => console.log("bastın!")}>

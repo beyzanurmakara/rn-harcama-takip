@@ -13,7 +13,7 @@ const Types = {
 };
 
 const Actions = {
-    changeTheme: ({ themeMode }) => ({
+    changeTheme: ( themeMode ) => ({
         type: Types.CHANGE_THEME,
         payload: { themeMode },
     }),

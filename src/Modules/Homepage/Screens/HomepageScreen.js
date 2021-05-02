@@ -18,10 +18,15 @@ const SettingsScreen = props => {
     const loc=useLocalization();
 
     const _renderShoppingList =({item})=>{
-        
+        const deletedItem=[];
+        // const isSelected = deletedItem.length()!==0;
+        const _onPress_Item=()=>{
+            console.log(item.id);
+        }
+
         return(
             <TouchableOpacity key={item.id} style={styles.box} onLongPress={()=>setIsVisible(false)} onPress={()=>setIsVisible(true)} > 
-                <TouchableOpacity style={styles.iconContainer} disabled={isVisble ? true : false} >
+                <TouchableOpacity style={styles.iconContainer} disabled={isVisble ? true : false} onPress={_onPress_Item} >
                     <Icon svg={Svgs.CheckboxUnSelected} iconStyle={{ color: isVisble ? 
                                 colors[colorNames.homePage.shoppingItemBackround] 
                                 : 

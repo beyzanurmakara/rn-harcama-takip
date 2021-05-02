@@ -11,6 +11,8 @@ import getStyles from '../styles/HomepageScreenStyles';
 import { Svgs } from '../../../StylingConstants';
 import Svg from 'react-native-svg';
 
+
+
 const SettingsScreen = props => {
 
     const [isVisble,setIsVisible]=useState(true);
@@ -20,6 +22,8 @@ const SettingsScreen = props => {
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
     const loc=useLocalization();
+
+    const navigation = useNavigation();
 
     const _onPress_Delete=()=>{
 
@@ -53,8 +57,8 @@ const SettingsScreen = props => {
     }
 
     const _onPress_Add=()=>{
-        const navigation = useNavigation();
-        navigation.navigator('add-new-screen');
+       
+        navigation.navigate('add-new-screen');
         //console.log('ekleme işlemi yapacagım');
     }
     const deleteItems=()=>{

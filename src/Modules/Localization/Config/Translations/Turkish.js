@@ -11,6 +11,7 @@ export default {
     [Texts.add]:'Ekle',
     [Texts.shoppingType]:'Alışveriş Türü',
     [Texts.date]:'Tarih',
+    [Texts.today]:'Bugün',
     [Texts.price]:'Fiyat',
     [Texts.explanation]:'Açıklama',
     [Texts.delete]:'Sil',

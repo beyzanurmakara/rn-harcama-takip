@@ -84,7 +84,7 @@ const AppNavigation = props => {
                 name='add-new-screen'
                 component={AddNewScreen}
                 options={{
-                    title: (loc.t(Texts.settings)).toUpperCase(),
+                    title: (loc.t(Texts.addNew)).toUpperCase(),
                     headerStyle:{
                         backgroundColor:colors[colorNames.header.background]
                     },

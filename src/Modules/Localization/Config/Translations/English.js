@@ -11,6 +11,7 @@ export default {
     [Texts.add]:'Add',
     [Texts.shoppingType]:'Shopping Type',
     [Texts.date]:'Date',
+    [Texts.today]:'Today',
     [Texts.price]:'Price',
     [Texts.explanation]:'Explanation',
     [Texts.delete]:'Delete',

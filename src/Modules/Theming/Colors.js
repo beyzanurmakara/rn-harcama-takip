@@ -57,15 +57,16 @@ export const colorNames = {
         buttonText:'homePage/buttonText'
     },
     addNew:{
-        background:'homePage/background',
-        textInputBackground:'homePage/textInputBackground',
-        textInputPlaceHolder:'homePage/textInputPlaceHolder',
-        textInputText:'homePage/textInputText',
-        calendarIcon:'homePage/calendarIcon',
-        todayText:'homePage/todayText',
-        addButtonBackground:'homePage/addButtonBackground',
-        addButtonText:'homePage/addButtonText',
-        
+        background:'addNew/background',
+        textInputBackground:'addNew/textInputBackground',
+        textInputPlaceHolder:'addNew/textInputPlaceHolder',
+        textInputText:'addNew/textInputText',
+        textInputBorder:'addNew/textInputBorder',
+        calendarIcon:'addNew/calendarIcon',
+        todayText:'addNew/todayText',
+        addButtonBackground:'addNew/addButtonBackground',
+        addButtonText:'addNew/addButtonText',
+               
     },
     settings:{
         background: 'settings/background',
@@ -118,6 +119,7 @@ export const darkColors = {
     [colorNames.addNew.textInputBackground]:constantColors.transparent,
     [colorNames.addNew.textInputPlaceHolder]:'rgba(255,255,255,0.4)',
     [colorNames.addNew.textInputText]:constantColors.white,
+    [colorNames.addNew.textInputBorder]:constantColors.greys[2],
     [colorNames.addNew.calendarIcon]:constantColors.white,
     [colorNames.addNew.todayText]:constantColors.mainColor1,
     [colorNames.addNew.addButtonBackground]:constantColors.mainColor2,
@@ -166,6 +168,17 @@ export const lightColors = {
     [colorNames.homePage.addButtonBackground]:constantColors.mainColor2,
     [colorNames.homePage.deleteButtonBackground]:constantColors.delete,
     [colorNames.homePage.buttonText]:constantColors.white,
+    //addNew
+    [colorNames.addNew.background]:constantColors.white,
+    [colorNames.addNew.textInputBackground]:constantColors.transparent,
+    [colorNames.addNew.textInputPlaceHolder]:'rgba(0,0,0,0.4)',
+    [colorNames.addNew.textInputText]:constantColors.black,
+    [colorNames.addNew.textInputBorder]:constantColors.greys[2],
+    [colorNames.addNew.calendarIcon]:constantColors.black,
+    [colorNames.addNew.todayText]:constantColors.mainColor1,
+    [colorNames.addNew.addButtonBackground]:constantColors.mainColor2,
+    [colorNames.addNew.addButtonText]:constantColors.white,
+    [colorNames.addNew.addButtonBorder]:constantColors.greys[2],
     //settings
     [colorNames.settings.background]: constantColors.white,
     [colorNames.settings.usernameText]: constantColors.black,

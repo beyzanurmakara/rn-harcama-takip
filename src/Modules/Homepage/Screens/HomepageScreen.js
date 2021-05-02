@@ -36,9 +36,9 @@ const SettingsScreen = props => {
             for(let j=i+1;j<deletedItem.length;j++){
                 if(deletedItem[i]===deletedItem[j]){
                     iIndex=i;
-                    console.log(iIndex)
+                   // console.log(iIndex)
                     jIndex=j;
-                    console.log(jIndex)
+                    //console.log(jIndex)
                 }
             }
         }
@@ -62,7 +62,8 @@ const SettingsScreen = props => {
         //console.log('ekleme işlemi yapacagım');
     }
     const deleteItems=()=>{
-        console.log(deletedItem);
+       // console.log(deletedItem);
+       console.log('silme işlemi yapılacak');
     }
 
     const _renderShoppingList =({item})=>{ 

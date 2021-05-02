@@ -1,15 +1,27 @@
 import React from 'react';
 import { Keyboard, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import { Texts, useLocale, useLocalization } from '../../Localization';
+import { Texts, useLocalization } from '../../Localization';
 import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
-import AddNewInput from '../Components/AddNewInput';
 import Icon from '../../../Components/Icon';
-
-import getStyles from '../styles/AddNewScreenStyle';
 import { Svgs } from '../../../StylingConstants';
 import BorderedBox from '../../../Components/BorderedBox';
 
+import AddNewInput from '../Components/AddNewInput';
+import DateInput from '../Components/DateInput';
+import AddButton from '../Components/AddButton';
+import AddNewMultilineInput from '../Components/AddNewMultilineInput';
+
+import getStyles from '../styles/AddNewScreenStyle';
+
+/*
+ <AddNewInput
+    placeHolder={loc.t(Texts.explanation)}
+    multiline={true}
+    numberOfLines={4}
+    onChangeText={() => console.log('içerik değişiyoorr')}
+/>
+*/
 const AddNewScreen = props => {
 
     const styles = useThemedStyles(getStyles);
@@ -27,17 +39,7 @@ const AddNewScreen = props => {
                     />
                 </View>
                 <View style={styles.inputContainer}>
-                    <View style={styles.dateContainer}>
-                        <View style={styles.dateTextContainer}>
-                            <Text style={styles.dateText}>{loc.t(Texts.date)}</Text>
-                        </View>
-                        <TouchableOpacity style={styles.iconContainer}>
-                                <Icon svg={Svgs.CalendarIcon} iconStyle={{color:colors[colorNames.addNew.calendarIcon]}}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.todayTextContainer}>
-                            <Text style={styles.todayText}>{loc.t(Texts.today)}</Text>  
-                        </TouchableOpacity>
-                    </View>
+                    <DateInput/>
                 </View>
                 <View style={styles.inputContainer}>
                     <AddNewInput
@@ -47,22 +49,11 @@ const AddNewScreen = props => {
                     />
                 </View>
                 <View style={styles.inputContainer}>                    
-                    <AddNewInput
-                        placeHolder={loc.t(Texts.explanation)}
-                        multiline={true}
-                        numberOfLines={4}
-                        onChangeText={() => console.log('içerik değişiyoorr')}
-                    />
+                    <AddNewMultilineInput/>
                 </View>
             </View>
-
-           
             <View style={styles.buttonContainer}>
-                <View style={styles.button}>
-                    <TouchableOpacity>
-                        <Text style={styles.addText}>{loc.t(Texts.add).toUpperCase()}</Text>
-                    </TouchableOpacity>
-                </View>
+                <AddButton/>
             </View>
         </TouchableOpacity>
     );

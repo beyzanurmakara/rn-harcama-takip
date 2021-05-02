@@ -8,29 +8,84 @@ import DummyShoppingData from '../DummyShoppingList';
 
 import getStyles from '../styles/HomepageScreenStyles';
 import { Svgs } from '../../../StylingConstants';
+import Svg from 'react-native-svg';
 
 const SettingsScreen = props => {
 
     const [isVisble,setIsVisible]=useState(true);
+    const [deletedItem,setDeletedItem]=useState([]);
+    const [select,setSelect]=useState(false);
 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
     const loc=useLocalization();
 
-    const _renderShoppingList =({item})=>{
-        const deletedItem=[];
-        // const isSelected = deletedItem.length()!==0;
-        const _onPress_Item=()=>{
-            console.log(item.id);
-        }
+    const _onPress_Delete=()=>{
 
+        // ÖN İŞLEM ( AYNI ELEMANLAR BULUNAMAZ )
+        //eger aynı kutucuğa bastıysa o elemanı silme listesinden kaldırsın.
+        let iIndex=0;
+        let jIndex=0;
+        for (let i=0;i<deletedItem.length;i++){
+            for(let j=i+1;j<deletedItem.length;j++){
+                if(deletedItem[i]===deletedItem[j]){
+                    iIndex=i;
+                    console.log(iIndex)
+                    jIndex=j;
+                    console.log(jIndex)
+                }
+            }
+        }
+        if(iIndex === 0 && jIndex === 0){
+            console.log("seçilenlerin eşi benzeri yok :)");
+        }
+        else{
+            let copyDeletedItem=[...deletedItem];
+            copyDeletedItem.splice(iIndex,1);
+            copyDeletedItem.splice(jIndex,1);
+            setDeletedItem(copyDeletedItem);
+        }
+        // buraya kadar  veri temizlendi
+        // silme işlemi yapılacak
+        deleteItems();
+    }
+
+    const deleteItems=()=>{
+        console.log(deletedItem);
+    }
+
+    const _renderShoppingList =({item})=>{ 
+
+        let selected=false;
+
+        let svg=Svgs.CheckboxUnSelected;
+
+
+
+        // kutucuklara tıkladığında
+        const _onPress_Item=()=>{ 
+            let slc=select;
+            setSelect(!slc);
+            selected=!selected;
+            if(selected){
+                svg=Svgs.CheckboxSelected;
+            }
+            else {
+                svg=Svgs.CheckboxUnSelected;
+            }
+            const deletedItemCopy=[...deletedItem];
+            deletedItemCopy.push(item.id);
+            setDeletedItem(deletedItemCopy); 
+            //console.log(deletedItem);           
+        }
+        
         return(
             <TouchableOpacity key={item.id} style={styles.box} onLongPress={()=>setIsVisible(false)} onPress={()=>setIsVisible(true)} > 
                 <TouchableOpacity style={styles.iconContainer} disabled={isVisble ? true : false} onPress={_onPress_Item} >
-                    <Icon svg={Svgs.CheckboxUnSelected} iconStyle={{ color: isVisble ? 
+                    <Icon svg={select ? Svgs.CheckboxSelected : Svgs.CheckboxUnSelected} iconStyle={{ color: isVisble ? 
                                 colors[colorNames.homePage.shoppingItemBackround] 
                                 : 
-                                colors[colorNames.homePage.shoppingItemCheckIconUnSelectedBackground] }} />
+                                colors[colorNames.homePage.shoppingItemCheckIconSelectedBackground] }} />
                 </TouchableOpacity>
                 <View style={{justifyContent:'center',alignItems:'center'}}>
                     <Text style={styles.headerText}>{item.title}</Text>
@@ -60,7 +115,8 @@ const SettingsScreen = props => {
                     <TouchableOpacity style={[styles.button,{backgroundColor: isVisble ? 
                                             colors[colorNames.homePage.addButtonBackground] 
                                             : 
-                                            colors[colorNames.homePage.deleteButtonBackground]}]}>
+                                            colors[colorNames.homePage.deleteButtonBackground]}]}
+                                        onPress={_onPress_Delete}>
                         <Icon svg={isVisble ? Svgs.AddIcon : Svgs.DeleteIcon} iconStyle={{color:colors[colorNames.homePage.buttonText]}}/>
                     </TouchableOpacity>
                 </View>

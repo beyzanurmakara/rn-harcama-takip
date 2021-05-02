@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { useState } from 'react';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 
@@ -22,6 +23,7 @@ const SettingsScreen = props => {
 
     const _onPress_Delete=()=>{
 
+        //console.log("silme işlemi yapacagım");
         // ÖN İŞLEM ( AYNI ELEMANLAR BULUNAMAZ )
         //eger aynı kutucuğa bastıysa o elemanı silme listesinden kaldırsın.
         let iIndex=0;
@@ -50,6 +52,11 @@ const SettingsScreen = props => {
         deleteItems();
     }
 
+    const _onPress_Add=()=>{
+        const navigation = useNavigation();
+        navigation.navigator('add-new-screen');
+        //console.log('ekleme işlemi yapacagım');
+    }
     const deleteItems=()=>{
         console.log(deletedItem);
     }
@@ -116,7 +123,7 @@ const SettingsScreen = props => {
                                             colors[colorNames.homePage.addButtonBackground] 
                                             : 
                                             colors[colorNames.homePage.deleteButtonBackground]}]}
-                                        onPress={_onPress_Delete}>
+                                        onPress={isVisble ? _onPress_Add : _onPress_Delete}>
                         <Icon svg={isVisble ? Svgs.AddIcon : Svgs.DeleteIcon} iconStyle={{color:colors[colorNames.homePage.buttonText]}}/>
                     </TouchableOpacity>
                 </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 
-import { useLocalization, Texts, Locales, useLocale } from '../../Localization';
+import { useLocalization, Texts, Locales, useLocale, useChangeLocale, useLocaleOptions } from '../../Localization';
 import { ThemeModes, useTheme, useThemedStyles } from '../../Theming';
 import Icon from '../../../Components/Icon';
 
@@ -13,12 +13,18 @@ const SettingsScreen = props => {
 
     const styles = useThemedStyles(getStyles);
     const currentTheme = useTheme();
-    //const changeTheme = useChangeTheme();
 
     const loc=useLocalization();
-    const currentLocale = useLocale();
-    //const changeLocale = useChangeLocale();
-    
+    const currentLocale = useLocale(); 
+    const changeLocale = useChangeLocale();   
+    const localeOptions = useLocaleOptions();
+
+    //console.log(currentLocale);
+    const _onSelect_Locale=(key)=>{
+        //console.log(key, "bastım")
+        changeLocale(key);
+       
+    }
 
     return (
         <View style={styles.container}>
@@ -34,20 +40,11 @@ const SettingsScreen = props => {
                 <View style={{flexGrow:1}}>
                     <OptionMenu 
                         menuTitle={loc.t(Texts.language)}
-                        options={[
-                            {
-                                key:Locales.english,
-                                title:loc.t(Texts.english)
-                            },
-                            {
-                                key:Locales.turkish,
-                                title:loc.t(Texts.turkish)
-                            }
-                        ]}
+                        options={localeOptions}
                         selectedOptionKey={currentLocale}
-                        onSelect={()=>console.log("jsdhsjdh")}
+                        onSelect={_onSelect_Locale}
                     />
-                    <OptionMenu 
+                    {/* <OptionMenu 
                         menuTitle={loc.t(Texts.colorTheme)}
                         options={[
                             {
@@ -61,7 +58,7 @@ const SettingsScreen = props => {
                         ]}
                         selectedOptionKey={currentTheme}
                         onSelect={()=>console.log("jsdhsjdh")}
-                    />
+                    /> */}
                 </View>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.signOutTouchable} onPress={() => console.log("bastın!")}>

@@ -26,9 +26,7 @@ const AuthScreenUI = props => {
     const loc = useLocalization();
 
     const locale =useLocale();
- 
-    console.log(loc.t(Texts.signUp).toUpperCase());
-    console.log(loc.t(Texts.login).toUpperCase())
+
     return (
         <SafeAreaView style={styles.safeArea}>
             <KeyboardAvoidingView

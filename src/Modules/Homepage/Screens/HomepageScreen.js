@@ -18,8 +18,6 @@ const SettingsScreen = props => {
     const loc=useLocalization();
 
     const _renderShoppingList =({item})=>{
-        console.log(item.id);
-        //()=>setIsVisible(true)
         
         return(
             <TouchableOpacity key={item.id} style={styles.box} onLongPress={()=>setIsVisible(false)} onPress={()=>setIsVisible(true)} > 

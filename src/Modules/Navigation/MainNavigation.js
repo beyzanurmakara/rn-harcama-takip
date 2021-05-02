@@ -4,7 +4,7 @@ import AppNavigation from './AppNavigation';
 import AuthNavigation from './AuthNavigation';
 
 const MainNavigation = (props) => {
-    const loggedInUser = false;
+    const loggedInUser = true;
     return (
         <NavigationContainer>
             {

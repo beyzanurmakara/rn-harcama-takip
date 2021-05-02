@@ -11,8 +11,8 @@ const Types = {
     CHANGE_LOCALE: 'locale/change_locale',
 };
 
-const Actions = {
-    changeLocale: ({ locale }) => ({
+const Actions = {    
+    changeLocale: ( locale ) => ({
         type: Types.CHANGE_LOCALE,
         payload: { locale },
     }),
@@ -42,7 +42,11 @@ export const changeLocale = (state, action) => {
 export const LocalizationReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case Types.CHANGE_LOCALE:
+            //let { locale } = action.payload;
             return changeLocale(state, action);
+            // return {
+            //     locale,
+            // }
         default:
             return state;
     }

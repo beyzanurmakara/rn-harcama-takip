@@ -1,6 +1,8 @@
 import { fork, takeEvery, call, put, all } from "@redux-saga/core/effects";
 import { setUserAC, SIGN_IN_REQUEST, SIGN_OUT_REQUEST, SIGN_UP_REQUEST } from "./UserRedux";
 import { getCurrentUser, signIn, signOut, signUp, updateUser } from '../API/Firebase';
+import { setIsLoadingAC } from "../../Loading/LoadingRedux";
+
 function* signUpAndUpdateUser(email, password, displayName) {
     try {
         // Önce signUp yaptırdık
@@ -21,12 +23,18 @@ function* workerSignUp(action) {
     const { email, password, displayname } = action.payload;
 
     try {
+        yield put(setIsLoadingAC(true));
+
         yield call(signUp,email,password);
         yield call(updateUser,displayname);
+
         const currentUser=getCurrentUser();
         yield put(setUserAC(currentUser));
+
     } catch (error) {
         console.log('SignUp ... ', error)
+    } finally {
+        yield put(setIsLoadingAC(false));
     }
 }
 
@@ -37,12 +45,15 @@ function* wathcerSignUpRequest() {
 function* workerSignIn(action) {
     const { email, password } = action.payload;
     try {
+        yield put(setIsLoadingAC(true));
         yield call(signIn, email, password);
         const currentUser = getCurrentUser();
         yield put(setUserAC(currentUser));
         console.log('kullanıcı giriş  yaptı --> ',email, password)
     } catch (error) {
         console.log('sign in worker ... ', error);
+    } finally {
+        yield put(setIsLoadingAC(false));
     }
 }
 
@@ -52,10 +63,13 @@ function* watcherSignInRequest() {
 
 function* workerSignOut() {
     try {
+        yield put(setIsLoadingAC(true));
         yield call(signOut);
         yield put(setUserAC(null));
     } catch (error) {
         console.log('sign out worker ... ', error);
+    } finally {
+        yield put(setIsLoadingAC(false));
     }
 }
 function* watcherSignOutRequest(){

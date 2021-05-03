@@ -20,13 +20,13 @@ function* signUpAndUpdateUser(email, password, displayName) {
 }
 
 function* workerSignUp(action) {
-    const { email, password, displayname } = action.payload;
-
+    const { email, password, displayName } = action.payload;
+    //console.log('displayName in worker SignUp -->',displayName);
     try {
         yield put(setIsLoadingAC(true));
 
         yield call(signUp,email,password);
-        yield call(updateUser,displayname);
+        yield call(updateUser,displayName);
 
         const currentUser=getCurrentUser();
         yield put(setUserAC(currentUser));

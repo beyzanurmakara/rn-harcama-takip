@@ -7,6 +7,7 @@ export default (Colors)=> StyleSheet.create({
         flex:1,
         padding:Metrics.marginHorizontal,
         paddingBottom:0,
+        backgroundColor:Colors[colorNames.addNew.background]
     },
     inputsContainer:{
         flex:0.9,

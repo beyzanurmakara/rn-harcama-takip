@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "531253505802",
+    "project_id": "harcama-takip",
+    "storage_bucket": "harcama-takip.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531253505802:android:0ab3475219588b99aed4f3",
+        "android_client_info": {
+          "package_name": "com.harcamatakip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531253505802-k6gcamkcbpmo19aa1giturfqgb3r87hv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDujbiMsjEno1wchvznfHXUZ0XkTJJLvts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531253505802-k6gcamkcbpmo19aa1giturfqgb3r87hv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

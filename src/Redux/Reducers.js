@@ -4,10 +4,12 @@ import { combineReducers } from 'redux';
 // Reducers
 import { ThemeReducer } from '../Modules/Theming';
 import { LocalizationReducer } from '../Modules/Localization';
+import { userReducer } from '../Modules/Auth';
 
 export default combineReducers({
   theme: ThemeReducer,
   localization: LocalizationReducer,
+  auth:userReducer,
 });
 
 

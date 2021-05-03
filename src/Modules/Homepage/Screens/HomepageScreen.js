@@ -9,7 +9,6 @@ import DummyShoppingData from '../DummyShoppingList';
 
 import getStyles from '../styles/HomepageScreenStyles';
 import { Svgs } from '../../../StylingConstants';
-import Svg from 'react-native-svg';
 
 
 

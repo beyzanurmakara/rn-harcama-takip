@@ -83,8 +83,10 @@ export default Colors => StyleSheet.create({
     },
     buttonContainer:{
         position:'absolute',
-        left:Metrics.width * 0.75,
-        top:Metrics.height * 0.8,
+        right:Metrics.width * 0.01,
+        bottom:Metrics.height * 0.01,
+        // left:Metrics.width * 0.75,
+        // top:Metrics.height * 0.8,
         //flex:0.2,
         //backgroundColor:'yellow'
     },

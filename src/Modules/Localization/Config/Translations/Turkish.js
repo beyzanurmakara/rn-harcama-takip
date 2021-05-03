@@ -22,4 +22,5 @@ export default {
     [Texts.english]:'English',
     [Texts.turkish]:'Türkçe',
     [Texts.signOut]:'Çıkış Yap',    
+    [Texts.cancel]:'İptal',
 };

@@ -21,6 +21,7 @@ export default {
     [Texts.language]:'Language',
     [Texts.english]:'English',
     [Texts.turkish]:'Türkçe',
-    [Texts.signOut]:'Sign Out',   
+    [Texts.signOut]:'Sign Out',  
+    [Texts.cancel]:'Cancel' ,
 };
 

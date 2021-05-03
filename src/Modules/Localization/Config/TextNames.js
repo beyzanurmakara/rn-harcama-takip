@@ -21,5 +21,6 @@ export const Texts = {
     language:'language',
     english:'english',
     turkish:'turkish',
-    signOut:'signOut',   
+    signOut:'signOut',  
+    cancel:'cancel', 
 };

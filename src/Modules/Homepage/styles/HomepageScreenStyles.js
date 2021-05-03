@@ -90,4 +90,14 @@ export default Colors => StyleSheet.create({
         //flex:0.2,
         //backgroundColor:'yellow'
     },
+    cancelTextContainer:{
+        position:'absolute',
+        right:Metrics.width * 0.001,
+        top:Metrics.height * 0.0001,
+    },
+    cancelText:{
+        color:Colors[colorNames.homePage.deleteButtonBackground],
+        fontFamily:Fonts.type.extraBold,
+        fontSize:Fonts.size(15),
+    }
 });

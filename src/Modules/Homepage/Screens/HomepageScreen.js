@@ -15,44 +15,17 @@ import { Svgs } from '../../../StylingConstants';
 const SettingsScreen = props => {
 
     const [isVisble,setIsVisible]=useState(true);
-    const [deletedItem,setDeletedItem]=useState([]);
-    const [select,setSelect]=useState(false);
+    const [selectedItemList,setSelectedItemList]=useState([]);
 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
     const loc=useLocalization();
 
     const navigation = useNavigation();
-
     const _onPress_Delete=()=>{
-
-        //console.log("silme işlemi yapacagım");
-        // ÖN İŞLEM ( AYNI ELEMANLAR BULUNAMAZ )
-        //eger aynı kutucuğa bastıysa o elemanı silme listesinden kaldırsın.
-        let iIndex=0;
-        let jIndex=0;
-        for (let i=0;i<deletedItem.length;i++){
-            for(let j=i+1;j<deletedItem.length;j++){
-                if(deletedItem[i]===deletedItem[j]){
-                    iIndex=i;
-                   // console.log(iIndex)
-                    jIndex=j;
-                    //console.log(jIndex)
-                }
-            }
-        }
-        if(iIndex === 0 && jIndex === 0){
-            console.log("seçilenlerin eşi benzeri yok :)");
-        }
-        else{
-            let copyDeletedItem=[...deletedItem];
-            copyDeletedItem.splice(iIndex,1);
-            copyDeletedItem.splice(jIndex,1);
-            setDeletedItem(copyDeletedItem);
-        }
-        // buraya kadar  veri temizlendi
-        // silme işlemi yapılacak
-        deleteItems();
+        console.log(selectedItemList);
+        setSelectedItemList([]);
+        setIsVisible(true)
     }
 
     const _onPress_Add=()=>{
@@ -60,40 +33,39 @@ const SettingsScreen = props => {
         navigation.navigate('add-new-screen');
         //console.log('ekleme işlemi yapacagım');
     }
-    const deleteItems=()=>{
-       // console.log(deletedItem);
-       console.log('silme işlemi yapılacak');
+
+    const _onPress_Cancel=()=>{
+        setSelectedItemList([]);
+        setIsVisible(true);
     }
 
+    const getIsSelected=(id)=>{
+        //let result=false;
+        let copyList=[...selectedItemList];
+        for(let i=0;i<copyList.length;i++){
+            if(copyList[i]===id){
+                return true;
+            }
+        }
+        return false;
+    }
     const _renderShoppingList =({item})=>{ 
 
-        let selected=false;
-
-        let svg=Svgs.CheckboxUnSelected;
-
-
-
+        let isSelected = getIsSelected(item.id);
         // kutucuklara tıkladığında
-        const _onPress_Item=()=>{ 
-            let slc=select;
-            setSelect(!slc);
-            selected=!selected;
-            if(selected){
-                svg=Svgs.CheckboxSelected;
-            }
-            else {
-                svg=Svgs.CheckboxUnSelected;
-            }
-            const deletedItemCopy=[...deletedItem];
-            deletedItemCopy.push(item.id);
-            setDeletedItem(deletedItemCopy); 
-            //console.log(deletedItem);           
+        const _onPress_Item=(id, isSelected)=>{ 
+            let copyList=[...selectedItemList];
+            let indexNumber=copyList.indexOf(id);
+            copyList.push(id);
+            setSelectedItemList(copyList); 
+            console.log(isSelected)
+            
         }
         
         return(
-            <TouchableOpacity key={item.id} style={styles.box} onLongPress={()=>setIsVisible(false)} onPress={()=>setIsVisible(true)} > 
-                <TouchableOpacity style={styles.iconContainer} disabled={isVisble ? true : false} onPress={_onPress_Item} >
-                    <Icon svg={select ? Svgs.CheckboxSelected : Svgs.CheckboxUnSelected} iconStyle={{ color: isVisble ? 
+            <TouchableOpacity key={item.id} style={styles.box} onLongPress={()=>setIsVisible(false)} > 
+                <TouchableOpacity style={styles.iconContainer} disabled={isVisble ? true : false} onPress={()=>_onPress_Item(item.id, isSelected)} >
+                    <Icon svg={isSelected? Svgs.CheckboxSelected : Svgs.CheckboxUnSelected} iconStyle={{ color: isVisble ? 
                                 colors[colorNames.homePage.shoppingItemBackround] 
                                 : 
                                 colors[colorNames.homePage.shoppingItemCheckIconSelectedBackground] }} />
@@ -121,6 +93,17 @@ const SettingsScreen = props => {
                         style={{flex:1}}
                         //columnContainerStyle={styles.columnContainerStyle}
                     />
+                </View>
+                <View style={[styles.cancelTextContainer]}>
+                    <TouchableOpacity onPress={_onPress_Cancel}>
+                        <Text style={[styles.cancelText ,
+                                     isVisble ? 
+                                     {color:colors[colorNames.homePage.background]}
+                                     :
+                                     {color:colors[colorNames.homePage.deleteButtonBackground]}]}>
+                            {loc.t(Texts.cancel).toUpperCase()}
+                            </Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={[styles.button,{backgroundColor: isVisble ? 

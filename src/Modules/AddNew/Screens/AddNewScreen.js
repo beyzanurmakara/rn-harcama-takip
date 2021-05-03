@@ -14,14 +14,7 @@ import AddNewMultilineInput from '../Components/AddNewMultilineInput';
 
 import getStyles from '../styles/AddNewScreenStyle';
 
-/*
- <AddNewInput
-    placeHolder={loc.t(Texts.explanation)}
-    multiline={true}
-    numberOfLines={4}
-    onChangeText={() => console.log('içerik değişiyoorr')}
-/>
-*/
+
 const AddNewScreen = props => {
 
     const styles = useThemedStyles(getStyles);

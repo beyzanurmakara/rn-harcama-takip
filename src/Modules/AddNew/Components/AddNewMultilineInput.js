@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextInput } from 'react-native';
+import { View, TextInput } from 'react-native';
 
 import { Texts, useLocalization } from '../../Localization';
 import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
@@ -13,25 +13,17 @@ const AddNewMultilineInput = props => {
     const loc = useLocalization();
 
     return (
-       <TextInput
-            placeholder={loc.t(Texts.explanation)}
-            placeholderTextColor={colors[colorNames.addNew.textInputPlaceHolder]}
-            multiline
-            numberOfLines={6}
-            style={styles.input}
-       />
+        <View style={styles.container}>
+            <TextInput
+                placeholder={loc.t(Texts.explanation)}
+                placeholderTextColor={colors[colorNames.addNew.textInputPlaceHolder]}
+                multiline
+                numberOfLines={10}
+                style={styles.input}
+                
+            />
+        </View>
     );
 };
 
 export default AddNewMultilineInput;
-
-/*
-<TextInput
-    placeHolder={loc.t(Texts.explanation)}
-    placeholderTextColor={colors[colorNames.addNew.textInputPlaceHolder]}
-    multiline={true}
-    numberOfLines={4}
-    style={styles.input}
-
-/>
-*/

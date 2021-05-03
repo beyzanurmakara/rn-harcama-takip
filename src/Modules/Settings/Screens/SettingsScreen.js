@@ -1,13 +1,16 @@
 import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useLocalization, Texts, Locales, useLocale, useChangeLocale, useLocaleOptions } from '../../Localization';
 import { ThemeModes, useTheme, useThemedStyles, useThemeOptions, useDispatchChangeTheme, useChangeTheme } from '../../Theming';
 import Icon from '../../../Components/Icon';
+import { signOutRequest, userSelector} from '../../Auth';
 
 import getStyles from '../styles/SettingsScreenStyles';
 import { Svgs } from '../../../StylingConstants';
 import OptionMenu from '../Components/OptionMenu';
+
 
 const SettingsScreen = props => {
 
@@ -21,7 +24,9 @@ const SettingsScreen = props => {
     const changeLocale = useChangeLocale();   
     const localeOptions = useLocaleOptions();
 
-
+    const user =  useSelector(userSelector);
+    console.log(user);
+    const dispatch = useDispatch();
     const _onSelect_Locale=(key)=>{
         changeLocale(key);       
     }
@@ -29,15 +34,19 @@ const SettingsScreen = props => {
         changeTheme(key);
     }
 
+    const  _onPress_SignOut=()=>{
+        dispatch(signOutRequest());
+    }
+   
     return (
         <View style={styles.container}>
             <SafeAreaView style={{flex:1}}>
                 <View style={styles.userContainer}>
                     <Text style={styles.nameText}>
-                        BEYZA NUR MAKARA
+                        {user.displayName}
                     </Text>
                     <Text style={styles.emailText}>
-                        beyzamakara@mail.com
+                        {user.email}
                     </Text>
                 </View>
                 <View style={{flexGrow:1}}>
@@ -55,7 +64,7 @@ const SettingsScreen = props => {
                     />
                 </View>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.signOutTouchable} onPress={() => console.log("bastın!")}>
+                    <TouchableOpacity style={styles.signOutTouchable} onPress={_onPress_SignOut}>
                         <Text style={styles.signOutText}>
                             {loc.t(Texts.signOut)}
                         </Text>

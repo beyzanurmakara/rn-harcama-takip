@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import AuthScreenUI from './AuthScreenUI';
 import { signUpRequest, signInRequest } from '../Redux/UserRedux';
+import { updateUser } from '../API/Firebase';
 
 
 const isValidEmail = email => {

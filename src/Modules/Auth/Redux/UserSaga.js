@@ -21,7 +21,10 @@ function* workerSignUp(action) {
     const { email, password, displayname } = action.payload;
 
     try {
-        yield call(signUpAndUpdateUser, email, password, displayname);
+        yield call(signUp,email,password);
+        yield call(updateUser,displayname);
+        const currentUser=getCurrentUser();
+        yield put(setUserAC(currentUser));
     } catch (error) {
         console.log('SignUp ... ', error)
     }
@@ -37,6 +40,7 @@ function* workerSignIn(action) {
         yield call(signIn, email, password);
         const currentUser = getCurrentUser();
         yield put(setUserAC(currentUser));
+        console.log('kullanıcı giriş  yaptı --> ',email, password)
     } catch (error) {
         console.log('sign in worker ... ', error);
     }

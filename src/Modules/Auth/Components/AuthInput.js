@@ -13,6 +13,7 @@ const AuthInput = props => {
         <BorderedBox borderColor={colors[colorNames.auth.inputBorder]}>
             <View style={styles.inputContainer}>
                 <TextInput
+                    selectionColor={colors[colorNames.auth.coloredButtonText]}
                     autoCapitalize={props.autoCapitalize}
                     secureTextEntry={props.secureTextEntry}
                     style={styles.input}

@@ -72,27 +72,13 @@ const SettingsScreen = props => {
         }
         
         return(
-            <TouchableOpacity key={item.id} style={styles.box} onLongPress={()=>setIsVisible(false)} > 
-                <TouchableOpacity style={styles.iconContainer} disabled={isVisble ? true : false} onPress={()=>_onPress_Item(item.id, isSelected)} >
-                    <Icon svg={isSelected? Svgs.CheckboxSelected : Svgs.CheckboxUnSelected} iconStyle={{ color: isVisble ? 
-                                colors[colorNames.homePage.shoppingItemBackround] 
-                                : 
-                                colors[colorNames.homePage.shoppingItemCheckIconSelectedBackground] }} />
-                </TouchableOpacity>
-                <View style={{justifyContent:'center',alignItems:'center'}}>
-                    <Text style={styles.headerText}>{item.title}</Text>
-                    <Text style={styles.priceText}>{item.price} </Text>
-                    <Text style={styles.dateText}>{item.date}</Text>
-                    <Text style={styles.dayText}>{item.day}</Text>
-                </View>
-            </TouchableOpacity>
-            // <RenderBox  
-            //     item={{item}} 
-            //     isVisible={isVisble}
-            //     isSelected={isSelected}
-            //     onLongPress={()=>setIsVisible(false)}
-            //     onPress_Item={_onPress_Item}
-            // />
+            <RenderBox  
+                item={item} 
+                isVisible={isVisble}
+                isSelected={isSelected}
+                onLongPress={()=>setIsVisible(false)}
+                onPress_Item={_onPress_Item}
+            />
         );
     }
 

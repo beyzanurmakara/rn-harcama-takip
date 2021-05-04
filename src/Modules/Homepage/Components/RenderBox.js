@@ -11,8 +11,7 @@ const RenderBox = props => {
 
     const  item=props.item;
     let isSelected =props.isSelected;
-    //console.log(props.isVisible)
-
+    
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
 

@@ -15,6 +15,7 @@ import AddNewMultilineInput from '../Components/AddNewMultilineInput';
 import CancelText from '../../../Components/CancelText';
 
 import getStyles from '../styles/AddNewScreenStyle';
+import { ErrorManager } from '../../Error';
 
 
 const AddNewScreen = props => {
@@ -44,43 +45,43 @@ const AddNewScreen = props => {
     }
 
     return (
-        <ScrollView style={styles.scrollView}>
-            <TouchableOpacity style={styles.container} onPress={() => Keyboard.dismiss()} activeOpacity={1}>
-                {
-                    id!==undefined ?
-                    <CancelText isVisible={false} onPress_Cancel={_onPress_Cancel}/>
-                    :
-                    null
-                }
-                <View style={styles.inputsContainer}>
-                    <View style={styles.inputContainer}>
-                        <AddNewInput
-                            value={title}
-                            placeHolder={loc.t(Texts.shoppingType)}
-                            onChangeText={() => console.log('içerik değişiyoorr')}
-                        />
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <DateInput value={date}/>
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <AddNewInput
-                            value={price}
-                            placeHolder={loc.t(Texts.price)}
-                            keyboardType={'numeric'}
-                            onChangeText={() => console.log('içerik değişiyoorr')}
-                        />
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <AddNewMultilineInput value={explanation}/>
-                    </View>
-                </View>
-                <View style={styles.buttonContainer}>
-                    <AddButton text={id===undefined ? loc.t(Texts.add) : loc.t(Texts.okey)}/>
-                </View>
-            </TouchableOpacity>
-        </ScrollView>
-        
+        // <ScrollView style={styles.scrollView}>
+        //     <TouchableOpacity style={styles.container} onPress={() => Keyboard.dismiss()} activeOpacity={1}>
+        //         {
+        //             id!==undefined ?
+        //             <CancelText isVisible={false} onPress_Cancel={_onPress_Cancel}/>
+        //             :
+        //             null
+        //         }
+        //         <View style={styles.inputsContainer}>
+        //             <View style={styles.inputContainer}>
+        //                 <AddNewInput
+        //                     value={title}
+        //                     placeHolder={loc.t(Texts.shoppingType)}
+        //                     onChangeText={() => console.log('içerik değişiyoorr')}
+        //                 />
+        //             </View>
+        //             <View style={styles.inputContainer}>
+        //                 <DateInput value={date}/>
+        //             </View>
+        //             <View style={styles.inputContainer}>
+        //                 <AddNewInput
+        //                     value={price}
+        //                     placeHolder={loc.t(Texts.price)}
+        //                     keyboardType={'numeric'}
+        //                     onChangeText={() => console.log('içerik değişiyoorr')}
+        //                 />
+        //             </View>
+        //             <View style={styles.inputContainer}>
+        //                 <AddNewMultilineInput value={explanation}/>
+        //             </View>
+        //         </View>
+        //         <View style={styles.buttonContainer}>
+        //             <AddButton text={id===undefined ? loc.t(Texts.add) : loc.t(Texts.okey)}/>
+        //         </View>
+        //     </TouchableOpacity>
+        // </ScrollView>
+        <ErrorManager/>
     );
 };
 

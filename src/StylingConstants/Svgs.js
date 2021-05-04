@@ -6,6 +6,7 @@ import RadioButtonUnselected from '../Assets/Svgs/radio-button-unchecked.svg';
 import AddIcon from '../Assets/Svgs/add-icon.svg';
 import DeleteIcon from '../Assets/Svgs/delete-icon.svg';
 import CalendarIcon from '../Assets/Svgs/calendar-date.svg';
+import Okay  from '../Assets/Svgs/okay.svg';
 
 export default {
     Settings,
@@ -16,4 +17,5 @@ export default {
     AddIcon,
     DeleteIcon,
     CalendarIcon,
+    Okay
 }

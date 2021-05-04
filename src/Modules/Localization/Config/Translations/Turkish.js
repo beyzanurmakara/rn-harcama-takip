@@ -25,4 +25,5 @@ export default {
     [Texts.cancel]:'İptal',
     [Texts.edit]:'Düzenle',
     [Texts.okey]:'Tamam',
+    [Texts.error]:'Hata',
 };

@@ -87,6 +87,15 @@ export const colorNames = {
         text: 'header/text',
         backIcon: 'header/backIcon',
         rightIcon: 'header/rightIcon',
+    },
+    error:{
+        background:'error/background',
+        containerBorderColor:'error/containerBorderColor',
+        messageTextColor:'error/messageTextColor',
+        errorTextColor:'error/errorTextColor',
+        errorTextBackground:'error/errorTextBackground',
+        modalBackdropColor:'error/modalBackdropColor',
+        iconColor:'error/iconColor',
     }
 };
 
@@ -145,6 +154,14 @@ export const darkColors = {
     [colorNames.header.text]: constantColors.greys[1],
     [colorNames.header.backIcon]: constantColors.greys[1],
     [colorNames.header.rightIcon]: constantColors.greys[1],
+    //error
+    [colorNames.error.background]:constantColors.greys[4],
+    [colorNames.error.containerBorderColor]:constantColors.delete,
+    [colorNames.error.messageTextColor]:constantColors.white,
+    [colorNames.error.errorTextColor]:constantColors.white,
+    [colorNames.error.errorTextBackground]:constantColors.delete,
+    [colorNames.error.modalBackdropColor]:constantColors.transparent,
+    [colorNames.error.iconColor]:constantColors.delete,
 
 };
 
@@ -203,4 +220,12 @@ export const lightColors = {
     [colorNames.header.text]: constantColors.white,
     [colorNames.header.backIcon]: constantColors.white,
     [colorNames.header.rightIcon]: constantColors.white,
+    //error
+    [colorNames.error.background]:constantColors.white,
+    [colorNames.error.containerBorderColor]:constantColors.delete,
+    [colorNames.error.messageTextColor]:constantColors.black,
+    [colorNames.error.errorTextColor]:constantColors.white,
+    [colorNames.error.errorTextBackground]:constantColors.delete,
+    [colorNames.error.modalBackdropColor]:constantColors.transparent,
+    [colorNames.error.iconColor]:constantColors.delete,
 };

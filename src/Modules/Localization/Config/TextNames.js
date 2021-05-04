@@ -25,4 +25,5 @@ export const Texts = {
     cancel:'cancel', 
     edit:'edit',
     okey:'okey',
+    error:'error',
 };

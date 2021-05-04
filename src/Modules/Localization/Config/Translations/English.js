@@ -25,5 +25,6 @@ export default {
     [Texts.cancel]:'Cancel' ,
     [Texts.edit]:'Edit',
     [Texts.okey]:'Okey',
+    [Texts.error]:'Error',
 };
 

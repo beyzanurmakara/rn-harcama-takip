@@ -9,9 +9,10 @@ export default Colors=> StyleSheet.create({
         height: Metrics.boxNormalHeight,
         backgroundColor:Colors[colorNames.addNew.addButtonBackground],
         borderRadius:Metrics.borderRadiusStandard,
+        marginBottom:Metrics.width * 0.03,
     },
     addText:{
-        fontFamily:Fonts.type.regular,
+        fontFamily:Fonts.type.semiBold,
         fontSize:Fonts.size(16),
         color:Colors[colorNames.addNew.addButtonText]
     }

@@ -31,7 +31,15 @@ const DateInput = props => {
         setIsVisible(!isVisible);
         setChangeColor(!changeColor);
     }
-
+/*
+{
+    // '2021-05-16': { selected: true, marked: true, selectedColor: 'blue' },
+    // '2021-05-17': { marked: true },
+    // '2021-05-18': { marked: true, dotColor: 'red', activeOpacity: 0 },
+    // '2021-05-19': { disabled: true, disableTouchEvent: true }
+    
+}
+*/
     return (
         <>
             <View style={styles.dateContainer}>
@@ -62,7 +70,7 @@ const DateInput = props => {
                 <View  style={styles.calendarContainer}>
                     <Calendar
                         // Initially visible month. Default = Date()
-                        current={'2021-04-05'}
+                        //current={'2021-04-05'}
                         // Handler which gets executed on day press. Default = undefined
                         onDayPress={(day) => { setDate(day.dateString) }}
                         // Handler which gets executed on day long press. Default = undefined
@@ -76,12 +84,7 @@ const DateInput = props => {
                         // Show week numbers to the left. Default = false
                         //showWeekNumbers={true}
                         // Collection of dates that have to be marked. Default = {}
-                        markedDates={{
-                            '2021-05-16': { selected: true, marked: true, selectedColor: 'blue' },
-                            '2021-05-17': { marked: true },
-                            '2021-05-18': { marked: true, dotColor: 'red', activeOpacity: 0 },
-                            '2021-05-19': { disabled: true, disableTouchEvent: true }
-                        }}
+                        //markedDates={props.value}
                         theme={{
                             arrowColor: colors[colorNames.addNew.addButtonBackground],
                             'stylesheet.calendar.header': {
@@ -102,7 +105,8 @@ const DateInput = props => {
                             textMonthFontFamily:Fonts.type.regular,
                             textMonthFontSize:Fonts.size(14),
                             textDayHeaderFontFamily:Fonts.type.regular,
-                            textDayHeaderFontSize:Fonts.size(14)
+                            textDayHeaderFontSize:Fonts.size(14),
+                            todayTextColor:colors[colorNames.addNew.addButtonBackground]
 
                         }}
                         style={styles.calendarView}

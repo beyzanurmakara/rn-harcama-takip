@@ -7,7 +7,7 @@ export default colors=>StyleSheet.create({
     cancelTextContainer:{
         position:'absolute',
         right:Metrics.width * 0.05,
-        top:Metrics.height * 0.0001,
+        top:Metrics.width * 0.000001,
     },
     cancelText:{
         color:colors[colorNames.homePage.deleteButtonBackground],

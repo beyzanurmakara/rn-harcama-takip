@@ -5,12 +5,13 @@ import {  colorNames } from '../../Theming';
 export default (Colors)=> StyleSheet.create({
     scrollView:{
         flex:1, 
-        backgroundColor:Colors[colorNames.addNew.background]
+        backgroundColor:Colors[colorNames.addNew.background],
     },
     container:{
         flex:1,
         padding:Metrics.marginHorizontal,
         paddingBottom:0,
+        paddingTop:Metrics.width * 0.07,
         backgroundColor:Colors[colorNames.addNew.background]
     },
     inputsContainer:{

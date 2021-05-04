@@ -23,4 +23,6 @@ export const Texts = {
     turkish:'turkish',
     signOut:'signOut',  
     cancel:'cancel', 
+    edit:'edit',
+    okey:'okey',
 };

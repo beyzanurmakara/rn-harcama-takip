@@ -13,7 +13,7 @@ const AddButton = props => {
     const loc = useLocalization();
     return (
         <TouchableOpacity style={styles.button}>
-            <Text style={styles.addText}>{loc.t(Texts.add).toUpperCase()}</Text>
+            <Text style={styles.addText}>{props.text.toUpperCase()}</Text>
         </TouchableOpacity>
     );
 };

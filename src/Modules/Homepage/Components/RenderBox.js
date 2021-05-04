@@ -15,13 +15,17 @@ const RenderBox = props => {
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
 
-    const _onPress_Item=(id, isSelected)=>{ 
-        props.onPress_Item(id,isSelected);
+    const _onSelect_Item=(id, isSelected)=>{ 
+        props.onSelect_Item(id,isSelected);
+    }
+    
+    const  _onPress_Item=(item)=>{
+        props.onPress_Item(item);
     }
 
     return (
-        <TouchableOpacity key={item.id} style={styles.box} onLongPress={props.onLongPress} >
-            <TouchableOpacity style={styles.iconContainer} disabled={props.isVisible ? true : false} onPress={() => _onPress_Item(item.id, isSelected)} >
+        <TouchableOpacity key={item.id} style={styles.box} onLongPress={props.onLongPress} onPress={()=>_onPress_Item(item)}>
+            <TouchableOpacity style={styles.iconContainer} disabled={props.isVisible ? true : false} onPress={() => _onSelect_Item(item.id, isSelected)} >
                 <Icon svg={isSelected ? Svgs.CheckboxSelected : Svgs.CheckboxUnSelected} iconStyle={{
                     color: props.isVisible ?
                         colors[colorNames.homePage.shoppingItemBackround]

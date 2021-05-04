@@ -23,4 +23,6 @@ export default {
     [Texts.turkish]:'Türkçe',
     [Texts.signOut]:'Çıkış Yap',    
     [Texts.cancel]:'İptal',
+    [Texts.edit]:'Düzenle',
+    [Texts.okey]:'Tamam',
 };

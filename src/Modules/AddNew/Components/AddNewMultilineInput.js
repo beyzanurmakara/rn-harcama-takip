@@ -20,7 +20,9 @@ const AddNewMultilineInput = props => {
                 multiline
                 numberOfLines={8}
                 style={styles.input}
-                
+                value={props.value}
+                textAlign='left'
+                textAlignVertical='top'
             />
         </View>
     );

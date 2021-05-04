@@ -33,7 +33,8 @@ const SettingsScreen = props => {
 
     const _onPress_Add=()=>{
        
-        navigation.navigate('add-new-screen');
+        const mode ='add';
+        navigation.navigate('add-new-screen', mode);
         //console.log('ekleme işlemi yapacagım');
     }
 
@@ -55,8 +56,9 @@ const SettingsScreen = props => {
     const _renderShoppingList =({item})=>{ 
 
         let isSelected = getIsSelected(item.id);
-        // kutucuklara tıkladığında
-        const _onPress_Item=(id, isSelected)=>{ 
+
+        // checkbox seçildiğinde
+        const onSelect_Item=(id, isSelected)=>{ 
             let copyList=[...selectedItemList];
             if(isSelected){
                 let indexNumber=copyList.indexOf(id);
@@ -67,8 +69,24 @@ const SettingsScreen = props => {
             }
             console.log(copyList);
             setSelectedItemList(copyList); 
-            //console.log(isSelected)
-            
+        }
+
+        // kutucuğun üstüne basıldığında
+        const  onPress_Item=(item)=>{
+            console.log(item.id)
+            navigation.navigate('add-new-screen', {
+                id:item.id,
+                title:item.title,
+                date:item.date,
+                price:item.price,
+                explanation:item.explanation,
+            });
+            /*
+            navigation.navigate("restaurants-screen",{
+            city:selectedCity,
+            category:categoryItem,
+            });
+            */
         }
         
         return(
@@ -77,7 +95,8 @@ const SettingsScreen = props => {
                 isVisible={isVisble}
                 isSelected={isSelected}
                 onLongPress={()=>setIsVisible(false)}
-                onPress_Item={_onPress_Item}
+                onSelect_Item={onSelect_Item} 
+                onPress_Item={onPress_Item}               
             />
         );
     }

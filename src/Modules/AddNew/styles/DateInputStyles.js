@@ -9,10 +9,11 @@ export default (Colors)=>StyleSheet.create({
         borderWidth:1,
         flexDirection:'row',
         paddingHorizontal:Metrics.textMargin,
+        alignItems:'center'
     },
     dateTextContainer:{
         width:Metrics.width * 0.6,
-        height:Metrics.width * 0.1,
+        height:Metrics.width * 0.11,
         borderWidth:1,
         borderColor:Colors[colorNames.addNew.textInputBackground],
         justifyContent:'center',
@@ -21,7 +22,7 @@ export default (Colors)=>StyleSheet.create({
     },
     dateText:{
         fontFamily:Fonts.type.regular,
-        fontSize:Fonts.size(14),
+        fontSize:Fonts.size(16),
         color:Colors[colorNames.addNew.textInputText]
     },
     iconContainer:{

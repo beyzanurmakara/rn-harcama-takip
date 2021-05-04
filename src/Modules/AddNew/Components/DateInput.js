@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { TouchableOpacity,  View, Text, TextInput } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
@@ -12,29 +12,46 @@ import getStyles from '../styles/DateInputStyles';
 
 const DateInput = props => {
 
-    const [date,setDate]=useState('');
-    const [isVisible,setIsVisible]=useState(false);
+    const [date, setDate] = useState('');
+    const [isVisible, setIsVisible] = useState(false);
+    const [changeColor, setChangeColor] = useState(false);
 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
 
     const loc = useLocalization();
 
-    const _onPressCalenderIcon=()=>{
-        setIsVisible(!isVisible)
+    useEffect(()=>{
+        if(props.value !== undefined){
+            setDate(props.value)
+        }
+    },[])
+
+    const _onPressCalenderIcon = () => {
+        setIsVisible(!isVisible);
+        setChangeColor(!changeColor);
     }
+
     return (
         <>
             <View style={styles.dateContainer}>
                 <View style={[styles.dateTextContainer,{justifyContent:'center'}]}>
                     <TextInput 
                         style={styles.dateText}
-                        placeholder={loc.t(Texts.date)}
+                        placeholder={ loc.t(Texts.date)}
                         placeholderTextColor={colors[colorNames.addNew.textInputPlaceHolder]}
-                        value={date}/>
+                        //secureTextEntry={true}
+                        value={date} //props.value !== undefined ?props.date : 
+                        editable={false}/>
                 </View>
                 <TouchableOpacity style={styles.iconContainer} onPress={_onPressCalenderIcon}>
-                    <Icon svg={Svgs.CalendarIcon} iconStyle={{ color: colors[colorNames.addNew.calendarIcon] }} />
+                    <Icon 
+                        svg={Svgs.CalendarIcon} 
+                        iconStyle={{ 
+                            color: changeColor ? 
+                                    colors[colorNames.addNew.addButtonBackground]
+                                    :
+                                    colors[colorNames.addNew.calendarIcon] }} />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.todayTextContainer} onPress={()=>setDate(moment().format('YYYY-MM-DD'))}>
                     <Text style={styles.todayText}>{loc.t(Texts.today)}</Text>

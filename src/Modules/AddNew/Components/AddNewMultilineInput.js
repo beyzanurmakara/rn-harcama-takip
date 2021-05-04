@@ -18,7 +18,7 @@ const AddNewMultilineInput = props => {
                 placeholder={loc.t(Texts.explanation)}
                 placeholderTextColor={colors[colorNames.addNew.textInputPlaceHolder]}
                 multiline
-                numberOfLines={10}
+                numberOfLines={8}
                 style={styles.input}
                 
             />

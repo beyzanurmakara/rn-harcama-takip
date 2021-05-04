@@ -1,5 +1,5 @@
-import React from 'react';
-import { Keyboard, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, {useState} from 'react';
+import { Keyboard, Text, TextInput, TouchableOpacity, View, Button, Platform, ScrollView } from 'react-native';
 
 import { Texts, useLocalization } from '../../Localization';
 import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
@@ -23,32 +23,35 @@ const AddNewScreen = props => {
     const loc = useLocalization();
 
     return (
-        <TouchableOpacity style={styles.container} onPress={()=>Keyboard.dismiss()} activeOpacity={1}>
-            <View style={styles.inputsContainer}>
-                <View style={styles.inputContainer}>
-                    <AddNewInput
-                        placeHolder={loc.t(Texts.shoppingType)}
-                        onChangeText={() => console.log('içerik değişiyoorr')}
-                    />
+        <ScrollView>
+            <TouchableOpacity style={styles.container} onPress={() => Keyboard.dismiss()} activeOpacity={1}>
+                <View style={styles.inputsContainer}>
+                    <View style={styles.inputContainer}>
+                        <AddNewInput
+                            placeHolder={loc.t(Texts.shoppingType)}
+                            onChangeText={() => console.log('içerik değişiyoorr')}
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <DateInput />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <AddNewInput
+                            placeHolder={loc.t(Texts.price)}
+                            keyboardType={'numeric'}
+                            onChangeText={() => console.log('içerik değişiyoorr')}
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <AddNewMultilineInput />
+                    </View>
                 </View>
-                <View style={styles.inputContainer}>
-                    <DateInput/>
+                <View style={styles.buttonContainer}>
+                    <AddButton />
                 </View>
-                <View style={styles.inputContainer}>
-                    <AddNewInput
-                        placeHolder={loc.t(Texts.price)}
-                        keyboardType={'numeric'}
-                        onChangeText={() => console.log('içerik değişiyoorr')}
-                    />
-                </View>
-                <View style={styles.inputContainer}>                    
-                    <AddNewMultilineInput/>
-                </View>
-            </View>
-            <View style={styles.buttonContainer}>
-                <AddButton/>
-            </View>
-        </TouchableOpacity>
+            </TouchableOpacity>
+        </ScrollView>
+        
     );
 };
 

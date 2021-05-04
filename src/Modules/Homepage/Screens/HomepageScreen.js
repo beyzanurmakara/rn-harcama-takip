@@ -7,6 +7,9 @@ import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 import Icon from '../../../Components/Icon';
 import DummyShoppingData from '../DummyShoppingList';
 
+import RenderBox from '../Components/RenderBox';
+import HomePageScreenUI  from './HomeScreenUI';
+
 import getStyles from '../styles/HomepageScreenStyles';
 import { Svgs } from '../../../StylingConstants';
 
@@ -83,45 +86,60 @@ const SettingsScreen = props => {
                     <Text style={styles.dayText}>{item.day}</Text>
                 </View>
             </TouchableOpacity>
+            // <RenderBox  
+            //     item={{item}} 
+            //     isVisible={isVisble}
+            //     isSelected={isSelected}
+            //     onLongPress={()=>setIsVisible(false)}
+            //     onPress_Item={_onPress_Item}
+            // />
         );
     }
 
     return (
-        <View style={styles.container}>
-            <SafeAreaView style={{flex:1}}>
-                <View  style={styles.boxContainer}>                    
-                    <FlatList
-                        data={DummyShoppingData}
-                        renderItem={_renderShoppingList}
-                        keyExtractor={(item, index) => item.id}
-                        numColumns={2}
-                        columnWrapperStyle={styles.columnWrapperStyle}
-                        style={{flex:1}}
-                        //columnContainerStyle={styles.columnContainerStyle}
-                    />
-                </View>
-                <View style={[styles.cancelTextContainer]}>
-                    <TouchableOpacity onPress={_onPress_Cancel}>
-                        <Text style={[styles.cancelText ,
-                                     isVisble ? 
-                                     {color:colors[colorNames.homePage.background]}
-                                     :
-                                     {color:colors[colorNames.homePage.deleteButtonBackground]}]}>
-                            {loc.t(Texts.cancel).toUpperCase()}
-                            </Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={[styles.button,{backgroundColor: isVisble ? 
-                                            colors[colorNames.homePage.addButtonBackground] 
-                                            : 
-                                            colors[colorNames.homePage.deleteButtonBackground]}]}
-                                        onPress={isVisble ? _onPress_Add : _onPress_Delete}>
-                        <Icon svg={isVisble ? Svgs.AddIcon : Svgs.DeleteIcon} iconStyle={{color:colors[colorNames.homePage.buttonText]}}/>
-                    </TouchableOpacity>
-                </View>
-            </SafeAreaView>
-        </View>
+        // <View style={styles.container}>
+        //     <SafeAreaView style={{flex:1}}>
+        //         <View  style={styles.boxContainer}>                    
+        //             <FlatList
+        //                 data={DummyShoppingData}
+        //                 renderItem={_renderShoppingList}
+        //                 keyExtractor={(item, index) => item.id}
+        //                 numColumns={2}
+        //                 columnWrapperStyle={styles.columnWrapperStyle}
+        //                 style={{flex:1}}
+        //                 //columnContainerStyle={styles.columnContainerStyle}
+        //             />
+        //         </View>
+        //         <View style={[styles.cancelTextContainer]}>
+        //             <TouchableOpacity onPress={_onPress_Cancel}>
+        //                 <Text style={[styles.cancelText ,
+        //                              isVisble ? 
+        //                              {color:colors[colorNames.homePage.background]}
+        //                              :
+        //                              {color:colors[colorNames.homePage.deleteButtonBackground]}]}>
+        //                     {loc.t(Texts.cancel).toUpperCase()}
+        //                     </Text>
+        //             </TouchableOpacity>
+        //         </View>
+        //         <View style={styles.buttonContainer}>
+        //             <TouchableOpacity style={[styles.button,{backgroundColor: isVisble ? 
+        //                                     colors[colorNames.homePage.addButtonBackground] 
+        //                                     : 
+        //                                     colors[colorNames.homePage.deleteButtonBackground]}]}
+        //                                 onPress={isVisble ? _onPress_Add : _onPress_Delete}>
+        //                 <Icon svg={isVisble ? Svgs.AddIcon : Svgs.DeleteIcon} iconStyle={{color:colors[colorNames.homePage.buttonText]}}/>
+        //             </TouchableOpacity>
+        //         </View>
+        //     </SafeAreaView>
+        // </View>
+        <HomePageScreenUI
+            data={DummyShoppingData}
+            renderItem={_renderShoppingList}
+            onPress_Cancel={_onPress_Cancel}
+            onPress_Add={_onPress_Add}
+            onPress_Delete={_onPress_Delete}
+            isVisible={isVisble}
+        />
     );
 };
 

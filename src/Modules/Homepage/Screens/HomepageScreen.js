@@ -55,10 +55,16 @@ const SettingsScreen = props => {
         // kutucuklara tıkladığında
         const _onPress_Item=(id, isSelected)=>{ 
             let copyList=[...selectedItemList];
-            let indexNumber=copyList.indexOf(id);
-            copyList.push(id);
+            if(isSelected){
+                let indexNumber=copyList.indexOf(id);
+                copyList.splice(indexNumber, 1);
+            }
+            else{
+                copyList.push(id);
+            }
+            console.log(copyList);
             setSelectedItemList(copyList); 
-            console.log(isSelected)
+            //console.log(isSelected)
             
         }
         

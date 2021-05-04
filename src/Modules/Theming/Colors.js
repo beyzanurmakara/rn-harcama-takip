@@ -66,7 +66,9 @@ export const colorNames = {
         todayText:'addNew/todayText',
         addButtonBackground:'addNew/addButtonBackground',
         addButtonText:'addNew/addButtonText',
-               
+        calendarDayTextColor:'addNew/calendarDayTextColor' , 
+        calendarBackgroundColor:'addNew/calendarBackgroundColor',
+        calendarDayDisabledTextColor:'addNew/calendarDayDisabledTextColor'
     },
     settings:{
         background: 'settings/background',
@@ -124,6 +126,9 @@ export const darkColors = {
     [colorNames.addNew.todayText]:constantColors.mainColor1,
     [colorNames.addNew.addButtonBackground]:constantColors.mainColor2,
     [colorNames.addNew.addButtonText]:constantColors.white,
+    [colorNames.addNew.calendarDayTextColor]:constantColors.black,
+    [colorNames.addNew.calendarDayDisabledTextColor]:constantColors.greys[2],
+    [colorNames.addNew.calendarBackgroundColor]:'rgba(115, 181, 201, 0.1)',
     //settings
     [colorNames.settings.background]: constantColors.greys[1],
     [colorNames.settings.usernameText]: constantColors.white,
@@ -179,6 +184,9 @@ export const lightColors = {
     [colorNames.addNew.addButtonBackground]:constantColors.mainColor2,
     [colorNames.addNew.addButtonText]:constantColors.white,
     [colorNames.addNew.addButtonBorder]:constantColors.greys[2],
+    [colorNames.addNew.calendarDayTextColor]:constantColors.black,
+    [colorNames.addNew.calendarDayDisabledTextColor]:constantColors.greys[2],
+    [colorNames.addNew.calendarBackgroundColor]:'rgba(115, 181, 201, 0.1)',
     //settings
     [colorNames.settings.background]: constantColors.white,
     [colorNames.settings.usernameText]: constantColors.black,

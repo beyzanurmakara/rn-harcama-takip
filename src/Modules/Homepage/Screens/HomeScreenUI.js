@@ -7,6 +7,8 @@ import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 import Icon from '../../../Components/Icon';
 import DummyShoppingData from '../DummyShoppingList';
 
+import CancelText from '../../../Components/CancelText';
+
 import getStyles from '../styles/HomepageScreenStyles';
 import { Svgs } from '../../../StylingConstants';
 
@@ -32,17 +34,7 @@ const HomePageScreenUI = props => {
                     //columnContainerStyle={styles.columnContainerStyle}
                     />
                 </View>
-                <View style={[styles.cancelTextContainer]}>
-                    <TouchableOpacity onPress={props.onPress_Cancel}>
-                        <Text style={[styles.cancelText,
-                        isVisble ?
-                            { color: colors[colorNames.homePage.background] }
-                            :
-                            { color: colors[colorNames.homePage.deleteButtonBackground] }]}>
-                            {loc.t(Texts.cancel).toUpperCase()}
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                <CancelText onPress_Cancel={props.onPress_Cancel} isVisible={isVisble}/>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={[styles.button, {
                         backgroundColor: isVisble ?

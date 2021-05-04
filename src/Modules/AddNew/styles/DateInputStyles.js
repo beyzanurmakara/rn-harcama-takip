@@ -3,6 +3,12 @@ import { Fonts, Metrics } from '../../../StylingConstants';
 import {  colorNames } from '../../Theming';
 
 export default (Colors)=>StyleSheet.create({
+    calendarContainer:{
+        marginTop:Metrics.width * 0.03,
+    },
+    calendarView:{
+        backgroundColor:Colors[colorNames.addNew.calendarBackgroundColor]
+    },
     dateContainer:{
         borderRadius:Metrics.borderRadiusStandard,
         borderColor:Colors[colorNames.addNew.textInputBorder],

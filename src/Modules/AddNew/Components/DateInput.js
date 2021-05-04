@@ -4,7 +4,7 @@ import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
 
 import Icon from '../../../Components/Icon';
-import { Svgs } from '../../../StylingConstants';
+import { Fonts, Svgs } from '../../../StylingConstants';
 import { Texts, useLocalization } from '../../Localization';
 import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
 
@@ -59,39 +59,55 @@ const DateInput = props => {
             </View>
             {
                 isVisible &&
-                <Calendar
-                    // Initially visible month. Default = Date()
-                    current={'2021-04-05'}
-                    // Handler which gets executed on day press. Default = undefined
-                    onDayPress={(day) => { setDate(day.dateString)}}
-                    // Handler which gets executed on day long press. Default = undefined
-                    onDayLongPress={(day) => { console.log('selected day', day) }}
-                    // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
-                    //monthFormat={'yyyy MM'}
-                    // Handler which gets executed when visible month changes in calendar. Default = undefined
-                    onMonthChange={(month) => { console.log('month changed', month) }}
-                    // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
-                    firstDay={1}
-                    // Show week numbers to the left. Default = false
-                    showWeekNumbers={true}
-                    // Collection of dates that have to be marked. Default = {}
-                    markedDates={{
-                        '2021-05-16': { selected: true, marked: true, selectedColor: 'blue' },
-                        '2021-05-17': { marked: true },
-                        '2021-05-18': { marked: true, dotColor: 'red', activeOpacity: 0 },
-                        '2021-05-19': { disabled: true, disableTouchEvent: true }
-                    }}
-                    theme={{
-                        arrowColor: 'orange',
-                        'stylesheet.calendar.header': {
-                            week: {
-                                marginTop: 5,
-                                flexDirection: 'row',
-                                justifyContent: 'space-between'
-                            }
-                        }
-                    }}
-                />
+                <View  style={styles.calendarContainer}>
+                    <Calendar
+                        // Initially visible month. Default = Date()
+                        current={'2021-04-05'}
+                        // Handler which gets executed on day press. Default = undefined
+                        onDayPress={(day) => { setDate(day.dateString) }}
+                        // Handler which gets executed on day long press. Default = undefined
+                        onDayLongPress={(day) => { console.log('selected day', day) }}
+                        // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
+                        //monthFormat={'yyyy MM'}
+                        // Handler which gets executed when visible month changes in calendar. Default = undefined
+                        onMonthChange={(month) => { console.log('month changed', month) }}
+                        // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
+                        firstDay={1}
+                        // Show week numbers to the left. Default = false
+                        //showWeekNumbers={true}
+                        // Collection of dates that have to be marked. Default = {}
+                        markedDates={{
+                            '2021-05-16': { selected: true, marked: true, selectedColor: 'blue' },
+                            '2021-05-17': { marked: true },
+                            '2021-05-18': { marked: true, dotColor: 'red', activeOpacity: 0 },
+                            '2021-05-19': { disabled: true, disableTouchEvent: true }
+                        }}
+                        theme={{
+                            arrowColor: colors[colorNames.addNew.addButtonBackground],
+                            'stylesheet.calendar.header': {
+                                week: {
+                                    marginTop: 5,
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between'
+                                }
+                            },
+                            dayTextColor:colors[colorNames.addNew.calendarDayTextColor],
+                            calendarBackground:colors[colorNames.addNew.calendarBackgroundColor],
+                            monthTextColor:colors[colorNames.addNew.addButtonBackground],
+                            selectedDayBackgroundColor:colors[colorNames.addNew.addButtonBackground],
+                            selectedDayTextColor:colors[colorNames.addNew.addButtonBackground],
+                            textDayFontFamily:Fonts.type.regular,
+                            textDayFontSize:Fonts.size(14),
+                            textDisabledColor:colors[colorNames.addNew.calendarDayDisabledTextColor],
+                            textMonthFontFamily:Fonts.type.regular,
+                            textMonthFontSize:Fonts.size(14),
+                            textDayHeaderFontFamily:Fonts.type.regular,
+                            textDayHeaderFontSize:Fonts.size(14)
+
+                        }}
+                        style={styles.calendarView}
+                    />
+                </View>
             }
         </>
     );

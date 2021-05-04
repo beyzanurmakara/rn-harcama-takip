@@ -3,6 +3,10 @@ import { Fonts, Metrics } from '../../../StylingConstants';
 import {  colorNames } from '../../Theming';
 
 export default (Colors)=> StyleSheet.create({
+    scrollView:{
+        flex:1, 
+        backgroundColor:Colors[colorNames.addNew.background]
+    },
     container:{
         flex:1,
         padding:Metrics.marginHorizontal,

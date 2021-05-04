@@ -44,7 +44,7 @@ const AddNewScreen = props => {
     }
 
     return (
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
             <TouchableOpacity style={styles.container} onPress={() => Keyboard.dismiss()} activeOpacity={1}>
                 {
                     id!==undefined ?

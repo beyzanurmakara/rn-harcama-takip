@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import { TouchableOpacity,  View, Text } from 'react-native';
+import { TouchableOpacity,  View, Text, TextInput } from 'react-native';
 import { Calendar } from 'react-native-calendars';
+import moment from 'moment';
 
 import Icon from '../../../Components/Icon';
 import { Svgs } from '../../../StylingConstants';
@@ -11,7 +12,7 @@ import getStyles from '../styles/DateInputStyles';
 
 const DateInput = props => {
 
-    const [date,setDate]=useState(new Date());
+    const [date,setDate]=useState('');
     const [isVisible,setIsVisible]=useState(false);
 
     const styles = useThemedStyles(getStyles);
@@ -25,13 +26,17 @@ const DateInput = props => {
     return (
         <>
             <View style={styles.dateContainer}>
-                <View style={styles.dateTextContainer}>
-                    <Text style={styles.dateText}>{loc.t(Texts.date)}</Text>
+                <View style={[styles.dateTextContainer,{justifyContent:'center'}]}>
+                    <TextInput 
+                        style={styles.dateText}
+                        placeholder={loc.t(Texts.date)}
+                        placeholderTextColor={colors[colorNames.addNew.textInputPlaceHolder]}
+                        value={date}/>
                 </View>
                 <TouchableOpacity style={styles.iconContainer} onPress={_onPressCalenderIcon}>
                     <Icon svg={Svgs.CalendarIcon} iconStyle={{ color: colors[colorNames.addNew.calendarIcon] }} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.todayTextContainer}>
+                <TouchableOpacity style={styles.todayTextContainer} onPress={()=>setDate(moment().format('YYYY-MM-DD'))}>
                     <Text style={styles.todayText}>{loc.t(Texts.today)}</Text>
                 </TouchableOpacity>
             </View>
@@ -41,7 +46,7 @@ const DateInput = props => {
                     // Initially visible month. Default = Date()
                     current={'2021-04-05'}
                     // Handler which gets executed on day press. Default = undefined
-                    onDayPress={(day) => { console.log('selected day', day) }}
+                    onDayPress={(day) => { setDate(day.dateString)}}
                     // Handler which gets executed on day long press. Default = undefined
                     onDayLongPress={(day) => { console.log('selected day', day) }}
                     // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting

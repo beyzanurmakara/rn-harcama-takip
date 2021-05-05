@@ -5,13 +5,7 @@ export const errorList={
         'auth/email-already-in-use':'auth/email-already-in-use',
     }
 }
-// export const getError = (code) => {
-//     for (let eleman in errorList) {
-//         if (code === errorList[eleman]) {
-//             return eleman;
-//         }
-//     }
-// }
+
 export const Texts = {
     email:'email',
     password:'password',

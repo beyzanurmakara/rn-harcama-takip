@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Alert, Text } from 'react-native';
 import validate from 'validate.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import AuthScreenUI from './AuthScreenUI';
 import { signUpRequest, signInRequest } from '../Redux/UserRedux';
 import { updateUser } from '../API/Firebase';
-import { setErrorMessageAC, setIsErrorAC } from '../../Error/ErrorRedux';
+import { errorCodeSelector, setErrorMessageAC, setIsErrorAC } from '../../Error/ErrorRedux';
 import { useLocalization, Texts, errorList } from '../../Localization';
 
 
@@ -29,6 +29,8 @@ const AuthScreen = props => {
 
     const  loc=useLocalization();
 
+    let code = useSelector(errorCodeSelector);
+
     const _onPress_SignUp = () => {
         if (email.length === 0 || password.length === 0 || name.length === 0) {
             dispatch(setErrorMessageAC(loc.t(Texts.emptySpace)));
@@ -40,6 +42,10 @@ const AuthScreen = props => {
         }
         else {
             dispatch(signUpRequest(email, password, name));
+            if(code.length !==  0){
+                dispatch(setErrorMessageAC(loc.t(errorList.error[code])));
+                dispatch(setIsErrorAC(true));
+            }
         }
     }
 
@@ -50,6 +56,11 @@ const AuthScreen = props => {
         }
         else {
             dispatch(signInRequest(email, password));
+            
+            if(code.length !==  0){
+                dispatch(setErrorMessageAC(loc.t(errorList.error[code])));
+                dispatch(setIsErrorAC(true));
+            }
         }
     }
     return (

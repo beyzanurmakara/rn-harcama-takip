@@ -4,6 +4,7 @@ import { getCurrentUser, signIn, signOut, signUp, updateUser } from '../API/Fire
 import { setIsLoadingAC } from "../../Loading/LoadingRedux";
 import { setIsErrorAC, setErrorMessageAC } from "../../Error/ErrorRedux";
 import { Alert } from "react-native";
+import {  useLocalization, errorList } from "../../Localization";
 
 function* signUpAndUpdateUser(email, password, displayName) {
     try {
@@ -46,6 +47,7 @@ function* wathcerSignUpRequest() {
 }
 
 function* workerSignIn(action) {
+    //
     const { email, password } = action.payload;
     try {
         yield put(setIsLoadingAC(true));
@@ -53,9 +55,10 @@ function* workerSignIn(action) {
         const currentUser = getCurrentUser();
         yield put(setUserAC(currentUser));
     } catch (error) {
+        //console.log(useLocalization().t(errorList.error[error.message]));
+        //let message = yield call(FirebaseErrors, error.message);
         yield put(setErrorMessageAC(error.message));
         yield put(setIsErrorAC(true));
-        //console.log(error.code)
         
     } finally {
         yield put(setIsLoadingAC(false));

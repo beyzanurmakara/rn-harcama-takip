@@ -6,6 +6,6 @@ export {
     useChangeLocale,
     useLocaleOptions,
 } from './CustomHooks/LocalizationHooks';
-export { Texts } from './Config/TextNames';
+export { Texts, getError, errorList } from './Config/TextNames';
 export { LocalizationReducer } from './Redux/LocalizationRedux';
 export { Locales } from './LocalizationConstants';

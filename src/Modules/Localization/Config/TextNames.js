@@ -1,4 +1,17 @@
-
+export const errorList={
+    error:{
+        'auth/user-not-found':'auth/user-not-found',
+        'auth/wrong-password':'auth/wrong-password',
+        'auth/email-already-in-use':'auth/email-already-in-use',
+    }
+}
+// export const getError = (code) => {
+//     for (let eleman in errorList) {
+//         if (code === errorList[eleman]) {
+//             return eleman;
+//         }
+//     }
+// }
 export const Texts = {
     email:'email',
     password:'password',
@@ -26,4 +39,6 @@ export const Texts = {
     edit:'edit',
     okey:'okey',
     error:'error',
+    emptySpace:'emptySpace',
+    checkEmail:'checkEmail',
 };

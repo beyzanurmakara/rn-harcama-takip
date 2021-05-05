@@ -1,4 +1,4 @@
-import { Texts } from '../TextNames';
+import { errorList, Texts } from '../TextNames';
 export default {
     [Texts.email]:'E-posta',
     [Texts.password]:'Şifre',
@@ -26,4 +26,9 @@ export default {
     [Texts.edit]:'Düzenle',
     [Texts.okey]:'Tamam',
     [Texts.error]:'Hata',
+    [errorList.error['auth/user-not-found']]:'Kullanıcı Bulunamadı. Kullanıcı silinmiş olabilir.',
+    [errorList.error['auth/wrong-password']]:'Şifre geçersiz veya kullanıcının şifresi yok.',
+    [errorList.error['auth/email-already-in-use']]:'E-posta adresi zaten başka bir hesap tarafından kullanılıyor',
+    [Texts.emptySpace]:'Lütfen tüm alanları doldurunuz.',
+    [Texts.checkEmail]:'Lütfen e-posta adresinizi kontrol ediniz.',
 };

@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import Icon from '../../../Components/Icon';
 import { Fonts, Svgs } from '../../../StylingConstants';
-import { Texts, useLocalization } from '../../Localization';
+import { Texts, useLocaleDateFormat, useLocalization } from '../../Localization';
 import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
 
 import getStyles from '../styles/DateInputStyles';
@@ -20,6 +20,8 @@ const DateInput = props => {
     const colors = useThemedColors();
 
     const loc = useLocalization();
+    const dateFormat = useLocaleDateFormat();
+    console.log(dateFormat);
 
     useEffect(()=>{
         if(props.value !== undefined){
@@ -30,6 +32,14 @@ const DateInput = props => {
     const _onPressCalenderIcon = () => {
         setIsVisible(!isVisible);
         setChangeColor(!changeColor);
+    }
+
+    const getMomentDate = (date) => {
+        return moment(date, dateFormat);
+    }
+    const _onPressDay=(day)=>{
+        const momentDay=moment(day.dateString);
+        setDate(momentDay.format(dateFormat))
     }
 /*
 {
@@ -61,7 +71,7 @@ const DateInput = props => {
                                     :
                                     colors[colorNames.addNew.calendarIcon] }} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.todayTextContainer} onPress={()=>setDate(moment().format('YYYY-MM-DD'))}>
+                <TouchableOpacity style={styles.todayTextContainer} onPress={()=>setDate(moment().format(dateFormat))}>
                     <Text style={styles.todayText}>{loc.t(Texts.today)}</Text>
                 </TouchableOpacity>
             </View>
@@ -72,7 +82,7 @@ const DateInput = props => {
                         // Initially visible month. Default = Date()
                         //current={'2021-04-05'}
                         // Handler which gets executed on day press. Default = undefined
-                        onDayPress={(day) => { setDate(day.dateString) }}
+                        onDayPress={(day)=>_onPressDay(day)}
                         // Handler which gets executed on day long press. Default = undefined
                         onDayLongPress={(day) => { console.log('selected day', day) }}
                         // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
@@ -84,7 +94,9 @@ const DateInput = props => {
                         // Show week numbers to the left. Default = false
                         //showWeekNumbers={true}
                         // Collection of dates that have to be marked. Default = {}
-                        //markedDates={props.value}
+                        // markedDates={{
+                        //     [date]:{textColor:'pink'}
+                        // }}
                         theme={{
                             arrowColor: colors[colorNames.addNew.addButtonBackground],
                             'stylesheet.calendar.header': {

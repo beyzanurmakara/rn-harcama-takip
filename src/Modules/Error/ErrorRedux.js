@@ -32,10 +32,12 @@ export const errorReducer = (state=INITIAL_STATE,action)=>{
     switch (action.type) {
         case SET_IS_ERROR:
             return{
-                isError:action.payload.isLoading,
+                ...state,
+                isError:action.payload.isError,
             }
         case SET_ERROR_MESSAGE:
             return {
+                ...state,
                 errorMessage:action.payload.errorMessage,
             }
         default:

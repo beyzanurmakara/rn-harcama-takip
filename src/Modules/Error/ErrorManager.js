@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-nativ
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-native-modal';
 
-import { errorMessageSelector, isErrorSelector, setIsErrorAC } from './ErrorRedux';
+import { errorMessageSelector, isErrorSelector, setErrorMessageAC, setIsErrorAC } from './ErrorRedux';
 import Icon from '../../Components/Icon';
 
 import getStyles from './styles/ErrorManagerStyles';
@@ -22,7 +22,8 @@ const ErrorManager = props => {
     const colors=useThemedColors();
 
     const _onPress_OK=()=>{
-        dispatch(setIsErrorAC(false))
+        dispatch(setIsErrorAC(false));
+        dispatch(setErrorMessageAC(''));
     }
     return (
         <Modal  isVisible={isError} backdropColor={colors[colorNames.error.modalBackdropColor]} style={styles.modal}>
@@ -32,7 +33,7 @@ const ErrorManager = props => {
             <View style={styles.container}>
                     <TextInput 
                         numberOfLines={4} 
-                        multiline value={'dfsjhsdfsjhsfdkhdfjfhsdkhkjshfdfjfhsdkhkjshfdfjfhsdkhkjshfdfjfhsdkhkjshfdffdkhdfjfhsdkhkjshfdfjfhsdkhkjshfdfjfhsdkhkjshfdfjfhsdkhkjshfdfjfhsdkhkjshfdfj'} 
+                        multiline value={errorMessage} 
                         editable={false}
                         style={styles.messageText}/>
                     <TouchableOpacity style={styles.buttonContainer} onPress={_onPress_OK}>

@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import AuthScreenUI from './AuthScreenUI';
 import { signUpRequest, signInRequest } from '../Redux/UserRedux';
 import { updateUser } from '../API/Firebase';
+import { setErrorMessageAC, setIsErrorAC } from '../../Error/ErrorRedux';
 
 
 const isValidEmail = email => {
@@ -27,10 +28,12 @@ const AuthScreen = props => {
 
     const _onPress_SignUp = () => {
         if (email.length === 0 || password.length === 0 || name.length === 0) {
-            Alert.alert('Uyarı', 'Lütfen tüm alanları doldurunuz');
+            dispatch(setErrorMessageAC('Lütfen tüm alanları doldurunuz'));
+            dispatch(setIsErrorAC(true)); 
         }
         else if (!isValidEmail(email)) {
-            Alert.alert('Uyarı', 'Lütfen e-posta adresinizi konrol ediniz');
+            dispatch(setErrorMessageAC('Lütfen e-posta adresinizi konrol ediniz'));
+            dispatch(setIsErrorAC(true));            
         }
         else {
             dispatch(signUpRequest(email, password, name));
@@ -39,7 +42,8 @@ const AuthScreen = props => {
 
     const _onPress_SignIn = () => {
         if (email.length === 0 || password.length === 0) {
-            Alert.alert('Uyarı', 'Lütfen tüm alanları doldurunuz');
+            dispatch(setErrorMessageAC('Lütfen tüm alanları doldurunuz'));
+            dispatch(setIsErrorAC(true));  
         }
         else {
             dispatch(signInRequest(email, password));

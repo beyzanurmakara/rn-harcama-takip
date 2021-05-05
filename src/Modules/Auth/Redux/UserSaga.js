@@ -2,6 +2,8 @@ import { fork, takeEvery, call, put, all } from "@redux-saga/core/effects";
 import { setUserAC, SIGN_IN_REQUEST, SIGN_OUT_REQUEST, SIGN_UP_REQUEST } from "./UserRedux";
 import { getCurrentUser, signIn, signOut, signUp, updateUser } from '../API/Firebase';
 import { setIsLoadingAC } from "../../Loading/LoadingRedux";
+import { setIsErrorAC, setErrorMessageAC } from "../../Error/ErrorRedux";
+import { Alert } from "react-native";
 
 function* signUpAndUpdateUser(email, password, displayName) {
     try {
@@ -15,7 +17,7 @@ function* signUpAndUpdateUser(email, password, displayName) {
         // Şu anki kullanıcıyı redux'a verdik
         yield put(setUserAC(currentUser));
     } catch(error) {
-        console.log('sign  up and update user ... ', error);
+        console.log(error);
     }
 }
 
@@ -32,7 +34,8 @@ function* workerSignUp(action) {
         yield put(setUserAC(currentUser));
 
     } catch (error) {
-        console.log('SignUp ... ', error)
+        yield put(setErrorMessageAC(error.message));
+        yield put(setIsErrorAC(true));
     } finally {
         yield put(setIsLoadingAC(false));
     }
@@ -49,9 +52,11 @@ function* workerSignIn(action) {
         yield call(signIn, email, password);
         const currentUser = getCurrentUser();
         yield put(setUserAC(currentUser));
-        console.log('kullanıcı giriş  yaptı --> ',email, password)
     } catch (error) {
-        console.log('sign in worker ... ', error);
+        yield put(setErrorMessageAC(error.message));
+        yield put(setIsErrorAC(true));
+        //console.log(error.code)
+        
     } finally {
         yield put(setIsLoadingAC(false));
     }
@@ -67,7 +72,8 @@ function* workerSignOut() {
         yield call(signOut);
         yield put(setUserAC(null));
     } catch (error) {
-        console.log('sign out worker ... ', error);
+        yield put(setErrorMessageAC(error.message));
+        yield put(setIsErrorAC(true));
     } finally {
         yield put(setIsLoadingAC(false));
     }

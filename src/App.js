@@ -14,6 +14,7 @@
  import createStore from './Redux/CreateStore';
  import MainNavigation from './Modules/Navigation/MainNavigation';
  import { LoadingManager } from './Modules/Loading';
+ import { ErrorManager }  from  './Modules/Error';
  
  const { store, persistor } = createStore();
  
@@ -22,6 +23,7 @@
    return (
      <Provider store={store}>
        <PersistGate loading={null} persistor={persistor}>
+          <ErrorManager/>
           <LoadingManager/>
          <MainNavigation />
        </PersistGate>

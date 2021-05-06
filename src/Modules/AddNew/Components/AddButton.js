@@ -12,7 +12,7 @@ const AddButton = props => {
    
     const loc = useLocalization();
     return (
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={props.onPress_button}>
             <Text style={styles.addText}>{props.text.toUpperCase()}</Text>
         </TouchableOpacity>
     );

@@ -15,7 +15,7 @@ const ErrorManager = props => {
 
     const errorCode =  useSelector(errorCodeSelector);
     let isvisible = errorCode.length !==0;
-    console.log(errorCode);
+    
     const  dispatch =useDispatch();
 
     const  styles = useThemedStyles(getStyles);

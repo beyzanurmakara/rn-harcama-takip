@@ -15,7 +15,7 @@ import { Svgs } from '../../../StylingConstants';
 
 
 
-const SettingsScreen = props => {
+const HomePageScreen = props => {
 
     const [isVisble,setIsVisible]=useState(true);
     const [selectedItemList,setSelectedItemList]=useState([]);
@@ -31,6 +31,8 @@ const SettingsScreen = props => {
         setIsVisible(true)
     }
 
+    // const {item}=props.route.params;
+    // console.log('homePage: ',item);
     const _onPress_Add=()=>{
        
         const mode ='add';
@@ -81,12 +83,6 @@ const SettingsScreen = props => {
                 price:item.price,
                 explanation:item.explanation,
             });
-            /*
-            navigation.navigate("restaurants-screen",{
-            city:selectedCity,
-            category:categoryItem,
-            });
-            */
         }
         
         return(
@@ -113,4 +109,4 @@ const SettingsScreen = props => {
     );
 };
 
-export default SettingsScreen;
+export default HomePageScreen;

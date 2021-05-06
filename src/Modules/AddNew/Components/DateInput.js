@@ -12,7 +12,7 @@ import getStyles from '../styles/DateInputStyles';
 
 const DateInput = props => {
 
-    const [date, setDate] = useState('');
+    const [momentDate, setMomentDate] = useState(moment());
     const [isVisible, setIsVisible] = useState(false);
     const [changeColor, setChangeColor] = useState(false);
 
@@ -21,35 +21,38 @@ const DateInput = props => {
 
     const loc = useLocalization();
     const dateFormat = useLocaleDateFormat();
-    console.log(dateFormat);
+    const dateStandart='YYYY-MM-DD hh:mm:ss';
 
     useEffect(()=>{
         if(props.value !== undefined){
-            setDate(props.value)
+            let new_date=moment(props.value);
+            setMomentDate(new_date);
+            props.onChange_date(momentDate);
+            //console.log(typeof moment(props.value, dateStandart)); //return object
         }
+        //console.log(moment().toDate().toDateString()); //string => Fri May 07 2021
+        //console.log(moment().format(dateFormat)); // string => 07.05.2021
     },[])
 
     const _onPressCalenderIcon = () => {
         setIsVisible(!isVisible);
         setChangeColor(!changeColor);
+        
+        //console.log(momentDate.toDate().toDateString().split(' ')[0]); //return fri, wed vs.
     }
 
-    const getMomentDate = (date) => {
-        return moment(date, dateFormat);
-    }
     const _onPressDay=(day)=>{
         const momentDay=moment(day.dateString);
-        setDate(momentDay.format(dateFormat))
+        setMomentDate(momentDay);
+        setIsVisible(false);
+        props.onChange_date(momentDate);
     }
-/*
-{
-    // '2021-05-16': { selected: true, marked: true, selectedColor: 'blue' },
-    // '2021-05-17': { marked: true },
-    // '2021-05-18': { marked: true, dotColor: 'red', activeOpacity: 0 },
-    // '2021-05-19': { disabled: true, disableTouchEvent: true }
     
-}
-*/
+    const getToday=()=>{
+        setMomentDate(moment());
+        setIsVisible(false);
+        props.onChange_date(momentDate)
+    }
     return (
         <>
             <View style={styles.dateContainer}>
@@ -58,8 +61,7 @@ const DateInput = props => {
                         style={styles.dateText}
                         placeholder={ loc.t(Texts.date)}
                         placeholderTextColor={colors[colorNames.addNew.textInputPlaceHolder]}
-                        //secureTextEntry={true}
-                        value={date} //props.value !== undefined ?props.date : 
+                        value={momentDate.format(dateFormat)} 
                         editable={false}/>
                 </View>
                 <TouchableOpacity style={styles.iconContainer} onPress={_onPressCalenderIcon}>
@@ -71,7 +73,7 @@ const DateInput = props => {
                                     :
                                     colors[colorNames.addNew.calendarIcon] }} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.todayTextContainer} onPress={()=>setDate(moment().format(dateFormat))}>
+                <TouchableOpacity style={styles.todayTextContainer} onPress={getToday}>
                     <Text style={styles.todayText}>{loc.t(Texts.today)}</Text>
                 </TouchableOpacity>
             </View>
@@ -79,24 +81,9 @@ const DateInput = props => {
                 isVisible &&
                 <View  style={styles.calendarContainer}>
                     <Calendar
-                        // Initially visible month. Default = Date()
-                        //current={'2021-04-05'}
-                        // Handler which gets executed on day press. Default = undefined
                         onDayPress={(day)=>_onPressDay(day)}
-                        // Handler which gets executed on day long press. Default = undefined
-                        onDayLongPress={(day) => { console.log('selected day', day) }}
-                        // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
-                        //monthFormat={'yyyy MM'}
-                        // Handler which gets executed when visible month changes in calendar. Default = undefined
                         onMonthChange={(month) => { console.log('month changed', month) }}
-                        // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
                         firstDay={1}
-                        // Show week numbers to the left. Default = false
-                        //showWeekNumbers={true}
-                        // Collection of dates that have to be marked. Default = {}
-                        // markedDates={{
-                        //     [date]:{textColor:'pink'}
-                        // }}
                         theme={{
                             arrowColor: colors[colorNames.addNew.addButtonBackground],
                             'stylesheet.calendar.header': {

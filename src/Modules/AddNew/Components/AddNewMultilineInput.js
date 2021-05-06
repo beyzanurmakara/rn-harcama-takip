@@ -23,6 +23,7 @@ const AddNewMultilineInput = props => {
                 value={props.value}
                 textAlign='left'
                 textAlignVertical='top'
+                onChangeText={props.onChange_detail}
             />
         </View>
     );

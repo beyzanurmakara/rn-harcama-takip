@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/core';
 import React, {useEffect, useState} from 'react';
 import { Keyboard, Text, TextInput, TouchableOpacity, View, Button, Platform, ScrollView } from 'react-native';
 
-import { Texts, useLocalization } from '../../Localization';
+import { Texts, useLocalization, useLocaleDateFormat } from '../../Localization';
 import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
 import Icon from '../../../Components/Icon';
 import { Svgs } from '../../../StylingConstants';
@@ -16,9 +16,18 @@ import CancelText from '../../../Components/CancelText';
 
 import getStyles from '../styles/AddNewScreenStyle';
 import { ErrorManager } from '../../Error';
+import DummyShoppingList from '../../Homepage/DummyShoppingList';
+import { useDispatch } from 'react-redux';
 
 
 const AddNewScreen = props => {
+
+    const[shoppingType,setShoppingType]=useState('');
+    const[momentDate,setMomentDate]=useState(null);
+    const[dateString,setDateString]=useState('');
+    const[day,setDay]=useState('');
+    const[totalPrice,setTotalPrice]=useState('');
+    const[detail,setDetail]=useState('');
 
     const navigation = useNavigation();
     useEffect(()=>{
@@ -29,11 +38,12 @@ const AddNewScreen = props => {
 
     const { id, title, price, date, explanation }=props.route.params;
 
-    console.log(date);
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
 
     const loc = useLocalization();
+
+    const dateFormat = useLocaleDateFormat();
 
     let header=loc.t(Texts.addNew);
     if(id!==undefined){
@@ -43,7 +53,23 @@ const AddNewScreen = props => {
     const _onPress_Cancel =()=>{
         console.log('düzenleme modunda iptal işlemi yapılacak')
     }
-
+    const onPress_add=()=>{
+        const shoppingItem={
+            title:shoppingType,
+            momentDate,
+            dateString,
+            day,
+            price:totalPrice,
+            detail,
+        }
+        console.log('eklendi \n -->',shoppingItem);
+        DummyShoppingList.push(shoppingItem);
+        navigation.goBack();
+    }
+    const onPress_Ok=()=>{
+        console.log('ok')
+    }
+    //setMomentDate(text);setDateString(text.format(dateFormat));setDay(text.toDate().toDateString().split(' ')[0])
     return (
         <ScrollView style={styles.scrollView}>
             <TouchableOpacity style={styles.container} onPress={() => Keyboard.dismiss()} activeOpacity={1}>
@@ -58,26 +84,31 @@ const AddNewScreen = props => {
                         <AddNewInput
                             value={title}
                             placeHolder={loc.t(Texts.shoppingType)}
-                            onChangeText={() => console.log('içerik değişiyoorr')}
+                            onChangeText={(text) => setShoppingType(text)}
                         />
                     </View>
                     <View style={styles.inputContainer}>
-                        <DateInput value={date}/>
+                        <DateInput 
+                            value={date} 
+                            onChange_date={(text)=>{setMomentDate(text);setDateString(text.format(dateFormat));setDay(text.toDate().toDateString().split(' ')[0])}}/>
                     </View>
                     <View style={styles.inputContainer}>
                         <AddNewInput
                             value={price}
                             placeHolder={loc.t(Texts.price)}
                             keyboardType={'numeric'}
-                            onChangeText={() => console.log('içerik değişiyoorr')}
+                            onChangeText={(text) => {setTotalPrice(text + 'TL')}}
                         />
                     </View>
                     <View style={styles.inputContainer}>
-                        <AddNewMultilineInput value={explanation}/>
+                        <AddNewMultilineInput value={explanation} onChange_detail={(text)=>{setDetail(text);console.log(text)}}/>
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <AddButton text={id===undefined ? loc.t(Texts.add) : loc.t(Texts.okey)}/>
+                    <AddButton 
+                        text={id===undefined ? loc.t(Texts.add) : loc.t(Texts.okey)} 
+                        onPress_button={id===undefined ? onPress_add : onPress_Ok}
+                    />
                 </View>
             </TouchableOpacity>
         </ScrollView>

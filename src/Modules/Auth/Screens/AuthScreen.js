@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { Alert, Text } from 'react-native';
 import validate from 'validate.js';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import AuthScreenUI from './AuthScreenUI';
 import { signUpRequest, signInRequest } from '../Redux/UserRedux';
-import { updateUser } from '../API/Firebase';
-import { errorCodeSelector, setErrorMessageAC, setIsErrorAC } from '../../Error/ErrorRedux';
-import { useLocalization, Texts, errorList } from '../../Localization';
+import {setErrorCodeAC, } from '../../Error/ErrorRedux';
 
 
 const isValidEmail = email => {
@@ -27,40 +24,25 @@ const AuthScreen = props => {
 
     const dispatch = useDispatch();
 
-    const  loc=useLocalization();
-
-    let code = useSelector(errorCodeSelector);
-
     const _onPress_SignUp = () => {
         if (email.length === 0 || password.length === 0 || name.length === 0) {
-            dispatch(setErrorMessageAC(loc.t(Texts.emptySpace)));
-            dispatch(setIsErrorAC(true)); 
+            dispatch(setErrorCodeAC('emptySpace'))            
         }
         else if (!isValidEmail(email)) {
-            dispatch(setErrorMessageAC(loc.t(Texts.checkEmail)));
-            dispatch(setIsErrorAC(true));            
+            dispatch(setErrorCodeAC('checkEmail'));            
         }
         else {
             dispatch(signUpRequest(email, password, name));
-            if(code.length !==  0){
-                dispatch(setErrorMessageAC(loc.t(errorList.error[code])));
-                dispatch(setIsErrorAC(true));
-            }
         }
+        
     }
 
     const _onPress_SignIn = () => {
         if (email.length === 0 || password.length === 0) {
-            dispatch(setErrorMessageAC(loc.t(Texts.emptySpace)));
-            dispatch(setIsErrorAC(true));  
+            dispatch(setErrorCodeAC('emptySpace')); 
         }
         else {
-            dispatch(signInRequest(email, password));
-            
-            if(code.length !==  0){
-                dispatch(setErrorMessageAC(loc.t(errorList.error[code])));
-                dispatch(setIsErrorAC(true));
-            }
+            dispatch(signInRequest(email, password));            
         }
     }
     return (

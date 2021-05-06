@@ -29,7 +29,7 @@ export default {
     [errorList.error['auth/user-not-found']]:'User Not Found : There is no user record corresponding to this identifier. The user may  have been deleted.',
     [errorList.error['auth/wrong-password']]:'Wrong Password : The password is invalied or the user does not have password.',
     [errorList.error['auth/email-already-in-use']]:'The email address is already in use by  another account',
-    [Texts.emptySpace]:'Please fill in all fields.',
-    [Texts.checkEmail]:'Please check your e-mail address.',
+    [errorList.error['emptySpace']]:'Please fill in all fields.',
+    [errorList.error['auth/invalid-email']]:'Please check your e-mail address.',
 };
 

@@ -2,7 +2,7 @@ import { fork, takeEvery, call, put, all } from "@redux-saga/core/effects";
 import { setUserAC, SIGN_IN_REQUEST, SIGN_OUT_REQUEST, SIGN_UP_REQUEST } from "./UserRedux";
 import { getCurrentUser, signIn, signOut, signUp, updateUser } from '../API/Firebase';
 import { setIsLoadingAC } from "../../Loading/LoadingRedux";
-import { setIsErrorAC, setErrorMessageAC, setErrorCodeAC } from "../../Error/ErrorRedux";
+import { setErrorCodeAC } from "../../Error/ErrorRedux";
 import { Alert } from "react-native";
 import {  useLocalization, errorList } from "../../Localization";
 

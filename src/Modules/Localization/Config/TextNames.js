@@ -3,6 +3,8 @@ export const errorList={
         'auth/user-not-found':'auth/user-not-found',
         'auth/wrong-password':'auth/wrong-password',
         'auth/email-already-in-use':'auth/email-already-in-use',
+        'emptySpace':'emptySpace',
+        'auth/invalid-email':'auth/invalid-email',
     }
 }
 
@@ -33,6 +35,5 @@ export const Texts = {
     edit:'edit',
     okey:'okey',
     error:'error',
-    emptySpace:'emptySpace',
-    checkEmail:'checkEmail',
+    
 };

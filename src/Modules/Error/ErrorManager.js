@@ -33,7 +33,6 @@ const ErrorManager = props => {
         dispatch(setErrorCodeAC(''));
         setErrorState('');
     }
-    console.log(errorState);
     console.log(loc.t(errorList.error[errorState]));
     return (
         <Modal  isVisible={isvisible} backdropColor={colors[colorNames.error.modalBackdropColor]} style={styles.modal}>

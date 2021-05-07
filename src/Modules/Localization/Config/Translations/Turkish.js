@@ -31,4 +31,7 @@ export default {
     [errorList.error['auth/emaıl-already-ın-use']]:'E-posta adresi zaten başka bir hesap tarafından kullanılıyor',
     [errorList.error['emptySpace']]:'Lütfen tüm alanları doldurunuz.',
     [errorList.error['auth/ınvalıd-emaıl']]:'Lütfen e-posta adresinizi kontrol ediniz.',
+    [errorList.error['auth/network-request-faıled']]:'Lütfen ağ bağlantınızı kontrol ediniz.',
+    [errorList.error['otherMistakes']]:'Bir hata oluştu, lütfen daha sonra tekrar deneyin.',
+    [errorList.error['auth/too-many-requests']]:'Bir hata oluştu, lütfen daha sonra tekrar deneyin.'
 };

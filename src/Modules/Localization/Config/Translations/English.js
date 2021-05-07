@@ -31,5 +31,8 @@ export default {
     [errorList.error['auth/emaıl-already-ın-use']]:'The email address is already in use by  another account',
     [errorList.error['emptySpace']]:'Please fill in all fields.',
     [errorList.error['auth/ınvalıd-emaıl']]:'Please check your e-mail address.',
+    [errorList.error['auth/network-request-faıled']]:'Check your network connection.',
+    [errorList.error['otherMistakes']]:'An error occurred, please try again later.',
+    [errorList.error['auth/too-many-requests']]:'An error occurred, please try again later.'
 };
 

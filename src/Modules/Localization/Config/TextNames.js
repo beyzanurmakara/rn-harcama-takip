@@ -5,6 +5,9 @@ export const errorList={
         'auth/emaıl-already-ın-use':'auth/emaıl-already-ın-use',
         'emptySpace':'emptySpace',
         'auth/ınvalıd-emaıl':'auth/invalid-emaıl',
+        'auth/network-request-faıled':'auth/network-request-faıled',
+        'otherMistakes':'otherMistakes',
+        'auth/too-many-requests':'auth/too-many-requests',
     }
 }
 

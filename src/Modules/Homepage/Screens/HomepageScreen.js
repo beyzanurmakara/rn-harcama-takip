@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 
-import { useLocalization, Texts } from '../../Localization';
+import { useLocalization, Texts, useLocaleDateFormat } from '../../Localization';
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 import Icon from '../../../Components/Icon';
 import DummyShoppingData from '../DummyShoppingList';
@@ -12,6 +12,8 @@ import HomePageScreenUI  from './HomeScreenUI';
 
 import getStyles from '../styles/HomepageScreenStyles';
 import { Svgs } from '../../../StylingConstants';
+import { subscribeToItemData } from '../../../API/Firebase';
+import { createShoppingListForRender } from '../Utils/RenderListUtils';
 
 
 
@@ -19,25 +21,33 @@ const HomePageScreen = props => {
 
     const [isVisble,setIsVisible]=useState(true);
     const [selectedItemList,setSelectedItemList]=useState([]);
+    const [itemList, setItemList]=useState(null);
 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
+
     const loc=useLocalization();
+    const dateLocale=useLocaleDateFormat();
 
     const navigation = useNavigation();
+
+    useEffect(()=>{
+        subscribeToItemData((data)=>{
+            let shoppingList=createShoppingListForRender(data,dateLocale);
+            //console.log(shoppingList);
+            setItemList(shoppingList);
+        });
+    },[])
+
     const _onPress_Delete=()=>{
         console.log(selectedItemList);
         setSelectedItemList([]);
         setIsVisible(true)
     }
 
-    // const {item}=props.route.params;
-    // console.log('homePage: ',item);
     const _onPress_Add=()=>{
-       
         const mode ='add';
         navigation.navigate('add-new-screen', mode);
-        //console.log('ekleme işlemi yapacagım');
     }
 
     const _onPress_Cancel=()=>{
@@ -46,7 +56,6 @@ const HomePageScreen = props => {
     }
 
     const getIsSelected=(id)=>{
-        //let result=false;
         let copyList=[...selectedItemList];
         for(let i=0;i<copyList.length;i++){
             if(copyList[i]===id){
@@ -55,6 +64,7 @@ const HomePageScreen = props => {
         }
         return false;
     }
+
     const _renderShoppingList =({item})=>{ 
 
         let isSelected = getIsSelected(item.id);
@@ -98,12 +108,12 @@ const HomePageScreen = props => {
     }
     const flatlistEmpty =()=>{
         return(
-            <Text>Liste Boş</Text>
+            <Text>Harcamalarını sağ alttaki butondan ekleyebilirsin.</Text> //Düzenlenecek
         )
     }
     return (
         <HomePageScreenUI
-            data={DummyShoppingData}
+            data={itemList}
             renderItem={_renderShoppingList}
             onPress_Cancel={_onPress_Cancel}
             onPress_Add={_onPress_Add}

@@ -1,4 +1,4 @@
-import { errorList, Texts } from '../TextNames';
+import { errorList, Texts, days } from '../TextNames';
 export default {
     [Texts.email]:'E-posta',
     [Texts.password]:'Şifre',
@@ -33,5 +33,12 @@ export default {
     [errorList.error['auth/ınvalıd-emaıl']]:'Lütfen e-posta adresinizi kontrol ediniz.',
     [errorList.error['auth/network-request-faıled']]:'Lütfen ağ bağlantınızı kontrol ediniz.',
     [errorList.error['otherMistakes']]:'Bir hata oluştu, lütfen daha sonra tekrar deneyin.',
-    [errorList.error['auth/too-many-requests']]:'Bir hata oluştu, lütfen daha sonra tekrar deneyin.'
+    [errorList.error['auth/too-many-requests']]:'Bir hata oluştu, lütfen daha sonra tekrar deneyin.',
+    [days['Mon']]:'Pzt',
+    [days['Tue']]:'Sal',
+    [days['Wed']]:'Çar',
+    [days['Thu']]:'Per',
+    [days['Fri']]:'Cum',
+    [days['Sat']]:'Cmt',
+    [days['Sun']]:'Paz',
 };

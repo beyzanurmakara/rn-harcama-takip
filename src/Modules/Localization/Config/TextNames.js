@@ -11,6 +11,16 @@ export const errorList={
     }
 }
 
+export const days={
+    'Mon':'Mon',
+    'Tue':'Tue',
+    'Wed':'Wed',
+    'Thu':'Thu',
+    'Fri':'Fri',
+    'Sat':'Sat',
+    'Sun':'Sun',
+}
+
 export const Texts = {
     email:'email',
     password:'password',

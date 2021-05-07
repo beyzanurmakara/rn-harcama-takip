@@ -3,6 +3,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import moment from 'moment';
 
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
+import { useLocalization, days } from '../../Localization';
 import Icon from '../../../Components/Icon';
 
 import getStyles from '../styles/RenderBoxStyles';
@@ -17,6 +18,8 @@ const RenderBox = props => {
     
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
+
+    const loc=useLocalization();
 
     const _onSelect_Item=(id, isSelected)=>{ 
         props.onSelect_Item(id,isSelected);
@@ -39,8 +42,8 @@ const RenderBox = props => {
             <View style={styles.textsContainer}>
                 <Text style={styles.headerText}>{item.title}</Text>
                 <Text style={styles.priceText}>{item.price} </Text>
-                <Text style={styles.dateText}>{item.dateString}</Text>
-                <Text style={styles.dayText}>{item.day}</Text>
+                <Text style={styles.dateText}>{item.date}</Text>
+                <Text style={styles.dayText}>{loc.t(days[item.day])}</Text>
             </View>
         </TouchableOpacity>
     );

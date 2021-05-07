@@ -9,6 +9,8 @@ import { Texts, useLocaleDateFormat, useLocalization, useLocale } from '../../Lo
 import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
 
 import getStyles from '../styles/DateInputStyles';
+import { months } from '../../Localization/Config/TextNames';
+
 
 const DateInput = props => {
 
@@ -29,7 +31,7 @@ const DateInput = props => {
         if(props.value !== undefined){
             let new_date=moment(props.value);
             setMomentDate(new_date);
-            console.log(new_date);
+            //console.log(new_date);
             //props.onChange_date(momentDate);
             //console.log(typeof moment(props.value, dateStandart)); //return object
         }
@@ -56,6 +58,7 @@ const DateInput = props => {
         const momentDay=moment(day.dateString).format(dateStandart);
         setMomentDate(momentDay);
         setIsVisible(false);
+        
     }
     
     const getToday=()=>{
@@ -64,6 +67,7 @@ const DateInput = props => {
         const standardMomentDate=moment(todayMoment).format(dateStandart);
         setMomentDate(standardMomentDate);
         setIsVisible(false);
+        
     }
     return (
         <>

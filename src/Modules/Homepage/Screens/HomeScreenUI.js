@@ -28,7 +28,7 @@ const HomePageScreenUI = props => {
                         data={props.data}
                         renderItem={props.renderItem}
                         ListEmptyComponent={props.emptyComponentt}
-                        keyExtractor={(item, index) => item.id}
+                        keyExtractor={(item, index) => item.key}
                         numColumns={2}
                         columnWrapperStyle={styles.columnWrapperStyle}
                         style={{ flex: 1 }}

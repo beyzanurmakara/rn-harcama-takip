@@ -19,6 +19,7 @@ import { ErrorManager } from '../../Error';
 import DummyShoppingList from '../../Homepage/DummyShoppingList';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../../API/Firebase';
+import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 
 
 const AddNewScreen = props => {
@@ -49,19 +50,29 @@ const AddNewScreen = props => {
         header=loc.t(Texts.edit);
     }
     
+    const dispatch =useDispatch();
     const _onPress_Cancel =()=>{
         console.log('düzenleme modunda iptal işlemi yapılacak')
     }
     const onPress_add=()=>{
+
+        dispatch(setIsLoadingAC(true));
         const shoppingItem={
             title:shoppingType,
-            momentDate,
+            date,
             price:totalPrice,
             detail,
         }
+
+        const onComplete=()=>{
+            dispatch(setIsLoadingAC(false));
+            navigation.goBack();
+        }
+
         console.log('eklendi \n -->',shoppingItem);
-        addItem(shoppingItem);
-        navigation.goBack();
+
+        addItem(shoppingItem,onComplete);
+        
     }
     const onPress_Ok=()=>{
         console.log('ok')

@@ -28,7 +28,7 @@ export default {
     [Texts.error]:'Hata',
     [errorList.error['auth/user-not-found']]:'Kullanıcı Bulunamadı. Kullanıcı silinmiş olabilir.',
     [errorList.error['auth/wrong-password']]:'Şifre geçersiz veya kullanıcının şifresi yok.',
-    [errorList.error['auth/email-already-in-use']]:'E-posta adresi zaten başka bir hesap tarafından kullanılıyor',
+    [errorList.error['auth/emaıl-already-ın-use']]:'E-posta adresi zaten başka bir hesap tarafından kullanılıyor',
     [errorList.error['emptySpace']]:'Lütfen tüm alanları doldurunuz.',
-    [errorList.error['auth/invalid-email']]:'Lütfen e-posta adresinizi kontrol ediniz.',
+    [errorList.error['auth/ınvalıd-emaıl']]:'Lütfen e-posta adresinizi kontrol ediniz.',
 };

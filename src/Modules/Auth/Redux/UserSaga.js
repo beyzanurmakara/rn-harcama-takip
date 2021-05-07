@@ -35,6 +35,7 @@ function* workerSignUp(action) {
         yield put(setUserAC(currentUser));
 
     } catch (error) {
+        console.log('worker sign up => ',error.code);
         yield put(setErrorCodeAC(error.code));
     } finally {
         yield put(setIsLoadingAC(false));
@@ -54,6 +55,7 @@ function* workerSignIn(action) {
         const currentUser = getCurrentUser();
         yield put(setUserAC(currentUser));
     } catch (error) {
+        console.log('worker sign in => ',error.code);
         yield put(setErrorCodeAC(error.code));
         
     } finally {

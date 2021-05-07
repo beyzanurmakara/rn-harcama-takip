@@ -2,9 +2,9 @@ export const errorList={
     error:{
         'auth/user-not-found':'auth/user-not-found',
         'auth/wrong-password':'auth/wrong-password',
-        'auth/email-already-in-use':'auth/email-already-in-use',
+        'auth/emaıl-already-ın-use':'auth/emaıl-already-ın-use',
         'emptySpace':'emptySpace',
-        'auth/invalid-email':'auth/invalid-email',
+        'auth/ınvalıd-emaıl':'auth/invalid-emaıl',
     }
 }
 

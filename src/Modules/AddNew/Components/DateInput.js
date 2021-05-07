@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import Icon from '../../../Components/Icon';
 import { Fonts, Svgs } from '../../../StylingConstants';
-import { Texts, useLocaleDateFormat, useLocalization } from '../../Localization';
+import { Texts, useLocaleDateFormat, useLocalization, useLocale } from '../../Localization';
 import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
 
 import getStyles from '../styles/DateInputStyles';
@@ -22,22 +22,38 @@ const DateInput = props => {
     const loc = useLocalization();
     const dateFormat = useLocaleDateFormat();
     const dateStandart='YYYY-MM-DD hh:mm:ss';
+    const currentLocale=useLocale();
 
     useEffect(()=>{
         if(props.value !== undefined){
             let new_date=moment(props.value);
             setMomentDate(new_date);
-            props.onChange_date(momentDate);
+            console.log(new_date);
+            //props.onChange_date(momentDate);
             //console.log(typeof moment(props.value, dateStandart)); //return object
         }
         //console.log(moment().toDate().toDateString()); //string => Fri May 07 2021
         //console.log(moment().format(dateFormat)); // string => 07.05.2021
-    },[])
+    },[props.value])
+
+    useEffect(()=>{
+        //console.log(momentDate.toDate().toLocaleDateString(currentLocale))//locale date
+        console.log('Moment  date_>',momentDate);
+        props.onChange_date(momentDate);
+    },[momentDate])
+    // if(props.value !== undefined){
+    //     let new_date=moment(props.value);
+    //     setMomentDate(new_date);
+    //     console.log(new_date);
+    //     props.onChange_date(momentDate);
+    //     //console.log(typeof moment(props.value, dateStandart)); //return object
+    // }
 
     const _onPressCalenderIcon = () => {
         setIsVisible(!isVisible);
         setChangeColor(!changeColor);
-        
+        console.log(momentDate);
+        //props.onChange_date(momentDate);
         //console.log(momentDate.toDate().toDateString().split(' ')[0]); //return fri, wed vs.
     }
 
@@ -45,13 +61,13 @@ const DateInput = props => {
         const momentDay=moment(day.dateString);
         setMomentDate(momentDay);
         setIsVisible(false);
-        props.onChange_date(momentDate);
+       //props.onChange_date(momentDate);
     }
     
     const getToday=()=>{
         setMomentDate(moment());
         setIsVisible(false);
-        props.onChange_date(momentDate)
+        //props.onChange_date(momentDate)
     }
     return (
         <>

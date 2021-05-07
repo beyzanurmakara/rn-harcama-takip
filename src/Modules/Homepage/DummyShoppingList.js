@@ -1,9 +1,12 @@
+import moment from 'moment';
+import { format } from 'validate.js';
 export default [
     {
         id:1,
         title:'Market',
         price:'100.00 TL',
-        date:'2021-05-03',
+        momentDate:moment('2021-05-03',format()),
+        dateString:'2021-05-03',
         day:'Pzt',
         explanation:'dummydummydummydummydmummydummydummydummyd '
     },

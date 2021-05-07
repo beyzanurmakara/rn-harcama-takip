@@ -96,7 +96,11 @@ const HomePageScreen = props => {
             />
         );
     }
-
+    const flatlistEmpty =()=>{
+        return(
+            <Text>Liste Boş</Text>
+        )
+    }
     return (
         <HomePageScreenUI
             data={DummyShoppingData}
@@ -105,6 +109,7 @@ const HomePageScreen = props => {
             onPress_Add={_onPress_Add}
             onPress_Delete={_onPress_Delete}
             isVisible={isVisble}
+            emptyComponentt={flatlistEmpty}
         />
     );
 };

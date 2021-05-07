@@ -10,6 +10,8 @@ import { Svgs } from '../../../StylingConstants';
 
 const RenderBox = props => {
 
+    
+
     const  item=props.item;
     let isSelected =props.isSelected;
     

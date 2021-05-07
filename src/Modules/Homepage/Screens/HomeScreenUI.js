@@ -27,6 +27,7 @@ const HomePageScreenUI = props => {
                     <FlatList
                         data={props.data}
                         renderItem={props.renderItem}
+                        ListEmptyComponent={props.emptyComponentt}
                         keyExtractor={(item, index) => item.id}
                         numColumns={2}
                         columnWrapperStyle={styles.columnWrapperStyle}

@@ -1126,6 +1126,11 @@
   "resolved" "https://registry.npmjs.org/@react-native-firebase/auth/-/auth-11.4.1.tgz"
   "version" "11.4.1"
 
+"@react-native-firebase/database@^11.4.1":
+  "integrity" "sha512-lzsFQXV2Yc+kvZznj7gWgfxK1kH+rKKTDkduUJmNtM2jWcGkropOfPfyRII+tK40EmkZMVbI5oVeyrQC7GkLpA=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/database/-/database-11.4.1.tgz"
+  "version" "11.4.1"
+
 "@react-native-windows/cli@0.64.3":
   "integrity" "sha512-NEHrajEeZHxWVyTIKxU1cvB/KZMXvN5fNV5PZzYAof05ktscOe6r4b6o4n2XSdx0+YIudPNh7HVq1btrUhaYNQ=="
   "resolved" "https://registry.npmjs.org/@react-native-windows/cli/-/cli-0.64.3.tgz"

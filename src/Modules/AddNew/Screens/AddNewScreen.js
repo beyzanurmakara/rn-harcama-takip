@@ -18,14 +18,13 @@ import getStyles from '../styles/AddNewScreenStyle';
 import { ErrorManager } from '../../Error';
 import DummyShoppingList from '../../Homepage/DummyShoppingList';
 import { useDispatch } from 'react-redux';
+import { addItem } from '../../../API/Firebase';
 
 
 const AddNewScreen = props => {
 
     const[shoppingType,setShoppingType]=useState('');
-    const[momentDate,setMomentDate]=useState(null);
-    const[dateString,setDateString]=useState('');
-    const[day,setDay]=useState('');
+    const[momentDate,setMomentDate]=useState('');
     const[totalPrice,setTotalPrice]=useState('');
     const[detail,setDetail]=useState('');
 
@@ -57,19 +56,18 @@ const AddNewScreen = props => {
         const shoppingItem={
             title:shoppingType,
             momentDate,
-            dateString,
-            day,
             price:totalPrice,
             detail,
         }
         console.log('eklendi \n -->',shoppingItem);
-        DummyShoppingList.push(shoppingItem);
+        addItem(shoppingItem);
         navigation.goBack();
     }
     const onPress_Ok=()=>{
         console.log('ok')
     }
     //setMomentDate(text);setDateString(text.format(dateFormat));setDay(text.toDate().toDateString().split(' ')[0])
+    //;setDateString(text.format(dateFormat));setDay(text.toDate().toDateString().split(' ')[0])}
     return (
         <ScrollView style={styles.scrollView}>
             <TouchableOpacity style={styles.container} onPress={() => Keyboard.dismiss()} activeOpacity={1}>
@@ -90,7 +88,7 @@ const AddNewScreen = props => {
                     <View style={styles.inputContainer}>
                         <DateInput 
                             value={date} 
-                            onChange_date={(text)=>{setMomentDate(text);setDateString(text.format(dateFormat));setDay(text.toDate().toDateString().split(' ')[0])}}/>
+                            onChange_date={(text)=>{setMomentDate(text)}}/>
                     </View>
                     <View style={styles.inputContainer}>
                         <AddNewInput
@@ -101,7 +99,7 @@ const AddNewScreen = props => {
                         />
                     </View>
                     <View style={styles.inputContainer}>
-                        <AddNewMultilineInput value={explanation} onChange_detail={(text)=>{setDetail(text);console.log(text)}}/>
+                        <AddNewMultilineInput value={explanation} onChange_detail={(text)=>{setDetail(text)}}/>
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>

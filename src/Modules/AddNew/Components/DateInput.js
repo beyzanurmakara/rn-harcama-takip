@@ -12,7 +12,8 @@ import getStyles from '../styles/DateInputStyles';
 
 const DateInput = props => {
 
-    const [momentDate, setMomentDate] = useState(moment());
+    const [momentDate, setMomentDate] = useState('');
+    const [ dateString,setDateString ] = useState('');
     const [isVisible, setIsVisible] = useState(false);
     const [changeColor, setChangeColor] = useState(false);
 
@@ -38,36 +39,31 @@ const DateInput = props => {
 
     useEffect(()=>{
         //console.log(momentDate.toDate().toLocaleDateString(currentLocale))//locale date
-        console.log('Moment  date_>',momentDate);
+        //console.log('Moment  date_>',momentDate);
+        //console.log(typeof momentDate.format(dateStandart));
         props.onChange_date(momentDate);
     },[momentDate])
-    // if(props.value !== undefined){
-    //     let new_date=moment(props.value);
-    //     setMomentDate(new_date);
-    //     console.log(new_date);
-    //     props.onChange_date(momentDate);
-    //     //console.log(typeof moment(props.value, dateStandart)); //return object
-    // }
 
     const _onPressCalenderIcon = () => {
         setIsVisible(!isVisible);
         setChangeColor(!changeColor);
-        console.log(momentDate);
-        //props.onChange_date(momentDate);
+
         //console.log(momentDate.toDate().toDateString().split(' ')[0]); //return fri, wed vs.
     }
 
     const _onPressDay=(day)=>{
-        const momentDay=moment(day.dateString);
+        setDateString(moment(day.dateString).format(dateFormat));
+        const momentDay=moment(day.dateString).format(dateStandart);
         setMomentDate(momentDay);
         setIsVisible(false);
-       //props.onChange_date(momentDate);
     }
     
     const getToday=()=>{
-        setMomentDate(moment());
+        const todayMoment=moment();
+        setDateString(moment(todayMoment).format(dateFormat));
+        const standardMomentDate=moment(todayMoment).format(dateStandart);
+        setMomentDate(standardMomentDate);
         setIsVisible(false);
-        //props.onChange_date(momentDate)
     }
     return (
         <>
@@ -77,7 +73,7 @@ const DateInput = props => {
                         style={styles.dateText}
                         placeholder={ loc.t(Texts.date)}
                         placeholderTextColor={colors[colorNames.addNew.textInputPlaceHolder]}
-                        value={momentDate.format(dateFormat)} 
+                        value={dateString} 
                         editable={false}/>
                 </View>
                 <TouchableOpacity style={styles.iconContainer} onPress={_onPressCalenderIcon}>

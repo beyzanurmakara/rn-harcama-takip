@@ -13,7 +13,7 @@ export const createShoppingListForRender = (itemList, localeDateFormat)=>{
 
     for(let items in itemList){
         item.key=itemList[items].key;
-        item.title=itemList[items].item;
+        item.title=itemList[items].title;
         item.price=itemList[items].price;
         item.date=itemList[items].date;
         item.day=getDayText(itemList[items].date);

@@ -72,7 +72,7 @@ const HomePageScreen = props => {
 
         let isSelected = getIsSelected(item.key);
 
-        console.log(item.title);
+        console.log(item.key);
         // checkbox seçildiğinde
         const onSelect_Item=(key, isSelected)=>{ 
             let copyList=[...selectedItemList];
@@ -90,7 +90,7 @@ const HomePageScreen = props => {
         // kutucuğun üstüne basıldığında
         const  onPress_Item=(item)=>{
             console.log('düzenleme yapacağım --> ',item.key)
-            console.log(item)
+            console.log('duzenleme ekranında ->', item.key)
             navigation.navigate('add-new-screen', {
                 key:item.key,
                 title:item.title,

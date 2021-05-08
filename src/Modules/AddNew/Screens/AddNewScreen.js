@@ -71,7 +71,7 @@ const AddNewScreen = props => {
         dispatch(setIsLoadingAC(true));
         const shoppingItem={
             title:shoppingType,
-            momentDate,
+            date:momentDate,
             price:totalPrice,
             detail,
         }
@@ -87,13 +87,13 @@ const AddNewScreen = props => {
         
     }
     const onPress_Ok = () => {
-        //console.log(key)
+        console.log('değiştirdim:',key)
         if (key) {
             dispatch(setIsLoadingAC(true));
             const shoppingItem = {
                 key:key,
                 title: shoppingType,
-                momentDate,
+                date:momentDate,
                 price: totalPrice,
                 detail,
             }

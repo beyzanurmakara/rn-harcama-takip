@@ -32,8 +32,8 @@ export const addItem = async (item, onComlete) => {
     try {
 
         const itemTumbnail = {
-            item: item.title,
-            date: item.momentDate,
+            title: item.title,
+            date: item.date,
             price: item.price,
         };
 
@@ -59,16 +59,32 @@ export const addItem = async (item, onComlete) => {
 
 export const updateItem = async (item, onComplete) =>{
     try {
-        console.log('updateItem -> ',item.key);
+        console.log('****** updateItem -> ',item.key);
+
+        const itemList={
+            title: item.title,
+            date:item.date,
+            price: item.price,
+            detail:item.detail,
+        }
+        
         await database()
             .ref(`/itemList/${item.key}`)
-            .update(item)
+            .update(itemList)
 
         const userID = getCurrentUser().uid;
 
+        const itemTumbnail = {
+            title: item.title,
+            date: item.date,
+            price: item.price,
+        };
+
+        
+
         await database()
             .ref(`/itemTumbnailList/${userID}/${item.key}`)
-            .update(item)
+            .update(itemTumbnail)
 
         onComplete();
 

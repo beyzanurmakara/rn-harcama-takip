@@ -64,7 +64,14 @@ const AddNewScreen = props => {
     const dispatch =useDispatch();
 
     const _onPress_Cancel =()=>{
-        console.log('düzenleme modunda iptal işlemi yapılacak')
+        console.log('düzenleme modunda iptal işlemi yapılacak');
+        getItemDetail(key, item=>{
+            setShoppingType(item.title);
+            setMomentDate(item.date);
+            setTotalPrice(item.price);
+            setDetail(item.detail);
+        });
+        
     }
     const onPress_add=()=>{
 

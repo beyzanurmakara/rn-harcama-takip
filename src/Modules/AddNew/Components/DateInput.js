@@ -29,36 +29,25 @@ const DateInput = props => {
 
     useEffect(()=>{
         if(props.value !== undefined){
-            let new_date=moment(props.value);
-            setMomentDate(new_date);
-            //console.log(new_date);
-            //props.onChange_date(momentDate);
-            //console.log(typeof moment(props.value, dateStandart)); //return object
+            setMomentDate(moment(props.value).format(dateStandart));
+            setDateString(moment(props.value).format(dateFormat))
         }
-        //console.log(moment().toDate().toDateString()); //string => Fri May 07 2021
-        //console.log(moment().format(dateFormat)); // string => 07.05.2021
     },[props.value])
 
     useEffect(()=>{
-        //console.log(momentDate.toDate().toLocaleDateString(currentLocale))//locale date
-        //console.log('Moment  date_>',momentDate);
-        //console.log(typeof momentDate.format(dateStandart));
         props.onChange_date(momentDate);
     },[momentDate])
 
     const _onPressCalenderIcon = () => {
         setIsVisible(!isVisible);
         setChangeColor(!changeColor);
-
-        //console.log(momentDate.toDate().toDateString().split(' ')[0]); //return fri, wed vs.
     }
 
     const _onPressDay=(day)=>{
         setDateString(moment(day.dateString).format(dateFormat));
         const momentDay=moment(day.dateString).format(dateStandart);
         setMomentDate(momentDay);
-        setIsVisible(false);
-        
+        setIsVisible(false);        
     }
     
     const getToday=()=>{
@@ -66,9 +55,9 @@ const DateInput = props => {
         setDateString(moment(todayMoment).format(dateFormat));
         const standardMomentDate=moment(todayMoment).format(dateStandart);
         setMomentDate(standardMomentDate);
-        setIsVisible(false);
-        
+        setIsVisible(false);        
     }
+
     return (
         <>
             <View style={styles.dateContainer}>

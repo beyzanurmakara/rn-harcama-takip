@@ -36,7 +36,7 @@ const AddNewScreen = props => {
         })
     },[]);
 
-    const { id, title, price, date, explanation }=props.route.params;
+    const { key, title, price, date, explanation }=props.route.params;
 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
@@ -46,7 +46,7 @@ const AddNewScreen = props => {
     const dateFormat = useLocaleDateFormat();
 
     let header=loc.t(Texts.addNew);
-    if(id!==undefined){
+    if(key!==undefined){
         header=loc.t(Texts.edit);
     }
     
@@ -83,7 +83,7 @@ const AddNewScreen = props => {
         <ScrollView style={styles.scrollView}>
             <TouchableOpacity style={styles.container} onPress={() => Keyboard.dismiss()} activeOpacity={1}>
                 {
-                    id!==undefined ?
+                    key!==undefined ?
                     <CancelText isVisible={false} onPress_Cancel={_onPress_Cancel}/>
                     :
                     null
@@ -115,8 +115,8 @@ const AddNewScreen = props => {
                 </View>
                 <View style={styles.buttonContainer}>
                     <AddButton 
-                        text={id===undefined ? loc.t(Texts.add) : loc.t(Texts.okey)} 
-                        onPress_button={id===undefined ? onPress_add : onPress_Ok}
+                        text={key===undefined ? loc.t(Texts.add) : loc.t(Texts.okey)} 
+                        onPress_button={key===undefined ? onPress_add : onPress_Ok}
                     />
                 </View>
             </TouchableOpacity>

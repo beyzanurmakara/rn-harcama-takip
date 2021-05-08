@@ -1,8 +1,5 @@
 import moment from 'moment';
 
-const getLocaleDateString=(date,dateLocale)=>{
-    return moment(date).format(dateLocale);
-}
 const  getDayText=(date)=>{
     return moment(date).toDate().toDateString().split(' ')[0];
 }
@@ -18,7 +15,7 @@ export const createShoppingListForRender = (itemList, localeDateFormat)=>{
         item.key=itemList[items].key;
         item.title=itemList[items].item;
         item.price=itemList[items].price;
-        item.date=getLocaleDateString(itemList[items].date ,localeDateFormat);
+        item.date=itemList[items].date;
         item.day=getDayText(itemList[items].date);
         convertedList.push(item);
         item={};

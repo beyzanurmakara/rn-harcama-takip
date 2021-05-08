@@ -34,7 +34,6 @@ const HomePageScreen = props => {
     useEffect(()=>{
         subscribeToItemData((data)=>{
             let shoppingList=createShoppingListForRender(data,dateLocale);
-            //console.log(shoppingList);
             setItemList(shoppingList);
         });
     },[])
@@ -55,10 +54,10 @@ const HomePageScreen = props => {
         setIsVisible(true);
     }
 
-    const getIsSelected=(id)=>{
+    const getIsSelected=(key)=>{
         let copyList=[...selectedItemList];
         for(let i=0;i<copyList.length;i++){
-            if(copyList[i]===id){
+            if(copyList[i]===key){
                 return true;
             }
         }
@@ -67,17 +66,17 @@ const HomePageScreen = props => {
 
     const _renderShoppingList =({item})=>{ 
 
-        let isSelected = getIsSelected(item.id);
+        let isSelected = getIsSelected(item.key);
 
         // checkbox seçildiğinde
-        const onSelect_Item=(id, isSelected)=>{ 
+        const onSelect_Item=(key, isSelected)=>{ 
             let copyList=[...selectedItemList];
             if(isSelected){
-                let indexNumber=copyList.indexOf(id);
+                let indexNumber=copyList.indexOf(key);
                 copyList.splice(indexNumber, 1);
             }
             else{
-                copyList.push(id);
+                copyList.push(key);
             }
             console.log(copyList);
             setSelectedItemList(copyList); 
@@ -85,9 +84,9 @@ const HomePageScreen = props => {
 
         // kutucuğun üstüne basıldığında
         const  onPress_Item=(item)=>{
-            console.log(item.id)
+            console.log(item.key)
             navigation.navigate('add-new-screen', {
-                id:item.id,
+                key:item.key,
                 title:item.title,
                 date:item.date,
                 price:item.price,

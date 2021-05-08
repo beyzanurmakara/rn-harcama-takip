@@ -32,10 +32,13 @@ const HomePageScreen = props => {
     const navigation = useNavigation();
 
     useEffect(()=>{
-        subscribeToItemData((data)=>{
+        const off = subscribeToItemData((data)=>{
             let shoppingList=createShoppingListForRender(data,dateLocale);
             setItemList(shoppingList);
         });
+        return ()=>{
+            off()
+        }
     },[])
 
     const _onPress_Delete=()=>{

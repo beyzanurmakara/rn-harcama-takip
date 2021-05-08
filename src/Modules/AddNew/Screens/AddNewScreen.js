@@ -18,7 +18,7 @@ import getStyles from '../styles/AddNewScreenStyle';
 import { ErrorManager } from '../../Error';
 import DummyShoppingList from '../../Homepage/DummyShoppingList';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../../../API/Firebase';
+import { addItem, getItemDetail } from '../../../API/Firebase';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 
 
@@ -30,11 +30,23 @@ const AddNewScreen = props => {
     const[detail,setDetail]=useState('');
 
     const navigation = useNavigation();
+
     useEffect(()=>{
         navigation.setOptions({
             title:header,
         })
     },[]);
+
+    useEffect(()=>{
+        if(key){
+            getItemDetail(key, item=>{
+                setShoppingType(item.title);
+                setMomentDate(item.date);
+                setTotalPrice(item.price);
+                setDetail(item.detail);
+            });
+        }
+    },[])
 
     const { key, title, price, date, explanation }=props.route.params;
 
@@ -51,6 +63,7 @@ const AddNewScreen = props => {
     }
     
     const dispatch =useDispatch();
+
     const _onPress_Cancel =()=>{
         console.log('düzenleme modunda iptal işlemi yapılacak')
     }
@@ -59,7 +72,7 @@ const AddNewScreen = props => {
         dispatch(setIsLoadingAC(true));
         const shoppingItem={
             title:shoppingType,
-            date,
+            momentDate,
             price:totalPrice,
             detail,
         }
@@ -77,8 +90,7 @@ const AddNewScreen = props => {
     const onPress_Ok=()=>{
         console.log('ok')
     }
-    //setMomentDate(text);setDateString(text.format(dateFormat));setDay(text.toDate().toDateString().split(' ')[0])
-    //;setDateString(text.format(dateFormat));setDay(text.toDate().toDateString().split(' ')[0])}
+    
     return (
         <ScrollView style={styles.scrollView}>
             <TouchableOpacity style={styles.container} onPress={() => Keyboard.dismiss()} activeOpacity={1}>
@@ -93,8 +105,7 @@ const AddNewScreen = props => {
                         <AddNewInput
                             value={title}
                             placeHolder={loc.t(Texts.shoppingType)}
-                            onChangeText={(text) => setShoppingType(text)}
-                        />
+                            onChangeText={(text) => setShoppingType(text)}                 />
                     </View>
                     <View style={styles.inputContainer}>
                         <DateInput 
@@ -106,11 +117,10 @@ const AddNewScreen = props => {
                             value={price}
                             placeHolder={loc.t(Texts.price)}
                             keyboardType={'numeric'}
-                            onChangeText={(text) => {setTotalPrice(text + 'TL')}}
-                        />
+                            onChangeText={(text) => {setTotalPrice(text + 'TL')}}           />
                     </View>
                     <View style={styles.inputContainer}>
-                        <AddNewMultilineInput value={explanation} onChange_detail={(text)=>{setDetail(text)}}/>
+                        <AddNewMultilineInput value={detail} onChange_detail={(text)=>{setDetail(text)}}/>
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>

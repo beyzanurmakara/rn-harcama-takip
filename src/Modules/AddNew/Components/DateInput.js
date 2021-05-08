@@ -31,6 +31,7 @@ const DateInput = props => {
         if(props.value !== undefined){
             setMomentDate(moment(props.value).format(dateStandart));
             setDateString(moment(props.value).format(dateFormat))
+            console.log(moment(props.value).format(dateStandart))
         }
     },[props.value])
 

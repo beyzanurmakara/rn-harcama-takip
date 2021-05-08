@@ -12,6 +12,20 @@ export const subscribeToItemData = (onDataRetrieved) => {
             const  convertedList = converterRawData(rawData);
             onDataRetrieved(convertedList);
         });
+    return ()=>{
+        database()
+            .ref(`/itemTumbnailList/${userId}`)
+            .off('value');
+    };
+}
+
+export const getItemDetail = (itemKey, onRetrieved) =>{
+    database()
+        .ref(`/itemList/${itemKey}`)
+        .once('value')
+        .then(snapshot => {
+            onRetrieved(snapshot.val());
+        })
 }
 
 export const addItem = async (item, onComlete) => {

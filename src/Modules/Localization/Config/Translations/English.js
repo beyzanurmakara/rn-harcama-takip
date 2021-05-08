@@ -26,6 +26,7 @@ export default {
     [Texts.edit]:'Edit',
     [Texts.okey]:'Okey',
     [Texts.error]:'Error',
+    [Texts.emptyFlat]:'You can start adding your expenses from the button at the bottom right.',
     [errorList.error['auth/user-not-found']]:'User Not Found : There is no user record corresponding to this identifier. The user may  have been deleted.',
     [errorList.error['auth/wrong-password']]:'Wrong Password : The password is invalied or the user does not have password.',
     [errorList.error['auth/emaıl-already-ın-use']]:'The email address is already in use by  another account',

@@ -48,5 +48,5 @@ export const Texts = {
     edit:'edit',
     okey:'okey',
     error:'error',
-    
+    emptyFlat:'emptyFlat',
 };

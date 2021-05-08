@@ -12,6 +12,7 @@ import CancelText from '../../../Components/CancelText';
 import getStyles from '../styles/HomepageScreenStyles';
 import { Svgs } from '../../../StylingConstants';
 
+
 const HomePageScreenUI = props => {
 
     const styles = useThemedStyles(getStyles);
@@ -20,14 +21,22 @@ const HomePageScreenUI = props => {
 
     const isVisble=props.isVisible;
 
-    return (
+    const flatlistEmpty =()=>{
+        return(
+            <View style={styles.emptyFlatContainer}>
+                <Text style={styles.emptyFlatText}>{loc.t(Texts.emptyFlat)}</Text>
+            </View>
+        )
+    }
+
+    return (        
         <View style={styles.container}>
             <SafeAreaView style={{ flex: 1 }}>
                 <View style={styles.boxContainer}>
                     <FlatList
                         data={props.data}
                         renderItem={props.renderItem}
-                        ListEmptyComponent={props.emptyComponentt}
+                        ListEmptyComponent={flatlistEmpty}
                         keyExtractor={(item, index) => item.key}
                         numColumns={2}
                         columnWrapperStyle={styles.columnWrapperStyle}

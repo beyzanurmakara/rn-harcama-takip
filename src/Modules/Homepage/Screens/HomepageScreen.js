@@ -106,11 +106,6 @@ const HomePageScreen = props => {
             />
         );
     }
-    const flatlistEmpty =()=>{
-        return(
-            <Text>Harcamalarını sağ alttaki butondan ekleyebilirsin.</Text> //Düzenlenecek
-        )
-    }
     return (
         <HomePageScreenUI
             data={itemList}
@@ -119,7 +114,6 @@ const HomePageScreen = props => {
             onPress_Add={_onPress_Add}
             onPress_Delete={_onPress_Delete}
             isVisible={isVisble}
-            emptyComponentt={flatlistEmpty}
         />
     );
 };

@@ -3,23 +3,23 @@ import { getCurrentUser } from '../Modules/Auth';
 import { converterRawData } from './Converter';
 
 export const subscribeToItemData = (onDataRetrieved) => {
-    const userId=getCurrentUser().uid;
+    const userId = getCurrentUser().uid;
 
     database()
         .ref(`/itemTumbnailList/${userId}`)
-        .on('value', snapshot =>{
-            const rawData=snapshot.val();
-            const  convertedList = converterRawData(rawData);
+        .on('value', snapshot => {
+            const rawData = snapshot.val();
+            const convertedList = converterRawData(rawData);
             onDataRetrieved(convertedList);
         });
-    return ()=>{
+    return () => {
         database()
             .ref(`/itemTumbnailList/${userId}`)
             .off('value');
     };
 }
 
-export const getItemDetail = (itemKey, onRetrieved) =>{
+export const getItemDetail = (itemKey, onRetrieved) => {
     database()
         .ref(`/itemList/${itemKey}`)
         .once('value')
@@ -57,14 +57,14 @@ export const addItem = async (item, onComlete) => {
     }
 }
 
-export const updateItem = async (item, onComplete) =>{
+export const updateItem = async (item, onComplete) => {
     try {
 
-        const itemList={
+        const itemList = {
             title: item.title,
-            date:item.date,
+            date: item.date,
             price: item.price,
-            detail:item.detail,
+            detail: item.detail,
         }
 
         await database()
@@ -79,7 +79,7 @@ export const updateItem = async (item, onComplete) =>{
             price: item.price,
         };
 
-        
+
 
         await database()
             .ref(`/itemTumbnailList/${userID}/${item.key}`)
@@ -91,4 +91,14 @@ export const updateItem = async (item, onComplete) =>{
 
         console.log(error)
     }
+}
+
+export const deleteItem = (itemKey) => {
+    const userID=getCurrentUser().uid;
+    database()
+        .ref(`/itemTumbnailList/${userID}/${itemKey}`)
+        .remove()
+    database()
+        .ref(`/itemList/${itemKey}`)
+        .remove()
 }

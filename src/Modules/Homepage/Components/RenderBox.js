@@ -12,7 +12,6 @@ import { Svgs } from '../../../StylingConstants';
 const RenderBox = props => {
 
     const  item=props.item;
-    console.log(item.title)
     let isSelected =props.isSelected;
     
     const styles = useThemedStyles(getStyles);

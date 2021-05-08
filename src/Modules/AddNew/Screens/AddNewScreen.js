@@ -81,13 +81,11 @@ const AddNewScreen = props => {
             navigation.goBack();
         }
 
-        console.log('eklendi \n -->',shoppingItem);
-
         addItem(shoppingItem,onComplete);
         
     }
     const onPress_Ok = () => {
-        console.log('değiştirdim:',key)
+
         if (key) {
             dispatch(setIsLoadingAC(true));
             const shoppingItem = {
@@ -103,7 +101,6 @@ const AddNewScreen = props => {
                 navigation.goBack();
             }
 
-            console.log('düzenlendi \n -->', shoppingItem);
             updateItem(shoppingItem,onComplete);
         }
     }

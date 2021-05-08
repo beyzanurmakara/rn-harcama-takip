@@ -59,7 +59,6 @@ export const addItem = async (item, onComlete) => {
 
 export const updateItem = async (item, onComplete) =>{
     try {
-        console.log('****** updateItem -> ',item.key);
 
         const itemList={
             title: item.title,
@@ -67,7 +66,7 @@ export const updateItem = async (item, onComplete) =>{
             price: item.price,
             detail:item.detail,
         }
-        
+
         await database()
             .ref(`/itemList/${item.key}`)
             .update(itemList)

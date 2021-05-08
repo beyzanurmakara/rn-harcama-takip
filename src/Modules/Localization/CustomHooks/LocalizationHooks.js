@@ -59,7 +59,6 @@ export function useLocaleDateFormat() {
 export function useChangeLocale(){
     const dispatch =useDispatch();
     return(locale)=>{
-        //console.log(locale);
         dispatch(LocalizationActions.changeLocale(locale));
     };
 }

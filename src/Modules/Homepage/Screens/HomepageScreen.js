@@ -40,10 +40,9 @@ const HomePageScreen = props => {
             off()
         }
     },[])
-    useEffect(()=>{console.log(itemList)},[itemList])
+   // useEffect(()=>{console.log(itemList)},[itemList])
 
     const _onPress_Delete=()=>{
-        console.log(selectedItemList);
         setSelectedItemList([]);
         setIsVisible(true)
     }
@@ -72,7 +71,6 @@ const HomePageScreen = props => {
 
         let isSelected = getIsSelected(item.key);
 
-        console.log(item.key);
         // checkbox seçildiğinde
         const onSelect_Item=(key, isSelected)=>{ 
             let copyList=[...selectedItemList];
@@ -83,14 +81,12 @@ const HomePageScreen = props => {
             else{
                 copyList.push(key);
             }
-            console.log(copyList);
+            
             setSelectedItemList(copyList); 
         }
 
         // kutucuğun üstüne basıldığında
         const  onPress_Item=(item)=>{
-            console.log('düzenleme yapacağım --> ',item.key)
-            console.log('duzenleme ekranında ->', item.key)
             navigation.navigate('add-new-screen', {
                 key:item.key,
                 title:item.title,

@@ -12,7 +12,7 @@ const OptionMenu = props => {
     const colors = useThemedColors();
     const styles =  useThemedStyles(getStyles);
     const selectedOptionKey = props.selectedOptionKey;
-    //console.log(selectedOptionKey);
+    
     const renderOptions = () => {
         return props.options.map((option, index) => {
 

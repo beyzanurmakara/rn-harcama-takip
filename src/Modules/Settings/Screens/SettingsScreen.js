@@ -25,7 +25,7 @@ const SettingsScreen = props => {
     const localeOptions = useLocaleOptions();
 
     const user =  useSelector(userSelector);
-    //console.log(user);
+    
     const dispatch = useDispatch();
     const _onSelect_Locale=(key)=>{
         changeLocale(key);       

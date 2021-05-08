@@ -29,10 +29,8 @@ const DateInput = props => {
 
     useEffect(()=>{
         if(props.value){
-            console.log(props.value)
             setMomentDate(moment(props.value).format(dateStandart));
             setDateString(moment(props.value).format(dateFormat))
-            console.log(moment(props.value).format(dateStandart))
         }
     },[props.value])
 

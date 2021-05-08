@@ -21,7 +21,6 @@ const ErrorManager = props => {
 
     useEffect(()=>{
         setErrorState(errorCode);
-        //console.log(errorCode);
     },[errorCode])
 
     const  styles = useThemedStyles(getStyles);
@@ -33,7 +32,6 @@ const ErrorManager = props => {
         dispatch(setErrorCodeAC(''));
         setErrorState('');
     }
-    console.log(loc.t(errorList.error[errorState]));
     return (
         <Modal  isVisible={isvisible} backdropColor={colors[colorNames.error.modalBackdropColor]} style={styles.modal}>
             <View  style={styles.errorTexContainer}>

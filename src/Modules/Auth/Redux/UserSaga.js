@@ -6,25 +6,11 @@ import { setErrorCodeAC } from "../../Error/ErrorRedux";
 import { Alert } from "react-native";
 import {  useLocalization, errorList } from "../../Localization";
 
-function* signUpAndUpdateUser(email, password, displayName) {
-    try {
-        // Önce signUp yaptırdık
-        yield call(signUp, email, password);
-        // Sonra kullanıcı adını Firebase'de güncelledik
-        yield call(updateUser, displayName);
 
-        // Şu anki kullanıcı bilgisini Firebase'den aldık
-        const currentUser = getCurrentUser();
-        // Şu anki kullanıcıyı redux'a verdik
-        yield put(setUserAC(currentUser));
-    } catch(error) {
-        console.log(error);
-    }
-}
 
 function* workerSignUp(action) {
     const { email, password, displayName } = action.payload;
-    //console.log('displayName in worker SignUp -->',displayName);
+    
     try {
         yield put(setIsLoadingAC(true));
 
@@ -35,7 +21,7 @@ function* workerSignUp(action) {
         yield put(setUserAC(currentUser));
 
     } catch (error) {
-        console.log('worker sign up => ',error.code);
+        
         yield put(setErrorCodeAC(error.code));
     } finally {
         yield put(setIsLoadingAC(false));
@@ -55,7 +41,6 @@ function* workerSignIn(action) {
         const currentUser = getCurrentUser();
         yield put(setUserAC(currentUser));
     } catch (error) {
-        console.log('worker sign in => ',error.code);
         yield put(setErrorCodeAC(error.code));
         
     } finally {

@@ -18,7 +18,7 @@ import getStyles from '../styles/AddNewScreenStyle';
 import { ErrorManager } from '../../Error';
 import DummyShoppingList from '../../Homepage/DummyShoppingList';
 import { useDispatch } from 'react-redux';
-import { addItem, getItemDetail } from '../../../API/Firebase';
+import { addItem, getItemDetail, updateItem } from '../../../API/Firebase';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 
 
@@ -49,7 +49,6 @@ const AddNewScreen = props => {
     },[])
 
     const { key, title, price, date, explanation }=props.route.params;
-
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
 
@@ -87,8 +86,26 @@ const AddNewScreen = props => {
         addItem(shoppingItem,onComplete);
         
     }
-    const onPress_Ok=()=>{
-        console.log('ok')
+    const onPress_Ok = () => {
+        //console.log(key)
+        if (key) {
+            dispatch(setIsLoadingAC(true));
+            const shoppingItem = {
+                key:key,
+                title: shoppingType,
+                momentDate,
+                price: totalPrice,
+                detail,
+            }
+
+            const onComplete = () => {
+                dispatch(setIsLoadingAC(false));
+                navigation.goBack();
+            }
+
+            console.log('düzenlendi \n -->', shoppingItem);
+            updateItem(shoppingItem,onComplete);
+        }
     }
     
     return (
@@ -103,21 +120,21 @@ const AddNewScreen = props => {
                 <View style={styles.inputsContainer}>
                     <View style={styles.inputContainer}>
                         <AddNewInput
-                            value={title}
+                            value={shoppingType}
                             placeHolder={loc.t(Texts.shoppingType)}
                             onChangeText={(text) => setShoppingType(text)}                 />
                     </View>
                     <View style={styles.inputContainer}>
                         <DateInput 
-                            value={date} 
+                            value={date} //date
                             onChange_date={(text)=>{setMomentDate(text)}}/>
                     </View>
                     <View style={styles.inputContainer}>
                         <AddNewInput
-                            value={price}
+                            value={totalPrice}
                             placeHolder={loc.t(Texts.price)}
                             keyboardType={'numeric'}
-                            onChangeText={(text) => {setTotalPrice(text + 'TL')}}           />
+                            onChangeText={(text) => {setTotalPrice(text);console.log(text)}}           />
                     </View>
                     <View style={styles.inputContainer}>
                         <AddNewMultilineInput value={detail} onChange_detail={(text)=>{setDetail(text)}}/>

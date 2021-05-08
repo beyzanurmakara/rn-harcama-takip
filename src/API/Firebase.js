@@ -56,3 +56,24 @@ export const addItem = async (item, onComlete) => {
         console.log(error);
     }
 }
+
+export const updateItem = async (item, onComplete) =>{
+    try {
+        console.log('updateItem -> ',item.key);
+        await database()
+            .ref(`/itemList/${item.key}`)
+            .update(item)
+
+        const userID = getCurrentUser().uid;
+
+        await database()
+            .ref(`/itemTumbnailList/${userID}/${item.key}`)
+            .update(item)
+
+        onComplete();
+
+    } catch (error) {
+
+        console.log(error)
+    }
+}

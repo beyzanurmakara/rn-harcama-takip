@@ -19,6 +19,8 @@ const HomePageScreenUI = props => {
     const colors = useThemedColors();
     const loc=useLocalization();
 
+    console.log(props.data);
+
     const isVisble=props.isVisible;
 
     const flatlistEmpty =()=>{

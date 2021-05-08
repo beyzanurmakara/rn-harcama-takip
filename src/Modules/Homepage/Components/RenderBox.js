@@ -12,6 +12,7 @@ import { Svgs } from '../../../StylingConstants';
 const RenderBox = props => {
 
     const  item=props.item;
+    console.log(item.title)
     let isSelected =props.isSelected;
     
     const styles = useThemedStyles(getStyles);
@@ -44,7 +45,7 @@ const RenderBox = props => {
             </TouchableOpacity>
             <View style={styles.textsContainer}>
                 <Text style={styles.headerText}>{item.title}</Text>
-                <Text style={styles.priceText}>{item.price} </Text>
+                <Text style={styles.priceText}>{item.price + 'TL'} </Text>
                 <Text style={styles.dateText}>{getLocaleDateString(item.date,localeDate)}</Text>
                 <Text style={styles.dayText}>{loc.t(days[item.day])}</Text>
             </View>

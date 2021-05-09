@@ -15,7 +15,6 @@ const EditProfile = props => {
     const user =useSelector(userSelector);
 
     const [expenseLimit, setExpenseLimit] = useState(false);
-    const [displayName,setDisplayName]=useState(user.displayName);
     const [income,setIncome]=useState('');
     const [expense,setExpense]=useState(0);
 
@@ -26,10 +25,6 @@ const EditProfile = props => {
     
     const navigation = useNavigation();
     const dispatch=useDispatch();
-
-    const _onChange_DisplayName =(text)=>{
-        setDisplayName(text);
-    }
 
     const _onChange_Income=(text)=>{
         setIncome(text);
@@ -54,35 +49,21 @@ const EditProfile = props => {
         }
         else {
             dispatch(setIsLoadingAC(true));
-            updateUser(displayName);
             const email=user.email;
             const profile={
-                displayName,
                 income,
                 expense,
-                email
             }
-            createProfile(profile,onComplete)
-            
+            createProfile(profile,onComplete)            
             props.isVisibleMode();
         }
     }
     return (
         <View style={styles.container}>
             <View style={styles.emailContainer}>
-                <Text style={styles.emailText}>{user.email}</Text>
+                <Text style={styles.emailText}>{user.displayName}</Text>
             </View>
             <View>
-                <View style={styles.textInputContainer}>
-                    <Text style={styles.inputText} numberOfLines={1}>{loc.t(Texts.username)}</Text>
-                    <TextInput
-                        placeholder={loc.t(Texts.username)}
-                        style={styles.textInput}
-                        defaultValue={user.displayName}
-                        placeholderTextColor={colors[colorNames.editProfile.placeHolder]}
-                        onChangeText={_onChange_DisplayName}
-                    />
-                </View>
                 <View style={styles.textInputContainer}>
                     <Text style={styles.inputText}>{loc.t(Texts.monthlyIncome)}</Text>
                     <TextInput

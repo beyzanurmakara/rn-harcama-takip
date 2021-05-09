@@ -14,8 +14,10 @@ import getStyles from '../styles/HomepageScreenStyles';
 import { Svgs } from '../../../StylingConstants';
 import { deleteItem, subscribeToItemData } from '../../../API/Firebase';
 import { createShoppingListForRender } from '../Utils/RenderListUtils';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
+import { getProfileSubscribe } from '../../Settings/API/Firebase';
+import { getCurrentUser } from '../../Auth';
 
 
 
@@ -24,6 +26,8 @@ const HomePageScreen = props => {
     const [isVisble, setIsVisible] = useState(true);
     const [selectedItemList, setSelectedItemList] = useState([]);
     const [itemList, setItemList] = useState(null);
+    const [profile,setProfile]= useState(null);
+
 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
@@ -32,7 +36,7 @@ const HomePageScreen = props => {
     const dateLocale = useLocaleDateFormat();
 
     const dispatch = useDispatch();
-
+    const userID=getCurrentUser().uid;
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -44,7 +48,20 @@ const HomePageScreen = props => {
             off()
         }
     }, [])
-    // useEffect(()=>{console.log(itemList)},[itemList])
+    useEffect(()=>{
+        const off =getProfileSubscribe(userID,(data)=>{
+            //console.log(data)
+            //setProfile(data)
+            if(data===null){
+                alert('Profilizinizi Ayarlardan Düzenleyin')
+            }
+            setProfile(data)
+        });
+        return()=>{
+            off()
+        }
+    },[profile])
+    
 
     const _onPress_Delete = () => {
 
@@ -122,6 +139,7 @@ const HomePageScreen = props => {
             onPress_Add={_onPress_Add}
             onPress_Delete={_onPress_Delete}
             isVisible={isVisble}
+            profile={profile}
         />
     );
 };

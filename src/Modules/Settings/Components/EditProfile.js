@@ -15,7 +15,7 @@ const EditProfile = props => {
     const user =useSelector(userSelector);
 
     const [expenseLimit, setExpenseLimit] = useState(false);
-    const [income,setIncome]=useState('');
+    const [income,setIncome]=useState(0);
     const [expense,setExpense]=useState(0);
 
     const styles = useThemedStyles(getStyles);

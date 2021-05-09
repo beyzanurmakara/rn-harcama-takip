@@ -49,4 +49,11 @@ export const Texts = {
     okey:'okey',
     error:'error',
     emptyFlat:'emptyFlat',
+    editProfile:'editProfile',
+    monthlyIncome:'monthlyIncome',
+    monthlyExpenseQuestion:'monthlyExpenseQuestion',
+    yes:'yes',
+    no:'no',
+    monthlyExpense:'monthlyExpense',
+    pleaseEnter:'pleaseEnter',
 };

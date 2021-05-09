@@ -25,7 +25,7 @@ export default {
     [Texts.cancel]:'İptal',
     [Texts.edit]:'Düzenle',
     [Texts.okey]:'Tamam',
-    [Texts.error]:'Hata',    
+    [Texts.error]:'Hata',   
     [Texts.emptyFlat]:'Sağ alttaki butondan harcamalarınızı eklemeye başlayabilirsiniz.',
     [errorList.error['auth/user-not-found']]:'Kullanıcı Bulunamadı. Kullanıcı silinmiş olabilir.',
     [errorList.error['auth/wrong-password']]:'Şifre geçersiz veya kullanıcının şifresi yok.',
@@ -41,5 +41,12 @@ export default {
     [days['Thu']]:'Per',
     [days['Fri']]:'Cum',
     [days['Sat']]:'Cmt',
-    [days['Sun']]:'Paz',
+    [days['Sun']]:'Paz',    
+    [Texts.editProfile]:'Profilinizi düzenleyin', 
+    [Texts.monthlyIncome]:'Aylık Gelir',
+    [Texts.monthlyExpenseQuestion]:'Aylık gider sınırı belirlemek ister misiniz?',
+    [Texts.yes]:'Evet',
+    [Texts.no]:'Hayır',
+    [Texts.monthlyExpense]:'Aylık gider sınırınızı belirleyin',
+    [Texts.pleaseEnter]:'Lütfen giriniz...'
 };

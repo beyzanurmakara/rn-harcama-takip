@@ -15,20 +15,6 @@ const constantColors = {
     today:'#0036C7', //lacivert
 };
 
-// const toRGBA = (hexCode, opacity) => {
-//     let hex = hexCode.replace('#', '');
-
-//     if (hex.length === 3) {
-//         hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
-//     }
-
-//     const r = parseInt(hex.substring(0, 2), 16);
-//     const g = parseInt(hex.substring(2, 4), 16);
-//     const b = parseInt(hex.substring(4, 6), 16);
-
-//     return `rgba(${r},${g},${b},${opacity / 100})`;
-// };
-
 export const colorNames = {
     auth: {
         background: 'auth/background',
@@ -96,6 +82,14 @@ export const colorNames = {
         errorTextBackground:'error/errorTextBackground',
         modalBackdropColor:'error/modalBackdropColor',
         iconColor:'error/iconColor',
+    },
+    editProfile:{
+        background:'editProfile/background',
+        text:'editProfile/text',
+        placeHolder:'editProfile/placeHolder',
+        borderColor:'editProfile/borderColor',
+        inputBackground:'editProfile/inputBackground',
+        buttonBackground:'editProfile/buttonBackground',
     }
 };
 
@@ -162,6 +156,13 @@ export const darkColors = {
     [colorNames.error.errorTextBackground]:constantColors.delete,
     [colorNames.error.modalBackdropColor]:constantColors.transparent,
     [colorNames.error.iconColor]:constantColors.delete,
+    //editProfile
+    [colorNames.editProfile.background]:constantColors.greys[1],
+    [colorNames.editProfile.text]:constantColors.white,
+    [colorNames.editProfile.placeHolder]:'rgba(255,255,255,0.4)',
+    [colorNames.editProfile.borderColor]:constantColors.white,
+    [colorNames.editProfile.inputBackground]:'rgba(0,0,0,0.5)',
+    [colorNames.editProfile.buttonBackground]:constantColors.mainColor2,
 
 };
 
@@ -228,4 +229,12 @@ export const lightColors = {
     [colorNames.error.errorTextBackground]:constantColors.delete,
     [colorNames.error.modalBackdropColor]:constantColors.transparent,
     [colorNames.error.iconColor]:constantColors.delete,
+    //editProfile
+    [colorNames.editProfile.background]:constantColors.white,
+    [colorNames.editProfile.text]:constantColors.black,
+    [colorNames.editProfile.placeHolder]:constantColors.greys[2],
+    [colorNames.editProfile.borderColor]:constantColors.greys[2],
+    [colorNames.editProfile.inputBackground]:'rgba(0,0,0,0.5)',
+    [colorNames.editProfile.buttonBackground]:constantColors.mainColor2,
+ 
 };

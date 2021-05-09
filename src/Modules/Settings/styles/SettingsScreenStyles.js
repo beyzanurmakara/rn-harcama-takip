@@ -11,7 +11,7 @@ export default Colors => StyleSheet.create({
         //padding: Metrics.marginHorizontal,
     },
     userContainer:{
-        flex:0.15,     
+        flex:0.3,    
     },
     nameText:{
         color:Colors[colorNames.settings.userEmailText],
@@ -21,7 +21,7 @@ export default Colors => StyleSheet.create({
     },
     emailText:{
         color:Colors[colorNames.settings.userEmailText],
-        marginBottom:Metrics.width *0.05,
+        marginBottom:Metrics.width *0.02,
         fontFamily:Fonts.type.regular,
         fontSize:Fonts.size(16)
     },
@@ -43,5 +43,13 @@ export default Colors => StyleSheet.create({
         fontSize:Fonts.size(16),
         color:Colors[colorNames.settings.signOutButtonText],
     },
-    
+    updateProfile:{
+        fontFamily:Fonts.type.bold,
+        fontSize:Fonts.size(14),
+        color:'red'
+    },
+    modal: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });

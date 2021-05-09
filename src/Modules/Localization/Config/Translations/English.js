@@ -42,5 +42,12 @@ export default {
     [days['Fri']]:'Fri',
     [days['Sat']]:'Sat',
     [days['Sun']]:'Sun',
+    [Texts.editProfile]:'Edit your profile',
+    [Texts.monthlyIncome]:'Monthly Income',
+    [Texts.monthlyExpenseQuestion]:'Would you like to set a monthly expense limit?',
+    [Texts.yes]:'Yes',
+    [Texts.no]:'No',
+    [Texts.monthlyExpense]:'Set your monthly expense limit',
+    [Texts.pleaseEnter]:'Please enter...'
 };
 

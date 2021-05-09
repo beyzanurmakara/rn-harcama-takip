@@ -24,7 +24,7 @@ export default {
     [Texts.signOut]:'Çıkış Yap',    
     [Texts.cancel]:'İptal',
     [Texts.edit]:'Düzenle',
-    [Texts.okey]:'Tamam',
+    [Texts.okay]:'Tamam',
     [Texts.error]:'Hata',   
     [Texts.emptyFlat]:'Sağ alttaki butondan harcamalarınızı eklemeye başlayabilirsiniz.',
     [errorList.error['auth/user-not-found']]:'Kullanıcı Bulunamadı. Kullanıcı silinmiş olabilir.',
@@ -48,5 +48,6 @@ export default {
     [Texts.yes]:'Evet',
     [Texts.no]:'Hayır',
     [Texts.monthlyExpense]:'Aylık gider sınırınızı belirleyin',
-    [Texts.pleaseEnter]:'Lütfen giriniz...'
+    [Texts.pleaseEnter]:'Lütfen giriniz...',
+    [Texts.profile]:'Profil',
 };

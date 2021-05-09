@@ -2,9 +2,12 @@ import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { StyleSheet }  from 'react-native';
 import  { createStackNavigator } from '@react-navigation/stack';
+
 import SettingsScreen from '../Settings/Screens/SettingsScreen';
 import HomepageScreen from '../Homepage/Screens/HomepageScreen';
 import AddNewScreen from '../AddNew/Screens/AddNewScreen';
+import ProfileScreen from '../Settings/Screens/ProfileScreen';
+
 import { useThemedColors, colorNames, useThemedStyles } from '../Theming';
 import { useLocalization, Texts } from '../Localization';
 
@@ -85,6 +88,26 @@ const AppNavigation = props => {
                 component={AddNewScreen}
                 options={{
                     title: (loc.t(Texts.addNew)).toUpperCase(),
+                    headerStyle:{
+                        backgroundColor:colors[colorNames.header.background]
+                    },
+                    headerTitleAlign:'center',
+                    headerTitleStyle:{
+                        color: colors[colorNames.header.text]
+                    },
+                    headerBackTitleVisible:false,
+                    headerLeftContainerStyle:{
+                        marginLeft:Metrics.marginHorizontal * 0.2,
+                    },
+                    headerTintColor:colors[colorNames.header.backIcon]
+                   // headerLeft : BackIcon,
+                }}
+            />
+            <AppStack.Screen 
+                name='profile-screen'
+                component={ProfileScreen}
+                options={{
+                    title: (loc.t(Texts.profile)).toUpperCase(),
                     headerStyle:{
                         backgroundColor:colors[colorNames.header.background]
                     },

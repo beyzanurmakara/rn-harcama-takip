@@ -24,7 +24,7 @@ export default {
     [Texts.signOut]:'Sign Out',  
     [Texts.cancel]:'Cancel' ,
     [Texts.edit]:'Edit',
-    [Texts.okey]:'Okey',
+    [Texts.okay]:'Ok',
     [Texts.error]:'Error',
     [Texts.emptyFlat]:'You can start adding your expenses from the button at the bottom right.',
     [errorList.error['auth/user-not-found']]:'User Not Found : There is no user record corresponding to this identifier. The user may  have been deleted.',
@@ -48,6 +48,7 @@ export default {
     [Texts.yes]:'Yes',
     [Texts.no]:'No',
     [Texts.monthlyExpense]:'Set your monthly expense limit',
-    [Texts.pleaseEnter]:'Please enter...'
+    [Texts.pleaseEnter]:'Please enter...',
+    [Texts.profile]:'Profile',
 };
 

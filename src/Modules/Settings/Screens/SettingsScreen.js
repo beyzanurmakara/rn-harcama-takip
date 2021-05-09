@@ -44,18 +44,23 @@ const SettingsScreen = props => {
     const _onPress_EditProfile = () => {
         setIsModalVisible(true)
     }
-    const _onPress_ModalBackdrop = ()=> {
+    const _onPress_ModalBackdrop = () => {
         setIsModalVisible(false);
     }
 
+    const onPress_DisplayName=()=>{
+        props.navigation.navigate('profile-screen');
+    }
     return (
         <>
             <View style={styles.container}>
                 <SafeAreaView style={{ flex: 1 }}>
                     <View style={styles.userContainer}>
-                        <Text style={styles.nameText}>
-                            {user.displayName}
-                        </Text>
+                        <TouchableOpacity onPress={onPress_DisplayName}>
+                            <Text style={styles.nameText}>
+                                {user.displayName}
+                            </Text>
+                        </TouchableOpacity>
                         <Text style={styles.emailText}>
                             {user.email}
                         </Text>
@@ -99,7 +104,7 @@ const SettingsScreen = props => {
                 animationInTiming={1000}
                 animationOutTiming={1000}
             >
-                <EditProfile isVisible={isModalVisible}/>
+                <EditProfile isVisibleMode={()=>setIsModalVisible(false)} />
             </Modal>
         </>
     );

@@ -46,7 +46,7 @@ export const Texts = {
     signOut:'signOut',  
     cancel:'cancel', 
     edit:'edit',
-    okey:'okey',
+    okay:'okay',
     error:'error',
     emptyFlat:'emptyFlat',
     editProfile:'editProfile',
@@ -56,4 +56,5 @@ export const Texts = {
     no:'no',
     monthlyExpense:'monthlyExpense',
     pleaseEnter:'pleaseEnter',
+    profile:'profile'
 };

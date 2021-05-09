@@ -40,10 +40,10 @@ const EditProfile = props => {
                 <Text style={styles.text}>{loc.t(Texts.monthlyExpenseQuestion)}</Text>
                 <View style={[styles.textInputContainer, { justifyContent: 'space-around' }]}>
                     <TouchableOpacity style={styles.optionTouch} onPress={()=>setExpenseLimit(true)}>
-                        <Text styles={styles.inputText}>{loc.t(Texts.yes)}</Text>
+                        <Text style={styles.inputText}>{loc.t(Texts.yes)}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.optionTouch} onPress={()=>setExpenseLimit(false)}>
-                        <Text styles={styles.inputText}>{loc.t(Texts.no)}</Text>
+                        <Text style={styles.inputText}>{loc.t(Texts.no)}</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -64,7 +64,7 @@ const EditProfile = props => {
                         null
                 }
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.optionTouch}>
+                    <TouchableOpacity >
                         <Text style={styles.emailText}>{loc.t(Texts.okey)}</Text>
                     </TouchableOpacity>
                 </View>

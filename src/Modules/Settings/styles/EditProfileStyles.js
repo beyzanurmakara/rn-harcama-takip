@@ -46,11 +46,13 @@ export default Colors=>StyleSheet.create({
         color:Colors[colorNames.editProfile.text]
     },
     optionTouch:{
-        backgroundColor:'red',
+        backgroundColor:Colors[colorNames.editProfile.yesNoButton],
         borderRadius:Metrics.borderRadiusFullRound,
         justifyContent:'center',
         alignItems:'center',
         padding:10,
+        width:Metrics.width * 0.2,
+        height:Metrics.width * 0.12,
     },
     expenseContainer:{ 
         borderColor:Colors[colorNames.editProfile.borderColor],
@@ -71,5 +73,5 @@ export default Colors=>StyleSheet.create({
         backgroundColor:Colors[colorNames.editProfile.buttonBackground],
         borderRadius:Metrics.borderRadiusStandard,
         color:Colors[colorNames.editProfile.text]
-    }
+    },
 });

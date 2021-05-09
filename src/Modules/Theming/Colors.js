@@ -90,6 +90,7 @@ export const colorNames = {
         borderColor:'editProfile/borderColor',
         inputBackground:'editProfile/inputBackground',
         buttonBackground:'editProfile/buttonBackground',
+        yesNoButton:'editProfile/yesNoButton',
     }
 };
 
@@ -161,8 +162,9 @@ export const darkColors = {
     [colorNames.editProfile.text]:constantColors.white,
     [colorNames.editProfile.placeHolder]:'rgba(255,255,255,0.4)',
     [colorNames.editProfile.borderColor]:constantColors.white,
-    [colorNames.editProfile.inputBackground]:'rgba(0,0,0,0.5)',
+    [colorNames.editProfile.inputBackground]:'rgba(115, 181, 201, 0.2)',
     [colorNames.editProfile.buttonBackground]:constantColors.mainColor2,
+    [colorNames.editProfile.yesNoButton]:'rgba(255, 146, 87, 0.5)'
 
 };
 
@@ -234,7 +236,8 @@ export const lightColors = {
     [colorNames.editProfile.text]:constantColors.black,
     [colorNames.editProfile.placeHolder]:constantColors.greys[2],
     [colorNames.editProfile.borderColor]:constantColors.greys[2],
-    [colorNames.editProfile.inputBackground]:'rgba(0,0,0,0.5)',
+    [colorNames.editProfile.inputBackground]:'rgba(115, 181, 201, 0.2)',
     [colorNames.editProfile.buttonBackground]:constantColors.mainColor2,
+    [colorNames.editProfile.yesNoButton]:'rgba(255, 146, 87, 0.5)'
  
 };

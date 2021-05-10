@@ -18,20 +18,20 @@ const RenderBox = props => {
     const  item=props.item;
     let isSelected =props.isSelected;
     
-    useEffect(()=>{
-        const profile=props.profile;
-        const total=parseInt(profile.total) + parseInt(item.price);
+    // useEffect(()=>{
+    //     const profile=props.profile;
+    //     const total=parseInt(profile.total) + parseInt(item.price);
     
-        const onComplete = () => {
-            console.log('işlem tamam.');
-        }
-        const profileNew={
-            exense:profile.expense,
-            income:profile.income,
-            total,
-        }
-        updateProfile(profileNew, onComplete)
-    },[item]);
+    //     const onComplete = () => {
+    //         console.log('işlem tamam.');
+    //     }
+    //     const profileNew={
+    //         exense:profile.expense,
+    //         income:profile.income,
+    //         total,
+    //     }
+    //     updateProfile(profileNew, onComplete)
+    // },[item]);
 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();

@@ -13,7 +13,7 @@ import HomePageScreenUI from './HomeScreenUI';
 
 import getStyles from '../styles/HomepageScreenStyles';
 import { Svgs } from '../../../StylingConstants';
-import { deleteItem, subscribeToItemData } from '../../../API/Firebase';
+import { deleteItem, getItemDetail, subscribeToItemData } from '../../../API/Firebase';
 import { createShoppingListForRender } from '../Utils/RenderListUtils';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
@@ -40,6 +40,8 @@ const HomePageScreen = props => {
     const userID = getCurrentUser().uid;
     const navigation = useNavigation();
 
+    let total = 0;
+
     useEffect(() => {
         const off = subscribeToItemData((data) => {
             let shoppingList = createShoppingListForRender(data, dateLocale);
@@ -56,42 +58,58 @@ const HomePageScreen = props => {
             if (data === null) {
                 alert('UseEffect Profilizinizi Ayarlardan Düzenleyin')
             }
-            setProfile(data)
+            else {
+                setProfile(data)
+                //burayı create kısmında yapabilirim.
+                // updateProfile({
+                //     income:data.income,
+                //     expense:data.expense,
+                //     total:total,
+                // })
+            }
         });
         return () => {
             off()
         }
     }, [])
-    //let total=0;
-    useEffect(()=>{
+
+    useEffect(() => {
         console.log("********")
-        if(itemList!==null){
-            for(let eleman of itemList){
-                let newTotal=0 + parseInt(eleman.price);
-                updateProfile({
-                    expense:profile.expense,
-                    income:profile.income,
-                    total:newTotal,
-                })
+        if (itemList !== null) {
+            for (let eleman of itemList) {
+                console.log(total)
+                total += parseInt(eleman.price);
+                console.log(total);
+                if (profile !== null) {
+                    updateProfile({
+                        income: profile.income,
+                        expense: profile.expense,
+                        total,
+                    })
+                }
             }
         }
-    },[itemList]);
+    }, [itemList]);
     const _onPress_Delete = () => {
-
+        console.log('---------')
         for (let key of selectedItemList) {
-            deleteItem(key);
-            updateProfile({
-                expense:profile.expense,
-                income:profile.income,
-                total:0,
+            console.log('*', key)
+            getItemDetail(key, item => {
+                updateProfile({
+                    expense: profile.expense,
+                    income: profile.income,
+                    total: parseInt(profile.total) - parseInt(item.price),
+                })
             })
+            deleteItem(key);
+
         }
         setIsVisible(true)
     }
 
     const _onPress_Add = () => {
         const mode = 'add';
-        navigation.navigate('add-new-screen',[ mode, profile]);
+        navigation.navigate('add-new-screen', [mode, profile]);
     }
 
     const _onPress_Cancel = () => {

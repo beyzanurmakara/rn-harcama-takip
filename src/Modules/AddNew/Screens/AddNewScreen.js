@@ -20,6 +20,7 @@ import DummyShoppingList from '../../Homepage/DummyShoppingList';
 import { useDispatch } from 'react-redux';
 import { addItem, getItemDetail, updateItem } from '../../../API/Firebase';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
+import Category from '../Components/Category';
 
 
 const AddNewScreen = props => {
@@ -120,7 +121,7 @@ const AddNewScreen = props => {
                     key !== undefined ?
                         <CancelText isVisible={false} onPress_Cancel={_onPress_Cancel} />
                         :
-                        null
+                        null//<Category/>
                 }
                 <View style={styles.inputsContainer}>
                     <View style={styles.inputContainer}>

@@ -20,6 +20,7 @@ import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 import { getProfileSubscribe, updateProfile } from '../../Settings/API/Firebase';
 import { getCurrentUser } from '../../Auth';
 import CreateProfile from '../Components/CreateProfile';
+import Categories from '../Components/Categories';
 
 
 
@@ -28,8 +29,10 @@ const HomePageScreen = props => {
     const [isVisble, setIsVisible] = useState(true);
     const [selectedItemList, setSelectedItemList] = useState([]);
     const [itemList, setItemList] = useState(null);
+    const [tempItemList, setTempItemList] = useState(null);
     const [profile, setProfile] = useState(null);
-    const [isProfile,setIsProfile]=useState(false);
+    const [isProfile, setIsProfile] = useState(false);
+    const [category, setCategory] = useState('');
 
 
     const styles = useThemedStyles(getStyles);
@@ -48,6 +51,7 @@ const HomePageScreen = props => {
         const off = subscribeToItemData((data) => {
             let shoppingList = createShoppingListForRender(data, dateLocale);
             setItemList(shoppingList);
+            setTempItemList(shoppingList);
         });
         return () => {
             off()
@@ -62,6 +66,7 @@ const HomePageScreen = props => {
                 //alert('UseEffect Profilizinizi Ayarlardan Düzenleyin')
             }
             else {
+                setIsProfile(false)
                 setProfile(data)
                 //burayı create kısmında yapabilirim.
                 // updateProfile({
@@ -93,18 +98,19 @@ const HomePageScreen = props => {
             }
         }
     }, [itemList]);
+
     const _onPress_Delete = () => {
         console.log('---------')
         for (let key of selectedItemList) {
             console.log('*', key)
-            profile!==null && 
-            getItemDetail(key, item => {
-                updateProfile({
-                    expense: profile.expense,
-                    income: profile.income,
-                    total: parseInt(profile.total) - parseInt(item.price),
+            profile !== null &&
+                getItemDetail(key, item => {
+                    updateProfile({
+                        expense: profile.expense,
+                        income: profile.income,
+                        total: parseInt(profile.total) - parseInt(item.price),
+                    })
                 })
-            })
             deleteItem(key);
 
         }
@@ -180,16 +186,40 @@ const HomePageScreen = props => {
 
 
     }
+
+    const _getCagetory = (categori) => {
+        setCategory(categori);
+        let newItemList = [];
+        if (categori === null) {
+            setTempItemList(itemList);
+        }
+        else {
+            for (let eleman of itemList) {
+                if (eleman.title == categori.name) {
+                    newItemList.push(eleman);
+                }
+            }
+            console.log(newItemList)
+            if (newItemList.length !== 0) {
+                setTempItemList(newItemList);
+            }
+            else{
+                setTempItemList(itemList)
+            }
+        }
+
+    }
     return (
         <>
             {
-                isProfile?
-                <CreateProfile/>
-                :
-                null
+                isProfile ?
+                    <CreateProfile />
+                    :
+                    null
             }
+            <Categories onPress_Item={_getCagetory} />
             <HomePageScreenUI
-                data={itemList}
+                data={tempItemList}
                 renderItem={_renderShoppingList}
                 onPress_Cancel={_onPress_Cancel}
                 onPress_Add={_onPress_Add}

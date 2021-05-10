@@ -20,7 +20,7 @@ const SettingsScreen = props => {
 
     useEffect(() => {
         const mode = props.route.params;
-        console.log('settings screen mode', mode)
+        //console.log('settings screen mode', mode)
         if (mode) {
             setIsModalVisible(mode)
         }

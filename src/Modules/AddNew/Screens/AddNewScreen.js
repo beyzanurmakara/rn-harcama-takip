@@ -32,6 +32,23 @@ const AddNewScreen = props => {
 
     const navigation = useNavigation();
 
+    const { key, title, price, date, explanation } = props.route.params;
+    const styles = useThemedStyles(getStyles);
+    const colors = useThemedColors();
+
+    const loc = useLocalization();
+
+    const dateFormat = useLocaleDateFormat();
+
+   
+
+    const dispatch = useDispatch();
+
+    let header = loc.t(Texts.addNew);
+    if (key !== undefined) {
+        header = loc.t(Texts.edit);
+    }
+
     useEffect(() => {
         navigation.setOptions({
             title: header,
@@ -49,21 +66,6 @@ const AddNewScreen = props => {
         }
     }, [])
 
-    const { key, title, price, date, explanation } = props.route.params;
-
-    const styles = useThemedStyles(getStyles);
-    const colors = useThemedColors();
-
-    const loc = useLocalization();
-
-    const dateFormat = useLocaleDateFormat();
-
-    let header = loc.t(Texts.addNew);
-    if (key !== undefined) {
-        header = loc.t(Texts.edit);
-    }
-
-    const dispatch = useDispatch();
 
     const _onPress_Cancel = () => {
         console.log('düzenleme modunda iptal işlemi yapılacak');
@@ -127,7 +129,7 @@ const AddNewScreen = props => {
                         :
                         null
                 }
-                {/* <Category onPress_item={_getCategory} /> */}
+                <Category onPress_item={_getCategory} />
                 <View style={styles.inputsContainer}>
                     <View style={styles.inputContainer}>
                         <AddNewInput

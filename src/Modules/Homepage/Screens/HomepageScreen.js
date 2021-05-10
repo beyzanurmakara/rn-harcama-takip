@@ -19,7 +19,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 import { getProfileSubscribe } from '../../Settings/API/Firebase';
 import { getCurrentUser } from '../../Auth';
-import { priceSelector } from '../Redux/ShoppingListRedux';
 
 
 
@@ -37,7 +36,7 @@ const HomePageScreen = props => {
     const loc = useLocalization();
     const dateLocale = useLocaleDateFormat();
 
-    const totalPrice=useSelector(priceSelector);
+    
     const userID = getCurrentUser().uid;
     const navigation = useNavigation();
 
@@ -95,7 +94,7 @@ const HomePageScreen = props => {
     }
 
     const _renderShoppingList = ({ item }) => {
-        console.log(totalPrice)
+        
 
         if (profile !== null) {
 

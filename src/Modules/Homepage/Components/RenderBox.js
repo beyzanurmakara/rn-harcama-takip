@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 import { useLocalization, days, useLocaleDateFormat } from '../../Localization';
 import Icon from '../../../Components/Icon';
-import { priceSelector, setPriceAC} from '../Redux/ShoppingListRedux';
 
 import getStyles from '../styles/RenderBoxStyles';
 import { Svgs } from '../../../StylingConstants';
@@ -20,8 +19,7 @@ const RenderBox = props => {
     
     const dispatch=useDispatch();
 
-    // const totalPrice=useSelector(priceSelector);
-    dispatch(setPriceAC(item.price));
+    // dispatch(setPriceAC(totalPrice+item.price));
 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();

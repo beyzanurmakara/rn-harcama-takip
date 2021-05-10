@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
 import { Keyboard, Text, TextInput, TouchableOpacity, View, Button, Platform, ScrollView } from 'react-native';
 
-import { Texts, useLocalization, useLocaleDateFormat } from '../../Localization';
+import { Texts, useLocalization, useLocaleDateFormat, categories } from '../../Localization';
 import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
 import Icon from '../../../Components/Icon';
 import { Svgs } from '../../../StylingConstants';
@@ -117,7 +117,7 @@ const AddNewScreen = props => {
     }
 
     const _getCategory = (item) => {
-        setShoppingType(item.name)
+        setShoppingType(loc.t(categories[item.name]))
     }
 
     return (
@@ -135,7 +135,8 @@ const AddNewScreen = props => {
                         <AddNewInput
                             value={shoppingType}
                             placeHolder={loc.t(Texts.shoppingType)}
-                            onChangeText={(text) => setShoppingType(text)} />
+                            onChangeText={(text) => setShoppingType(text)}
+                            editable={false} />
                     </View>
                     <View style={styles.inputContainer}>
                         <DateInput
@@ -146,6 +147,7 @@ const AddNewScreen = props => {
                         <AddNewInput
                             value={totalPrice}
                             placeHolder={loc.t(Texts.price)}
+                            editable={true}
                             keyboardType={'numeric'}
                             onChangeText={(text) => { setTotalPrice(text); console.log(text) }} />
                     </View>

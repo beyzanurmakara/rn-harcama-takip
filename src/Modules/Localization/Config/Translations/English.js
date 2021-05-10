@@ -1,4 +1,4 @@
-import { errorList, days, Texts } from '../TextNames';
+import { errorList, days, Texts, categories } from '../TextNames';
 export default {
     [Texts.email]:'E-mail',
     [Texts.password]:'Password',
@@ -50,5 +50,22 @@ export default {
     [Texts.monthlyExpense]:'Set your monthly expense limit',
     [Texts.pleaseEnter]:'Please enter...',
     [Texts.profile]:'Profile',
+    [categories['bill']]:'Bill',
+    [categories['clothing']]:'Clothing',
+    [categories['education']]:'Education',
+    [categories['electronic']]:'Electronic',
+    [categories['food']]:'Food',
+    [categories['gift']]:'Gift',
+    [categories['health']]:'Health',
+    [categories['home&life']]:'Home & Life',
+    [categories['jewelery&watches']]:'Jewelery & Watches',
+    [categories['market']]:'Market',
+    [categories['other']]:'Other',
+    [categories['petshop']]:'Petshop',
+    [categories['stationery&book']]:'Stationery & Book',
+    [categories['vacation&pastime']]:'Vacation & Pastime',
+    [categories['cosmetic']]:'Cosmetic',
+    [Texts.categories]:'Categories',
+
 };
 

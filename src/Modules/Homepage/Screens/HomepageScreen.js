@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { useLocalization, Texts, useLocaleDateFormat } from '../../Localization';
+import { useLocalization, categories, useLocaleDateFormat } from '../../Localization';
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 import Icon from '../../../Components/Icon';
 import DummyShoppingData from '../DummyShoppingList';
@@ -196,7 +196,7 @@ const HomePageScreen = props => {
         }
         else {
             for (let eleman of itemList) {
-                if (eleman.title == categori.name) {
+                if (eleman.title == loc.t(categories[categori.name])) {
                     newItemList.push(eleman);
                 }
             }

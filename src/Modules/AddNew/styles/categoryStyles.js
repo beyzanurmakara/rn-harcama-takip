@@ -34,6 +34,7 @@ export default Colors=> StyleSheet.create({
         backgroundColor:Colors[colorNames.addNew.categoryListBackground],
         borderRadius:Metrics.borderRadiusStandard,        
         marginBottom:Metrics.width * 0.03,
+        height:Metrics.width * 0.45,
     },
     separator:{
         borderWidth:2,

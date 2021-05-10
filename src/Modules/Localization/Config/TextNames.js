@@ -11,6 +11,25 @@ export const errorList={
     }
 }
 
+export const categories={
+    'market':'market',
+    'cosmetic':'cosmetic',
+    'health':'health',
+    'electronic':'electronic',
+    'stationery&book':'stationery&book',
+    'food':'food',
+    'education':'education',
+    'petshop':'petshop',
+    'other':'other',
+    'clothing':'clothing',
+    'home&life':'home&life',
+    'vacation&pastime':'vacation&pastime',
+    'jewelery&watches':'jewelery&watches',
+    'gift':'gift',
+    'bill':'bill',
+    'other':'other',
+}
+
 export const days={
     'Mon':'Mon',
     'Tue':'Tue',
@@ -56,5 +75,6 @@ export const Texts = {
     no:'no',
     monthlyExpense:'monthlyExpense',
     pleaseEnter:'pleaseEnter',
-    profile:'profile'
+    profile:'profile',
+    categories:'categories'
 };

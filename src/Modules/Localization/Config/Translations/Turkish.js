@@ -1,4 +1,4 @@
-import { errorList, Texts, days } from '../TextNames';
+import { errorList, Texts, days, categories } from '../TextNames';
 export default {
     [Texts.email]:'E-posta',
     [Texts.password]:'Şifre',
@@ -50,4 +50,20 @@ export default {
     [Texts.monthlyExpense]:'Aylık gider sınırınızı belirleyin',
     [Texts.pleaseEnter]:'Lütfen giriniz...',
     [Texts.profile]:'Profil',
+    [categories['bill']]:'Fatura',
+    [categories['clothing']]:'Giyim',
+    [categories['education']]:'Eğitim',
+    [categories['electronic']]:'Elektronik',
+    [categories['food']]:'Yemek',
+    [categories['gift']]:'Hediye',
+    [categories['health']]:'Sağlık',
+    [categories['home&life']]:'Ev & Yaşam',
+    [categories['jewelery&watches']]:'Mücevher & Saat',
+    [categories['market']]:'Market',
+    [categories['other']]:'Diğer',
+    [categories['petshop']]:'Petshop',
+    [categories['stationery&book']]:'Kırtasiye & Kitap',
+    [categories['vacation&pastime']]:'Tatil & Eğlence',
+    [categories['cosmetic']]:'Kozmetik',
+    [Texts.categories]:'Kategoriler',
 };

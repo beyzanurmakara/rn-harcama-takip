@@ -3,6 +3,7 @@ import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 
 import { categoryList } from '../../Homepage/categoryList';
 import { useThemedStyles } from '../../Theming';
+import {useLocalization, Texts, categories} from '../../Localization';
 
 import getStyles from '../styles/categoryStyles';
 
@@ -10,6 +11,8 @@ const Category = props => {
     const [isVisible, setIsVisible] = useState(false);
 
     const styles=useThemedStyles(getStyles);
+
+    const loc= useLocalization();
 
     const _onPressItem=(item)=>{
         setIsVisible(false);
@@ -19,7 +22,7 @@ const Category = props => {
     const _renderList = ({ item }) => {
         return (
             <TouchableOpacity style={styles.textContainer} onPress={()=>_onPressItem(item)}>
-                <Text style={styles.text}>{item.name}</Text>
+                <Text style={styles.text}>{loc.t(categories[item.name])}</Text>
             </TouchableOpacity>
         )
     }
@@ -32,7 +35,7 @@ const Category = props => {
         <View>
             <View style={styles.containerTouch}>
                 <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
-                    <Text style={styles.textHeader}>Kategoriler</Text>
+                    <Text style={styles.textHeader}>{loc.t(Texts.categories)}</Text>
                 </TouchableOpacity>
             </View>
             {

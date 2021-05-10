@@ -1,38 +1,62 @@
 export const categoryList=[
     {
         id:1,
-        name:'Market',
+        name:'market',
     },
     {
         id:2,
-        name:'Kozmetik',
+        name:'cosmetic',
     },
     {
         id:3,
-        name:'Sağlık',
+        name:'health',
     },
     {
         id:4,
-        name:'Elektronik',
+        name:'electronic',
     },
     {
         id:5,
-        name:'Kırtasiye',
+        name:'stationery&book',
     },
     {
         id:6,
-        name:'Yemek',
+        name:'food',
     },
     {
         id:7,
-        name:'Eğitim',
+        name:'education',
     },
     {
         id:8,
-        name:'Petshop',
+        name:'petshop',
     },
     {
         id:9,
-        name:'Diğer'
+        name:'clothing'
+    },
+    {
+        id:10,
+        name:'home&life',
+    },
+    {
+        id:11,
+        name:'vacation&pastime',
+    },
+    {
+        id:12,
+        name:'jewelery&watches',
+    },
+    {
+        id:13,
+        name:'gift'
+    },
+    {
+        id:14,
+        name:'bill',
+    },
+    {
+        id:16,
+        name:'other'
     }
 ]

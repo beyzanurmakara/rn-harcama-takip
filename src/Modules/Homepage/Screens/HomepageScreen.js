@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 import { getProfileSubscribe, updateProfile } from '../../Settings/API/Firebase';
 import { getCurrentUser } from '../../Auth';
+import CreateProfile from '../Components/CreateProfile';
 
 
 
@@ -28,6 +29,7 @@ const HomePageScreen = props => {
     const [selectedItemList, setSelectedItemList] = useState([]);
     const [itemList, setItemList] = useState(null);
     const [profile, setProfile] = useState(null);
+    const [isProfile,setIsProfile]=useState(false);
 
 
     const styles = useThemedStyles(getStyles);
@@ -56,15 +58,16 @@ const HomePageScreen = props => {
 
         const off = getProfileSubscribe((data) => {
             if (data === null) {
-                alert('UseEffect Profilizinizi Ayarlardan Düzenleyin')
+                setIsProfile(true);
+                //alert('UseEffect Profilizinizi Ayarlardan Düzenleyin')
             }
             else {
                 setProfile(data)
                 //burayı create kısmında yapabilirim.
                 // updateProfile({
-                //     income:data.income,
-                //     expense:data.expense,
-                //     total:total,
+                //     income: data.income,
+                //     expense: data.expense,
+                //     total: total,
                 // })
             }
         });
@@ -94,6 +97,7 @@ const HomePageScreen = props => {
         console.log('---------')
         for (let key of selectedItemList) {
             console.log('*', key)
+            profile!==null && 
             getItemDetail(key, item => {
                 updateProfile({
                     expense: profile.expense,
@@ -177,15 +181,23 @@ const HomePageScreen = props => {
 
     }
     return (
-        <HomePageScreenUI
-            data={itemList}
-            renderItem={_renderShoppingList}
-            onPress_Cancel={_onPress_Cancel}
-            onPress_Add={_onPress_Add}
-            onPress_Delete={_onPress_Delete}
-            isVisible={isVisble}
-            profile={profile}
-        />
+        <>
+            {
+                isProfile?
+                <CreateProfile/>
+                :
+                null
+            }
+            <HomePageScreenUI
+                data={itemList}
+                renderItem={_renderShoppingList}
+                onPress_Cancel={_onPress_Cancel}
+                onPress_Add={_onPress_Add}
+                onPress_Delete={_onPress_Delete}
+                isVisible={isVisble}
+                profile={profile}
+            />
+        </>
     );
 };
 

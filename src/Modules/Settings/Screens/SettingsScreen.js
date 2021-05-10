@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-native-modal';
@@ -17,6 +17,14 @@ import EditProfile from '../Components/EditProfile';
 const SettingsScreen = props => {
 
     const [isModalVisible, setIsModalVisible] = useState(false);
+
+    useEffect(() => {
+        const mode = props.route.params;
+        console.log('settings screen mode', mode)
+        if (mode) {
+            setIsModalVisible(mode)
+        }
+    }, []);
 
     const styles = useThemedStyles(getStyles);
     const currentTheme = useTheme();
@@ -48,7 +56,7 @@ const SettingsScreen = props => {
         setIsModalVisible(false);
     }
 
-    const onPress_DisplayName=()=>{
+    const onPress_DisplayName = () => {
         props.navigation.navigate('profile-screen');
     }
     return (
@@ -104,7 +112,7 @@ const SettingsScreen = props => {
                 animationInTiming={1000}
                 animationOutTiming={1000}
             >
-                <EditProfile isVisibleMode={()=>setIsModalVisible(false)} />
+                <EditProfile isVisibleMode={() => setIsModalVisible(false)} />
             </Modal>
         </>
     );

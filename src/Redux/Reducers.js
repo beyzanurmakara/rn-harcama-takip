@@ -7,6 +7,7 @@ import { LocalizationReducer } from '../Modules/Localization';
 import { userReducer } from '../Modules/Auth';
 import { loadingReducer } from '../Modules/Loading';
 import { errorReducer } from '../Modules/Error'
+import { totalReducer } from '../Modules/Homepage/Redux/TotalRedux';
 
 export default combineReducers({
   theme: ThemeReducer,
@@ -14,6 +15,7 @@ export default combineReducers({
   auth:userReducer,
   loading:loadingReducer,
   error:errorReducer,
+  total:totalReducer,
 });
 
 

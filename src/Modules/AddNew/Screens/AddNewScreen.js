@@ -50,7 +50,7 @@ const AddNewScreen = props => {
     }, [])
 
     const { key, title, price, date, explanation } = props.route.params;
- 
+
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
 
@@ -114,6 +114,10 @@ const AddNewScreen = props => {
         }
     }
 
+    const _getCategory = (item) => {
+        setShoppingType(item.name)
+    }
+
     return (
         <ScrollView style={styles.scrollView}>
             <TouchableOpacity style={styles.container} onPress={() => Keyboard.dismiss()} activeOpacity={1}>
@@ -121,8 +125,9 @@ const AddNewScreen = props => {
                     key !== undefined ?
                         <CancelText isVisible={false} onPress_Cancel={_onPress_Cancel} />
                         :
-                        null//<Category/>
+                        null
                 }
+                {/* <Category onPress_item={_getCategory} /> */}
                 <View style={styles.inputsContainer}>
                     <View style={styles.inputContainer}>
                         <AddNewInput

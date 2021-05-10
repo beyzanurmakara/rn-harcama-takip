@@ -17,6 +17,7 @@ const AddNewInput = props => {
                 <TextInput
                     keyboardType={props.keyboardType}
                     style={styles.input}
+                    editable={false}
                     value={props.value}
                     onChangeText={props.onChangeText}
                     placeholder={props.placeHolder}

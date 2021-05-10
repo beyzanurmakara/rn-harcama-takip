@@ -21,6 +21,7 @@ import { getProfileSubscribe, updateProfile } from '../../Settings/API/Firebase'
 import { getCurrentUser } from '../../Auth';
 import CreateProfile from '../Components/CreateProfile';
 import Categories from '../Components/Categories';
+import { categoryList } from '../categoryList';
 
 
 
@@ -205,6 +206,7 @@ const HomePageScreen = props => {
             }
             else{
                 setTempItemList(itemList)
+                
             }
         }
 

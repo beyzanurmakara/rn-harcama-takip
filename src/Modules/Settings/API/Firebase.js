@@ -12,15 +12,17 @@ export const createProfile=async(profile, onComplete)=>{
         console.log(error);
     }
 }
-export const getProfileSubscribe=(userID, onRetrieved)=>{
+export const getProfileSubscribe=(onRetrieved)=>{
+    const userID=getCurrentUser().uid;
     database()
         .ref(`/userProfile/${userID}`)
         .on('value',snapshot=>{
             onRetrieved(snapshot.val());
+            //console.log('firebase',snapshot.val())
         });
     return()=>{
         database()
             .ref(`/userProfile/${userID}`)
-            .off();
+            .off('value');
     };
 }

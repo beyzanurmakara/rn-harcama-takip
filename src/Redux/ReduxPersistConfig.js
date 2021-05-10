@@ -14,6 +14,7 @@ const REDUX_PERSIST = {
       'theme',
       'localization',
       'auth',
+      'shopping'
     ],
   },
 };

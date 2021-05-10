@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import moment from 'moment';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 import { useLocalization, days, useLocaleDateFormat } from '../../Localization';
 import Icon from '../../../Components/Icon';
+import { priceSelector, setPriceAC} from '../Redux/ShoppingListRedux';
 
 import getStyles from '../styles/RenderBoxStyles';
 import { Svgs } from '../../../StylingConstants';
 
+
 const RenderBox = props => {
 
+    //const[totalPrice,setTotalPrice]=useState(0);
     const  item=props.item;
     let isSelected =props.isSelected;
     
+    const dispatch=useDispatch();
+
+    // const totalPrice=useSelector(priceSelector);
+    dispatch(setPriceAC(item.price));
+
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
 

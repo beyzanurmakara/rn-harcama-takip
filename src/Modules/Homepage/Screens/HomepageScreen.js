@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useLocalization, Texts, useLocaleDateFormat } from '../../Localization';
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
@@ -18,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 import { getProfileSubscribe } from '../../Settings/API/Firebase';
 import { getCurrentUser } from '../../Auth';
+import { priceSelector } from '../Redux/ShoppingListRedux';
 
 
 
@@ -26,7 +28,7 @@ const HomePageScreen = props => {
     const [isVisble, setIsVisible] = useState(true);
     const [selectedItemList, setSelectedItemList] = useState([]);
     const [itemList, setItemList] = useState(null);
-    const [profile,setProfile]= useState(null);
+    const [profile, setProfile] = useState(null);
 
 
     const styles = useThemedStyles(getStyles);
@@ -35,11 +37,11 @@ const HomePageScreen = props => {
     const loc = useLocalization();
     const dateLocale = useLocaleDateFormat();
 
-    const dispatch = useDispatch();
-    const userID=getCurrentUser().uid;
+    const totalPrice=useSelector(priceSelector);
+    const userID = getCurrentUser().uid;
     const navigation = useNavigation();
 
-    useEffect(() => {
+    useEffect(() => {        
         const off = subscribeToItemData((data) => {
             let shoppingList = createShoppingListForRender(data, dateLocale);
             setItemList(shoppingList);
@@ -48,20 +50,21 @@ const HomePageScreen = props => {
             off()
         }
     }, [])
-    useEffect(()=>{
-        const off =getProfileSubscribe(userID,(data)=>{
-            //console.log(data)
-            //setProfile(data)
-            if(data===null){
-                alert('Profilizinizi Ayarlardan Düzenleyin')
+
+    useEffect(() => {
+        
+        const off = getProfileSubscribe((data) => {
+            if (data === null) {
+                alert('UseEffect Profilizinizi Ayarlardan Düzenleyin')
             }
             setProfile(data)
+            console.log(data)
         });
-        return()=>{
+        return () => {
             off()
         }
-    },[profile])
-    
+    }, [])
+
 
     const _onPress_Delete = () => {
 
@@ -92,44 +95,55 @@ const HomePageScreen = props => {
     }
 
     const _renderShoppingList = ({ item }) => {
+        console.log(totalPrice)
 
-        let isSelected = getIsSelected(item.key);
+        if (profile !== null) {
 
-        // checkbox seçildiğinde
-        const onSelect_Item = (key, isSelected) => {
-            let copyList = [...selectedItemList];
-            if (isSelected) {
-                let indexNumber = copyList.indexOf(key);
-                copyList.splice(indexNumber, 1);
+            //await AsyncStorage.setItem('priceTotal',0);
+
+            let isSelected = getIsSelected(item.key);
+
+            // checkbox seçildiğinde
+            const onSelect_Item = (key, isSelected) => {
+                let copyList = [...selectedItemList];
+                if (isSelected) {
+                    let indexNumber = copyList.indexOf(key);
+                    copyList.splice(indexNumber, 1);
+                }
+                else {
+                    copyList.push(key);
+                }
+
+                setSelectedItemList(copyList);
             }
-            else {
-                copyList.push(key);
+
+            // kutucuğun üstüne basıldığında
+            const onPress_Item = (item) => {
+                navigation.navigate('add-new-screen', {
+                    key: item.key,
+                    title: item.title,
+                    date: item.date,
+                    price: item.price,
+                    explanation: item.explanation,
+                });
             }
 
-            setSelectedItemList(copyList);
+            return (
+                <RenderBox
+                    item={item}
+                    isVisible={isVisble}
+                    isSelected={isSelected}
+                    onLongPress={() => setIsVisible(false)}
+                    onSelect_Item={onSelect_Item}
+                    onPress_Item={onPress_Item}
+                />
+            );
+        }
+        else {
+            alert('Profilinizi düzenleyin');
         }
 
-        // kutucuğun üstüne basıldığında
-        const onPress_Item = (item) => {
-            navigation.navigate('add-new-screen', {
-                key: item.key,
-                title: item.title,
-                date: item.date,
-                price: item.price,
-                explanation: item.explanation,
-            });
-        }
 
-        return (
-            <RenderBox
-                item={item}
-                isVisible={isVisble}
-                isSelected={isSelected}
-                onLongPress={() => setIsVisible(false)}
-                onSelect_Item={onSelect_Item}
-                onPress_Item={onPress_Item}
-            />
-        );
     }
     return (
         <HomePageScreenUI

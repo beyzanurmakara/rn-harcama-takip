@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/core';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Keyboard, Text, TextInput, TouchableOpacity, View, Button, Platform, ScrollView } from 'react-native';
 
 import { Texts, useLocalization, useLocaleDateFormat } from '../../Localization';
@@ -24,31 +24,32 @@ import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 
 const AddNewScreen = props => {
 
-    const[shoppingType,setShoppingType]=useState('');
-    const[momentDate,setMomentDate]=useState('');
-    const[totalPrice,setTotalPrice]=useState('');
-    const[detail,setDetail]=useState('');
+    const [shoppingType, setShoppingType] = useState('');
+    const [momentDate, setMomentDate] = useState('');
+    const [totalPrice, setTotalPrice] = useState('');
+    const [detail, setDetail] = useState('');
 
     const navigation = useNavigation();
 
-    useEffect(()=>{
+    useEffect(() => {
         navigation.setOptions({
-            title:header,
+            title: header,
         })
-    },[]);
+    }, []);
 
-    useEffect(()=>{
-        if(key){
-            getItemDetail(key, item=>{
+    useEffect(() => {
+        if (key) {
+            getItemDetail(key, item => {
                 setShoppingType(item.title);
                 setMomentDate(item.date);
                 setTotalPrice(item.price);
                 setDetail(item.detail);
             });
         }
-    },[])
+    }, [])
 
-    const { key, title, price, date, explanation }=props.route.params;
+    const { key, title, price, date, explanation } = props.route.params;
+ 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
 
@@ -56,49 +57,49 @@ const AddNewScreen = props => {
 
     const dateFormat = useLocaleDateFormat();
 
-    let header=loc.t(Texts.addNew);
-    if(key!==undefined){
-        header=loc.t(Texts.edit);
+    let header = loc.t(Texts.addNew);
+    if (key !== undefined) {
+        header = loc.t(Texts.edit);
     }
-    
-    const dispatch =useDispatch();
 
-    const _onPress_Cancel =()=>{
+    const dispatch = useDispatch();
+
+    const _onPress_Cancel = () => {
         console.log('düzenleme modunda iptal işlemi yapılacak');
-        getItemDetail(key, item=>{
+        getItemDetail(key, item => {
             setShoppingType(item.title);
             setMomentDate(item.date);
             setTotalPrice(item.price);
             setDetail(item.detail);
         });
-        
+
     }
-    const onPress_add=()=>{
+    const onPress_add = () => {
 
         dispatch(setIsLoadingAC(true));
-        const shoppingItem={
-            title:shoppingType,
-            date:momentDate,
-            price:totalPrice,
+        const shoppingItem = {
+            title: shoppingType,
+            date: momentDate,
+            price: totalPrice,
             detail,
         }
 
-        const onComplete=()=>{
+        const onComplete = () => {
             dispatch(setIsLoadingAC(false));
             navigation.goBack();
         }
 
-        addItem(shoppingItem,onComplete);
-        
+        addItem(shoppingItem, onComplete);
+
     }
     const onPress_Ok = () => {
 
         if (key) {
             dispatch(setIsLoadingAC(true));
             const shoppingItem = {
-                key:key,
+                key: key,
                 title: shoppingType,
-                date:momentDate,
+                date: momentDate,
                 price: totalPrice,
                 detail,
             }
@@ -108,46 +109,46 @@ const AddNewScreen = props => {
                 navigation.goBack();
             }
 
-            updateItem(shoppingItem,onComplete);
+            updateItem(shoppingItem, onComplete);
         }
     }
-    
+
     return (
         <ScrollView style={styles.scrollView}>
             <TouchableOpacity style={styles.container} onPress={() => Keyboard.dismiss()} activeOpacity={1}>
                 {
-                    key!==undefined ?
-                    <CancelText isVisible={false} onPress_Cancel={_onPress_Cancel}/>
-                    :
-                    null
+                    key !== undefined ?
+                        <CancelText isVisible={false} onPress_Cancel={_onPress_Cancel} />
+                        :
+                        null
                 }
                 <View style={styles.inputsContainer}>
                     <View style={styles.inputContainer}>
                         <AddNewInput
                             value={shoppingType}
                             placeHolder={loc.t(Texts.shoppingType)}
-                            onChangeText={(text) => setShoppingType(text)}                 />
+                            onChangeText={(text) => setShoppingType(text)} />
                     </View>
                     <View style={styles.inputContainer}>
-                        <DateInput 
+                        <DateInput
                             value={date} //date
-                            onChange_date={(text)=>{setMomentDate(text)}}/>
+                            onChange_date={(text) => { setMomentDate(text) }} />
                     </View>
                     <View style={styles.inputContainer}>
                         <AddNewInput
                             value={totalPrice}
                             placeHolder={loc.t(Texts.price)}
                             keyboardType={'numeric'}
-                            onChangeText={(text) => {setTotalPrice(text);console.log(text)}}           />
+                            onChangeText={(text) => { setTotalPrice(text); console.log(text) }} />
                     </View>
                     <View style={styles.inputContainer}>
-                        <AddNewMultilineInput value={detail} onChange_detail={(text)=>{setDetail(text)}}/>
+                        <AddNewMultilineInput value={detail} onChange_detail={(text) => { setDetail(text) }} />
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <AddButton 
-                        text={key===undefined ? loc.t(Texts.add) : loc.t(Texts.okey)} 
-                        onPress_button={key===undefined ? onPress_add : onPress_Ok}
+                    <AddButton
+                        text={key === undefined ? loc.t(Texts.add) : loc.t(Texts.okay)}
+                        onPress_button={key === undefined ? onPress_add : onPress_Ok}
                     />
                 </View>
             </TouchableOpacity>

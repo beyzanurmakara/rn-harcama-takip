@@ -7,7 +7,6 @@ import { LocalizationReducer } from '../Modules/Localization';
 import { userReducer } from '../Modules/Auth';
 import { loadingReducer } from '../Modules/Loading';
 import { errorReducer } from '../Modules/Error'
-import { shoppingReducer } from '../Modules/Homepage/Redux/ShoppingListRedux';
 
 export default combineReducers({
   theme: ThemeReducer,
@@ -15,7 +14,6 @@ export default combineReducers({
   auth:userReducer,
   loading:loadingReducer,
   error:errorReducer,
-  shopping:shoppingReducer,
 });
 
 

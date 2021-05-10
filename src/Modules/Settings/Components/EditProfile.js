@@ -53,6 +53,7 @@ const EditProfile = props => {
             const profile={
                 income,
                 expense,
+                total:0,
             }
             createProfile(profile,onComplete)            
             props.isVisibleMode();

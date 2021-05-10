@@ -1,9 +1,9 @@
 import database from '@react-native-firebase/database';
 import { getCurrentUser } from '../../Auth';
 
-export const createProfile=async(profile, onComplete)=>{
+export const createProfile = async (profile, onComplete) => {
     try {
-        const userID=getCurrentUser().uid;
+        const userID = getCurrentUser().uid;
         await database()
             .ref(`/userProfile/${userID}`)
             .set(profile);
@@ -12,17 +12,34 @@ export const createProfile=async(profile, onComplete)=>{
         console.log(error);
     }
 }
-export const getProfileSubscribe=(onRetrieved)=>{
-    const userID=getCurrentUser().uid;
+export const getProfileSubscribe = (onRetrieved) => {
+    const userID = getCurrentUser().uid;
     database()
         .ref(`/userProfile/${userID}`)
-        .on('value',snapshot=>{
+        .on('value', snapshot => {
             onRetrieved(snapshot.val());
             //console.log('firebase',snapshot.val())
         });
-    return()=>{
+    return () => {
         database()
             .ref(`/userProfile/${userID}`)
             .off('value');
     };
+}
+
+export const updateProfile = async (profile) => {
+    try {
+        const userID=getCurrentUser().uid;
+        const userProfile={
+            expense:profile.expense,
+            income:profile.income,
+            total:profile.total,
+        }
+        await database()
+            .ref(`/userProfile/${userID}`)
+            .update(userProfile)
+        //onComplete();
+    } catch (error) {
+        console.log(error)
+    }
 }

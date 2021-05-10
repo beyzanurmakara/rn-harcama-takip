@@ -9,6 +9,7 @@ import Icon from '../../../Components/Icon';
 
 import getStyles from '../styles/RenderBoxStyles';
 import { Svgs } from '../../../StylingConstants';
+import { updateProfile } from '../../Settings/API/Firebase';
 
 
 const RenderBox = props => {
@@ -17,9 +18,20 @@ const RenderBox = props => {
     const  item=props.item;
     let isSelected =props.isSelected;
     
-    const dispatch=useDispatch();
-
-    // dispatch(setPriceAC(totalPrice+item.price));
+    useEffect(()=>{
+        const profile=props.profile;
+        const total=parseInt(profile.total) + parseInt(item.price);
+    
+        const onComplete = () => {
+            console.log('işlem tamam.');
+        }
+        const profileNew={
+            exense:profile.expense,
+            income:profile.income,
+            total,
+        }
+        updateProfile(profileNew, onComplete)
+    },[item]);
 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();

@@ -1,27 +1,23 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useLocalization, categories, useLocaleDateFormat } from '../../Localization';
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
-import Icon from '../../../Components/Icon';
-import DummyShoppingData from '../DummyShoppingList';
 
 import RenderBox from '../Components/RenderBox';
 import HomePageScreenUI from './HomeScreenUI';
 
 import getStyles from '../styles/HomepageScreenStyles';
-import { Svgs } from '../../../StylingConstants';
+
 import { deleteItem, getItemDetail, subscribeToItemData } from '../../../API/Firebase';
 import { createShoppingListForRender } from '../Utils/RenderListUtils';
-import { useDispatch, useSelector } from 'react-redux';
-import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 import { getProfileSubscribe, updateProfile } from '../../Settings/API/Firebase';
 import { getCurrentUser } from '../../Auth';
 import CreateProfile from '../Components/CreateProfile';
 import Categories from '../Components/Categories';
-import { categoryList } from '../categoryList';
+import { setTotalAC, totalSelector } from '../Redux/TotalRedux'
 
 
 
@@ -46,7 +42,11 @@ const HomePageScreen = props => {
     const userID = getCurrentUser().uid;
     const navigation = useNavigation();
 
+    const dispatch =useDispatch();
+
     let total = 0;
+
+    let totalRedux=totalRedux = useSelector(totalSelector);
 
     useEffect(() => {
         const off = subscribeToItemData((data) => {
@@ -64,23 +64,21 @@ const HomePageScreen = props => {
         const off = getProfileSubscribe((data) => {
             if (data === null) {
                 setIsProfile(true);
-                //alert('UseEffect Profilizinizi Ayarlardan Düzenleyin')
             }
             else {
                 setIsProfile(false)
                 setProfile(data)
-                //burayı create kısmında yapabilirim.
-                // updateProfile({
-                //     income: data.income,
-                //     expense: data.expense,
-                //     total: total,
-                // })
             }
         });
         return () => {
             off()
         }
+        
     }, [])
+
+    // useEffect(()=>{
+    //     dispatch(setTotalAC(total))
+    // },[total]);
 
     useEffect(() => {
         console.log("********")
@@ -98,6 +96,7 @@ const HomePageScreen = props => {
                 }
             }
         }
+        dispatch(setTotalAC(total))
     }, [itemList]);
 
     const _onPress_Delete = () => {
@@ -139,10 +138,6 @@ const HomePageScreen = props => {
     }
 
     const _renderShoppingList = ({ item }) => {
-
-
-
-        //await AsyncStorage.setItem('priceTotal',0);
 
         let isSelected = getIsSelected(item.key);
 
@@ -220,7 +215,8 @@ const HomePageScreen = props => {
                     null
             }
             <Categories onPress_Item={_getCagetory} />
-            <Text>Toplam Harcamanız: {profile?.total} TL</Text>
+            {/* <Text>Toplam Harcamanız: {profile?.total} TL</Text> */}
+            <Text>Toplam Harcamanız: {profile!==null?profile.total:totalRedux} TL</Text>
             <HomePageScreenUI
                 data={tempItemList}
                 renderItem={_renderShoppingList}

@@ -10,9 +10,11 @@ import { userSelector } from '../../Auth';
 import { updateUser } from '../../Auth/API/Firebase';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 import { createProfile } from '../API/Firebase';
+import { totalSelector } from '../../Homepage/Redux/TotalRedux';
 
 const EditProfile = props => {
     const user =useSelector(userSelector);
+    const totalRedux=useSelector(totalSelector);
 
     const [expenseLimit, setExpenseLimit] = useState(false);
     const [income,setIncome]=useState(0);
@@ -53,7 +55,7 @@ const EditProfile = props => {
             const profile={
                 income,
                 expense,
-                total:0,
+                total:totalRedux,
             }
             createProfile(profile,onComplete)            
             props.isVisibleMode();

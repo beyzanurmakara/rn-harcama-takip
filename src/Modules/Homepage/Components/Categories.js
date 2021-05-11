@@ -43,6 +43,8 @@ const Categories = props => {
                 renderItem={_renderItem}
                 keyExtractor={(item, index) => item.id}
                 horizontal={true}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
             // numColumns={categoryList.length}
             />
         </View>

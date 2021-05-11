@@ -47,6 +47,8 @@ const Category = props => {
                             keyExtractor={(item, index) => item.id}
                             ItemSeparatorComponent={_separatorComponent}
                             style={styles.flatContainer}
+                            showsHorizontalScrollIndicator={false}
+                            showsVerticalScrollIndicator={false}
                         />
                     </View>
                     :

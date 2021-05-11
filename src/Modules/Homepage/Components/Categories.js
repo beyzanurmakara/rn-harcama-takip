@@ -45,7 +45,6 @@ const Categories = props => {
                 horizontal={true}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
-            // numColumns={categoryList.length}
             />
         </View>
     );

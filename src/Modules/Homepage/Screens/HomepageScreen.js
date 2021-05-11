@@ -210,7 +210,7 @@ const HomePageScreen = props => {
         <>
             {
                 isProfile ?
-                    <CreateProfile />
+                    <CreateProfile isProfile={isProfile}/>
                     :
                     null
             }

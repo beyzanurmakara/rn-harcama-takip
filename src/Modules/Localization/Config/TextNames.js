@@ -76,5 +76,8 @@ export const Texts = {
     monthlyExpense:'monthlyExpense',
     pleaseEnter:'pleaseEnter',
     profile:'profile',
-    categories:'categories'
+    categories:'categories',
+    createProfileText1:'createProfileText1',
+    createProfileText2:'createProfileText2',
+    fromHere:'fromHere'
 };

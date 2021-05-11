@@ -66,4 +66,7 @@ export default {
     [categories['vacation&pastime']]:'Tatil & Eğlence',
     [categories['cosmetic']]:'Kozmetik',
     [Texts.categories]:'Kategoriler',
+    [Texts.createProfileText1]:'Profil oluşturursanız gelişmiş özellikleri kullanabilirsiniz',
+    [Texts.createProfileText2]:'oluşturabilirsin',
+    [Texts.fromHere]:'Buradan',
 };

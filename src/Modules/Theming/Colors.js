@@ -98,6 +98,12 @@ export const colorNames = {
         inputBackground:'editProfile/inputBackground',
         buttonBackground:'editProfile/buttonBackground',
         yesNoButton:'editProfile/yesNoButton',
+    },
+    createProfile:{
+        background:'createProfile/background',
+        containerBackGround:'createProfile/containerBackGround',
+        text:'createProfile/text',
+        fromHereText:'createProfile/fromHereText'
     }
 };
 
@@ -178,7 +184,12 @@ export const darkColors = {
     [colorNames.editProfile.borderColor]:constantColors.white,
     [colorNames.editProfile.inputBackground]:'rgba(115, 181, 201, 0.2)',
     [colorNames.editProfile.buttonBackground]:constantColors.mainColor2,
-    [colorNames.editProfile.yesNoButton]:'rgba(255, 146, 87, 0.5)'
+    [colorNames.editProfile.yesNoButton]:'rgba(255, 146, 87, 0.5)',
+    //createProfile
+    [colorNames.createProfile.background]:'rgba(115, 181, 201, 0.2)',
+    [colorNames.createProfile.containerBackGround]:constantColors.greys[1],
+    [colorNames.createProfile.text]:constantColors.greys[4],
+    [colorNames.createProfile.fromHereText]:constantColors.delete,
 
 };
 
@@ -259,6 +270,11 @@ export const lightColors = {
     [colorNames.editProfile.borderColor]:constantColors.greys[2],
     [colorNames.editProfile.inputBackground]:'rgba(115, 181, 201, 0.2)',
     [colorNames.editProfile.buttonBackground]:constantColors.mainColor2,
-    [colorNames.editProfile.yesNoButton]:'rgba(255, 146, 87, 0.5)'
+    [colorNames.editProfile.yesNoButton]:'rgba(255, 146, 87, 0.5)',
+    //createProfile
+    [colorNames.createProfile.background]:'rgba(115, 181, 201, 0.2)',
+    [colorNames.createProfile.containerBackGround]:constantColors.white,
+    [colorNames.createProfile.text]:constantColors.black,
+    [colorNames.createProfile.fromHereText]:constantColors.delete,
  
 };

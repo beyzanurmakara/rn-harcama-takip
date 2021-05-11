@@ -66,6 +66,8 @@ export default {
     [categories['vacation&pastime']]:'Vacation & Pastime',
     [categories['cosmetic']]:'Cosmetic',
     [Texts.categories]:'Categories',
-
+    [Texts.createProfileText1]:'If you create a profile, you can use advanced features',
+    [Texts.createProfileText2]:'You can create',
+    [Texts.fromHere]:'from here',
 };
 

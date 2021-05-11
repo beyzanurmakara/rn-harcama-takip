@@ -79,5 +79,6 @@ export const Texts = {
     categories:'categories',
     createProfileText1:'createProfileText1',
     createProfileText2:'createProfileText2',
-    fromHere:'fromHere'
+    fromHere:'fromHere',
+    search:'search'
 };

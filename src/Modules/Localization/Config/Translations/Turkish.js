@@ -69,4 +69,5 @@ export default {
     [Texts.createProfileText1]:'Profil oluşturursanız gelişmiş özellikleri kullanabilirsiniz',
     [Texts.createProfileText2]:'oluşturabilirsin',
     [Texts.fromHere]:'Buradan',
+    [Texts.search]:'Arama'
 };

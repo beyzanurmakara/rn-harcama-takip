@@ -1,15 +1,16 @@
 import { StyleSheet } from 'react-native';
 import { Fonts, Metrics } from '../../../StylingConstants';
+import {colorNames} from '../../Theming';
 
 export default Colors=>StyleSheet.create({
     container:{
-        backgroundColor:'yellow'
+        backgroundColor:Colors[colorNames.homePage.background]
     },
     searchBar:{
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        borderColor:'black',
+        borderColor:Colors[colorNames.homePage.shoppingItemPriceText],
         borderWidth:1,
         margin:Metrics.width*0.03,
         marginHorizontal:Metrics.marginHorizontal,
@@ -23,6 +24,7 @@ export default Colors=>StyleSheet.create({
         paddingHorizontal:Metrics.width * 0.03,
         fontFamily:Fonts.type.regular,
         fontSize:Fonts.size(15),
+        color:Colors[colorNames.homePage.shoppingItemPriceText]
     },
     iconContainer:{
         width:Metrics.width * 0.1,
@@ -34,6 +36,6 @@ export default Colors=>StyleSheet.create({
         padding:Metrics.width * 0.025,
     },
     icon:{
-        color:'black'
+        color:Colors[colorNames.homePage.addButtonBackground]
     }
 });

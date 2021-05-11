@@ -220,6 +220,7 @@ const HomePageScreen = props => {
                     null
             }
             <Categories onPress_Item={_getCagetory} />
+            <Text>Toplam Harcamanız: {profile?.total} TL</Text>
             <HomePageScreenUI
                 data={tempItemList}
                 renderItem={_renderShoppingList}

@@ -18,6 +18,7 @@ import { getCurrentUser } from '../../Auth';
 import CreateProfile from '../Components/CreateProfile';
 import Categories from '../Components/Categories';
 import { setTotalAC, totalSelector } from '../Redux/TotalRedux'
+import SearchBar from '../Components/SearchBar';
 
 
 
@@ -216,7 +217,8 @@ const HomePageScreen = props => {
             }
             <Categories onPress_Item={_getCagetory} />
             {/* <Text>Toplam Harcamanız: {profile?.total} TL</Text> */}
-            <Text>Toplam Harcamanız: {profile!==null?profile.total:totalRedux} TL</Text>
+            {/* <Text>Toplam Harcamanız: {profile!==null?profile.total:totalRedux} TL</Text> */}
+            <SearchBar/>
             <HomePageScreenUI
                 data={tempItemList}
                 renderItem={_renderShoppingList}

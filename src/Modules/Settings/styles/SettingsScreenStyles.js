@@ -52,4 +52,16 @@ export default Colors => StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    iconContainer:{
+        position:'absolute',
+        right:Metrics.width * 0.1,
+        top:Metrics.width *0.03,
+        width:Metrics.width * 0.1,
+        height:undefined,
+        aspectRatio:1,
+        //backgroundColor:'pink'
+    },
+    icon:{
+        color:Colors[colorNames.settings.usernameText]
+    }
 });

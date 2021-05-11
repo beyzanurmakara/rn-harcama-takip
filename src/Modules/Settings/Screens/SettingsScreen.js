@@ -72,10 +72,14 @@ const SettingsScreen = props => {
                         <Text style={styles.emailText}>
                             {user.email}
                         </Text>
-                        <TouchableOpacity onPress={_onPress_EditProfile}>
-                            <Text style={styles.updateProfile}>{loc.t(Texts.editProfile)}</Text>
-                        </TouchableOpacity>
+                        <View style={styles.iconContainer}>
+                            <TouchableOpacity onPress={_onPress_EditProfile}>
+                                {/* <Text style={styles.updateProfile}>{loc.t(Texts.editProfile)}</Text> */}
+                                <Icon svg={Svgs.Edit} iconStyle={styles.icon}/>
+                            </TouchableOpacity>
+                        </View>
                     </View>
+
                     <View style={{ flexGrow: 1 }}>
                         <OptionMenu
                             menuTitle={loc.t(Texts.language)}

@@ -7,7 +7,7 @@ export default Colors => StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor:Colors[colorNames.settings.background],
-        padding:Metrics.marginHorizontal,
+        padding:Metrics.marginHorizontal/2,
         //padding: Metrics.marginHorizontal,
     }, 
     columnWrapperStyle: {
@@ -16,12 +16,12 @@ export default Colors => StyleSheet.create({
         marginVertical: Metrics.width * 0.025,
     },
     contentContainerStyle: {
-        backgroundColor:'yellow',
+        //backgroundColor:'yellow',
         marginTop: Metrics.width * 0.035,
     },
     boxContainer:{ 
         //flex:1, 
-        paddingVertical:Metrics.width * 0.05,
+        paddingVertical:Metrics.width * 0.03,
         flexDirection:'row',
         //backgroundColor:'pink',
         flexShrink:1,

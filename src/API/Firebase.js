@@ -10,6 +10,7 @@ export const subscribeToItemData = (onDataRetrieved) => {
         .on('value', snapshot => {
             const rawData = snapshot.val();
             const convertedList = converterRawData(rawData);
+            //console.log(convertedList);
             onDataRetrieved(convertedList);
         });
     return () => {
@@ -35,6 +36,7 @@ export const addItem = async (item, onComlete) => {
             title: item.title,
             date: item.date,
             price: item.price,
+            detail:item.detail,
         };
 
         const userId = getCurrentUser().uid;

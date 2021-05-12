@@ -17,6 +17,7 @@ export const createShoppingListForRender = (itemList, localeDateFormat)=>{
         item.price=itemList[items].price;
         item.date=itemList[items].date;
         item.day=getDayText(itemList[items].date);
+        item.detail=itemList[items].detail;
         convertedList.push(item);
         item={};
     }

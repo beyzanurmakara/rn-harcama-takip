@@ -9,6 +9,7 @@ import CalendarIcon from '../Assets/Svgs/calendar-date.svg';
 import Okay  from '../Assets/Svgs/okay.svg';
 import Edit from '../Assets/Svgs/edit.svg';
 import Search from '../Assets/Svgs/search.svg';
+import Refresh from '../Assets/Svgs/refresh.svg';
 
 export default {
     Settings,
@@ -21,5 +22,6 @@ export default {
     CalendarIcon,
     Okay,
     Edit,
-    Search
+    Search,
+    Refresh
 }

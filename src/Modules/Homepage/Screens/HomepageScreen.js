@@ -54,6 +54,7 @@ const HomePageScreen = props => {
     useEffect(() => {
         const off = subscribeToItemData((data) => {
             let shoppingList = createShoppingListForRender(data, dateLocale);
+            //console.log(shoppingList)
             setItemList(shoppingList);
             setTempItemList(shoppingList);
         });
@@ -209,27 +210,30 @@ const HomePageScreen = props => {
         }
 
     }
-    const getSearchList = async () => {
-        
-    }
+
     const _onPress_Search = (text) => {
         let newItemList = [];
         if (text.length !== 0) {
             for (let item of itemList) {
-                if (item.key) {
-                    getItemDetail(item.key, data => {
-                        let detail = data.detail;
-                        if (detail.search(text) !== -1) {
-                            console.log(item);
-                            //newItemList.push(item)
-                        }
-                    })
-
+                if(item.detail.search(text)!==-1){
+                    newItemList.push(item);
                 }
             }
-        }
-       // console.log(newItemList)
+            if (newItemList.length !== 0) {
+                setTempItemList(newItemList);
+            }
+            else {
+                setTempItemList(itemList)
 
+            }
+        }
+        else{
+            setTempItemList(itemList)
+        }
+    }
+
+    const _onPress_Refresh=()=>{
+        setTempItemList(itemList)
     }
     return (
         <>
@@ -239,10 +243,10 @@ const HomePageScreen = props => {
                     :
                     null
             }
-            <Categories onPress_Item={_getCagetory} />
+            <Categories onPress_Item={_getCagetory}/>
             {/* <Text>Toplam Harcamanız: {profile?.total} TL</Text> */}
             {/* <Text>Toplam Harcamanız: {profile!==null?profile.total:totalRedux} TL</Text> */}
-            <SearchBar onPressSearch={_onPress_Search} />
+            <SearchBar onPressSearch={_onPress_Search} onPressRefresh={_onPress_Refresh}/>
             <HomePageScreenUI
                 data={tempItemList}
                 renderItem={_renderShoppingList}

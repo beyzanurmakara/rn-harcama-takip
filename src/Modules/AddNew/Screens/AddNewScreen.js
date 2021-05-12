@@ -21,6 +21,7 @@ import { useDispatch } from 'react-redux';
 import { addItem, getItemDetail, updateItem } from '../../../API/Firebase';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 import Category from '../Components/Category';
+import { setErrorCodeAC } from '../../Error/ErrorRedux';
 
 
 const AddNewScreen = props => {
@@ -40,7 +41,7 @@ const AddNewScreen = props => {
 
     const dateFormat = useLocaleDateFormat();
 
-   
+
 
     const dispatch = useDispatch();
 
@@ -79,28 +80,12 @@ const AddNewScreen = props => {
     }
     const onPress_add = () => {
 
-        dispatch(setIsLoadingAC(true));
-        const shoppingItem = {
-            title: shoppingType,
-            date: momentDate,
-            price: totalPrice,
-            detail,
-        }
-
-        const onComplete = () => {
-            dispatch(setIsLoadingAC(false));
-            navigation.goBack();
-        }
-
-        addItem(shoppingItem, onComplete);
-
-    }
-    const onPress_Ok = () => {
-
-        if (key) {
+        if (shoppingType.length !== 0
+            && momentDate.length !== 0
+            && totalPrice.length !== 0
+            && detail.length !== 0) {
             dispatch(setIsLoadingAC(true));
             const shoppingItem = {
-                key: key,
                 title: shoppingType,
                 date: momentDate,
                 price: totalPrice,
@@ -112,8 +97,41 @@ const AddNewScreen = props => {
                 navigation.goBack();
             }
 
-            updateItem(shoppingItem, onComplete);
+            addItem(shoppingItem, onComplete);
         }
+        else {
+            dispatch(setErrorCodeAC('emptySpace'))
+        }
+
+    }
+    const onPress_Ok = () => {
+
+        if (shoppingType.length !== 0
+            && momentDate.length !== 0
+            && totalPrice.length !== 0
+            && detail.length !== 0) {
+            if (key) {
+                dispatch(setIsLoadingAC(true));
+                const shoppingItem = {
+                    key: key,
+                    title: shoppingType,
+                    date: momentDate,
+                    price: totalPrice,
+                    detail,
+                }
+
+                const onComplete = () => {
+                    dispatch(setIsLoadingAC(false));
+                    navigation.goBack();
+                }
+
+                updateItem(shoppingItem, onComplete);
+            }
+        }
+        else {
+            dispatch(setErrorCodeAC('emptySpace'))
+        }
+
     }
 
     const _getCategory = (item) => {

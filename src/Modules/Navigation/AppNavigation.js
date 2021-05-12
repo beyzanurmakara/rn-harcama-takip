@@ -6,7 +6,7 @@ import  { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from '../Settings/Screens/SettingsScreen';
 import HomepageScreen from '../Homepage/Screens/HomepageScreen';
 import AddNewScreen from '../AddNew/Screens/AddNewScreen';
-import ProfileScreen from '../Settings/Screens/ProfileScreen';
+import ProfileScreen from '../Profile/Screens/ProfileScreen';
 
 import { useThemedColors, colorNames, useThemedStyles } from '../Theming';
 import { useLocalization, Texts } from '../Localization';

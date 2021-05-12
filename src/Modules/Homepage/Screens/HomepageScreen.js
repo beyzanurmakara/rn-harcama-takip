@@ -19,6 +19,7 @@ import CreateProfile from '../Components/CreateProfile';
 import Categories from '../Components/Categories';
 import { setTotalAC, totalSelector } from '../Redux/TotalRedux'
 import SearchBar from '../Components/SearchBar';
+import { set } from 'react-native-reanimated';
 
 
 
@@ -31,7 +32,8 @@ const HomePageScreen = props => {
     const [profile, setProfile] = useState(null);
     const [isProfile, setIsProfile] = useState(false);
     const [category, setCategory] = useState('');
-
+    const [searchItem, setSearchItem] = useState(null);
+    const [searchList, setSearchList] = useState([]);
 
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
@@ -43,11 +45,11 @@ const HomePageScreen = props => {
     const userID = getCurrentUser().uid;
     const navigation = useNavigation();
 
-    const dispatch =useDispatch();
+    const dispatch = useDispatch();
 
     let total = 0;
 
-    let totalRedux=totalRedux = useSelector(totalSelector);
+    let totalRedux = totalRedux = useSelector(totalSelector);
 
     useEffect(() => {
         const off = subscribeToItemData((data) => {
@@ -74,20 +76,23 @@ const HomePageScreen = props => {
         return () => {
             off()
         }
-        
-    }, [])
 
-    // useEffect(()=>{
-    //     dispatch(setTotalAC(total))
-    // },[total]);
+    }, [])
+    let newList = [];
+    useEffect(() => {
+        // console.log(searchItem);
+        //console.log('useState:',searchList);
+        //console.log('tempItemlist -->',tempItemList);
+        console.log('Search List:', searchList)
+    }, [searchList]);
 
     useEffect(() => {
-        console.log("********")
+        //console.log("********")
         if (itemList !== null) {
             for (let eleman of itemList) {
-                console.log(total)
+                //console.log(total)
                 total += parseInt(eleman.price);
-                console.log(total);
+                // console.log(total);
                 if (profile !== null) {
                     updateProfile({
                         income: profile.income,
@@ -179,9 +184,6 @@ const HomePageScreen = props => {
             />
         );
 
-
-
-
     }
 
     const _getCagetory = (categori) => {
@@ -200,25 +202,47 @@ const HomePageScreen = props => {
             if (newItemList.length !== 0) {
                 setTempItemList(newItemList);
             }
-            else{
+            else {
                 setTempItemList(itemList)
-                
+
             }
         }
+
+    }
+    const getSearchList = async () => {
+        
+    }
+    const _onPress_Search = (text) => {
+        let newItemList = [];
+        if (text.length !== 0) {
+            for (let item of itemList) {
+                if (item.key) {
+                    getItemDetail(item.key, data => {
+                        let detail = data.detail;
+                        if (detail.search(text) !== -1) {
+                            console.log(item);
+                            //newItemList.push(item)
+                        }
+                    })
+
+                }
+            }
+        }
+       // console.log(newItemList)
 
     }
     return (
         <>
             {
                 isProfile ?
-                    <CreateProfile isProfile={isProfile}/>
+                    <CreateProfile isProfile={isProfile} />
                     :
                     null
             }
             <Categories onPress_Item={_getCagetory} />
             {/* <Text>Toplam Harcamanız: {profile?.total} TL</Text> */}
             {/* <Text>Toplam Harcamanız: {profile!==null?profile.total:totalRedux} TL</Text> */}
-            <SearchBar/>
+            <SearchBar onPressSearch={_onPress_Search} />
             <HomePageScreenUI
                 data={tempItemList}
                 renderItem={_renderShoppingList}

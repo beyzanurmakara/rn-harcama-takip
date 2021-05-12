@@ -37,7 +37,7 @@ const EditProfile = props => {
     }
 
     const _onPress_OK=()=>{
-        
+        /**Burada kontrol yapıldı ancak localize edilecek ve ekran oluşturulacak(warning) */
         const onComplete=()=>{
             dispatch(setIsLoadingAC(false));
             navigation.goBack();

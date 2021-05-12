@@ -89,6 +89,7 @@ const HomePageScreen = props => {
 
     useEffect(() => {
         //console.log("********")
+        /**Burada total ve expense kontrolü yapılacak */
         if (itemList !== null) {
             for (let eleman of itemList) {
                 //console.log(total)
@@ -215,7 +216,7 @@ const HomePageScreen = props => {
         let newItemList = [];
         if (text.length !== 0) {
             for (let item of itemList) {
-                if(item.detail.search(text)!==-1){
+                if (item.detail.search(text) !== -1) {
                     newItemList.push(item);
                 }
             }
@@ -227,26 +228,26 @@ const HomePageScreen = props => {
 
             }
         }
-        else{
+        else {
             setTempItemList(itemList)
         }
     }
 
-    const _onPress_Refresh=()=>{
+    const _onPress_Refresh = () => {
         setTempItemList(itemList)
     }
     return (
         <>
             {
-                isProfile ?
+                profile === null ?
                     <CreateProfile isProfile={isProfile} />
                     :
                     null
             }
-            <Categories onPress_Item={_getCagetory}/>
+            <Categories onPress_Item={_getCagetory} />
             {/* <Text>Toplam Harcamanız: {profile?.total} TL</Text> */}
             {/* <Text>Toplam Harcamanız: {profile!==null?profile.total:totalRedux} TL</Text> */}
-            <SearchBar onPressSearch={_onPress_Search} onPressRefresh={_onPress_Refresh}/>
+            <SearchBar onPressSearch={_onPress_Search} onPressRefresh={_onPress_Refresh} />
             <HomePageScreenUI
                 data={tempItemList}
                 renderItem={_renderShoppingList}

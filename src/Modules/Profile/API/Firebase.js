@@ -26,7 +26,7 @@ export const getProfileSubscribe = (onRetrieved) => {
             .off('value');
     };
 }
-
+/**burada total ve expense kontrolü yapılacak */
 export const updateProfile = async (profile) => {
     try {
         const userID=getCurrentUser().uid;

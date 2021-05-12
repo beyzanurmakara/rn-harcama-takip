@@ -75,7 +75,7 @@ const ProfileScreen = props => {
                             :
                             null
                     }
-                    <Text style={styles.infoText}>{loc.t(Texts.total)}: {total}TL</Text>
+                    <Text style={styles.infoText}>{loc.t(Texts.total)}: {profile!==null?profile.total:total}TL</Text>
                 </View>
                 <TouchableOpacity style={styles.iconContainer} onPress={()=>setIsModalVisible(true)}>
                     <Icon svg={Svgs.Edit} iconStyle={styles.icon} />

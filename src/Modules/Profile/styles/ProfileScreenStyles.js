@@ -66,5 +66,24 @@ export default Colors => StyleSheet.create({
         fontFamily:Fonts.type.semiBold,
         fontSize:Fonts.size(18)
     },
+    iconContainer:{
+        position:'absolute',
+        top:Metrics.width * 0.03,
+        right:Metrics.width * 0.04,
+        width:Metrics.width *0.07,
+        height:undefined,
+        aspectRatio:1,
+        //backgroundColor:'green',
+        justifyContent:'center',
+        alignItems:'center',
+
+    },
+    icon:{
+        color:Colors[colorNames.header.background]
+    },
+    modal: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 
 });

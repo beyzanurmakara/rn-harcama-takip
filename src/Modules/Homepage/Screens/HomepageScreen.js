@@ -49,7 +49,7 @@ const HomePageScreen = props => {
 
     let total = 0;
 
-    let totalRedux = totalRedux = useSelector(totalSelector);
+    let totalRedux = useSelector(totalSelector);
 
     useEffect(() => {
         const off = subscribeToItemData((data) => {
@@ -92,7 +92,7 @@ const HomePageScreen = props => {
         if (itemList !== null) {
             for (let eleman of itemList) {
                 //console.log(total)
-                total += parseInt(eleman.price);
+                total += parseFloat(eleman.price);
                 // console.log(total);
                 if (profile !== null) {
                     updateProfile({
@@ -115,7 +115,7 @@ const HomePageScreen = props => {
                     updateProfile({
                         expense: profile.expense,
                         income: profile.income,
-                        total: parseInt(profile.total) - parseInt(item.price),
+                        total: parseFloat(profile.total) - parseFloat(item.price),
                     })
                 })
             deleteItem(key);

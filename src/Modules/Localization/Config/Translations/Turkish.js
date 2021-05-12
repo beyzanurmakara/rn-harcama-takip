@@ -69,5 +69,10 @@ export default {
     [Texts.createProfileText1]:'Profil oluşturursanız gelişmiş özellikleri kullanabilirsiniz',
     [Texts.createProfileText2]:'oluşturabilirsin',
     [Texts.fromHere]:'Buradan',
-    [Texts.search]:'Arama'
+    [Texts.search]:'Arama',
+    [Texts.income]:'Gelir',
+    [Texts.expenseLimit]:'Harcama Limiti',
+    [Texts.total]:'Bu Ay Yapılan Toplam Harcamanız',
+    [Texts.notDetermined]:'Belirlenmedi',
+    [Texts.informations]:'Bilgiler',
 };

@@ -11,7 +11,9 @@ export default Colors => StyleSheet.create({
         //padding: Metrics.marginHorizontal,
     },
     userContainer:{
-        flex:0.3,    
+        flex:0.3,
+        justifyContent:'flex-start',
+        alignItems:'flex-end',    
     },
     nameText:{
         color:Colors[colorNames.settings.userEmailText],
@@ -54,14 +56,14 @@ export default Colors => StyleSheet.create({
     },
     iconContainer:{
         position:'absolute',
-        right:Metrics.width * 0.1,
+        left:Metrics.width * 0.01,
         top:Metrics.width *0.03,
-        width:Metrics.width * 0.1,
+        width:Metrics.width * 0.15,
         height:undefined,
         aspectRatio:1,
         //backgroundColor:'pink'
     },
     icon:{
-        color:Colors[colorNames.settings.usernameText]
+        color:Colors[colorNames.header.background]
     }
 });

@@ -70,5 +70,10 @@ export default {
     [Texts.createProfileText2]:'You can create',
     [Texts.fromHere]:'from here',
     [Texts.search]:'Search',
+    [Texts.income]:'Income',
+    [Texts.expenseLimit]:'Spending Limit',
+    [Texts.total]:'Your Total Spending This Month',
+    [Texts.notDetermined]:'Not Determined',
+    [Texts.informations]:'Informations'
 };
 

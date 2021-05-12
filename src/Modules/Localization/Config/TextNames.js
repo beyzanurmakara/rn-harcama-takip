@@ -80,5 +80,10 @@ export const Texts = {
     createProfileText1:'createProfileText1',
     createProfileText2:'createProfileText2',
     fromHere:'fromHere',
-    search:'search'
+    search:'search',
+    income:'income',
+    expenseLimit:'expenseLimit',
+    total:'total',
+    notDetermined:'notDetermined',
+    informations:'informations',
 };

@@ -19,13 +19,13 @@ const CreateProfile = props => {
                         currentLocale === 'en' ?
                             <>
                                 <Text style={styles.text}>{loc.t(Texts.createProfileText2)}</Text>
-                                <TouchableOpacity onPress={() => navigation.navigate('settings-screen', true)}>
+                                <TouchableOpacity onPress={() => navigation.navigate('profile-screen', true)}>
                                     <Text style={styles.fromHereText}> {loc.t(Texts.fromHere)}</Text>
                                 </TouchableOpacity>
                             </>
                             :
                             <>
-                                <TouchableOpacity onPress={() => navigation.navigate('settings-screen', true)}>
+                                <TouchableOpacity onPress={() => navigation.navigate('profile-screen', true)}>
                                     <Text style={styles.fromHereText}>{loc.t(Texts.fromHere)}</Text>
                                 </TouchableOpacity>
                                 <Text style={styles.text}> {loc.t(Texts.createProfileText2)}</Text>

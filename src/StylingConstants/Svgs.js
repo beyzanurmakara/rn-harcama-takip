@@ -10,6 +10,7 @@ import Okay  from '../Assets/Svgs/okay.svg';
 import Edit from '../Assets/Svgs/edit.svg';
 import Search from '../Assets/Svgs/search.svg';
 import Refresh from '../Assets/Svgs/refresh.svg';
+import Profile from '../Assets/Svgs/profile.svg';
 
 export default {
     Settings,
@@ -23,5 +24,6 @@ export default {
     Okay,
     Edit,
     Search,
-    Refresh
+    Refresh,
+    Profile
 }

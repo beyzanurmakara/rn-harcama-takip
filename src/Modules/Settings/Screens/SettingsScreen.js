@@ -11,20 +11,9 @@ import { signOutRequest, userSelector } from '../../Auth';
 import getStyles from '../styles/SettingsScreenStyles';
 import { Svgs } from '../../../StylingConstants';
 import OptionMenu from '../Components/OptionMenu';
-import EditProfile from '../Components/EditProfile';
 
 
 const SettingsScreen = props => {
-
-    const [isModalVisible, setIsModalVisible] = useState(false);
-
-    useEffect(() => {
-        const mode = props.route.params;
-        //console.log('settings screen mode', mode)
-        if (mode) {
-            setIsModalVisible(mode)
-        }
-    }, []);
 
     const styles = useThemedStyles(getStyles);
     const currentTheme = useTheme();
@@ -49,76 +38,56 @@ const SettingsScreen = props => {
     const _onPress_SignOut = () => {
         dispatch(signOutRequest());
     }
-    const _onPress_EditProfile = () => {
-        setIsModalVisible(true)
-    }
-    const _onPress_ModalBackdrop = () => {
-        setIsModalVisible(false);
-    }
+
 
     const onPress_DisplayName = () => {
         props.navigation.navigate('profile-screen');
     }
     return (
-        <>
-            <View style={styles.container}>
-                <SafeAreaView style={{ flex: 1 }}>
-                    <View style={styles.userContainer}>
-                        <TouchableOpacity onPress={onPress_DisplayName}>
-                            <Text style={styles.nameText}>
-                                {user.displayName}
-                            </Text>
-                        </TouchableOpacity>
-                        <Text style={styles.emailText}>
-                            {user.email}
+
+        <View style={styles.container}>
+            <SafeAreaView style={{ flex: 1 }}>
+                <View style={styles.userContainer}>
+                    <View onPress={onPress_DisplayName}>
+                        <Text style={styles.nameText}>
+                            {user.displayName}
                         </Text>
-                        <View style={styles.iconContainer}>
-                            <TouchableOpacity onPress={_onPress_EditProfile}>
-                                {/* <Text style={styles.updateProfile}>{loc.t(Texts.editProfile)}</Text> */}
-                                <Icon svg={Svgs.Edit} iconStyle={styles.icon}/>
-                            </TouchableOpacity>
-                        </View>
                     </View>
-
-                    <View style={{ flexGrow: 1 }}>
-                        <OptionMenu
-                            menuTitle={loc.t(Texts.language)}
-                            options={localeOptions}
-                            selectedOptionKey={currentLocale}
-                            onSelect={_onSelect_Locale}
-                        />
-                        <OptionMenu
-                            menuTitle={loc.t(Texts.colorTheme)}
-                            options={themeOptions}
-                            selectedOptionKey={currentTheme}
-                            onSelect={_onSelect_Theme}
-                        />
-                    </View>
-
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.signOutTouchable} onPress={_onPress_SignOut}>
-                            <Text style={styles.signOutText}>
-                                {loc.t(Texts.signOut)}
-                            </Text>
+                    <Text style={styles.emailText}>
+                        {user.email}
+                    </Text>
+                    <View style={styles.iconContainer}>
+                        <TouchableOpacity onPress={onPress_DisplayName}>
+                            <Icon svg={Svgs.Profile} iconStyle={styles.icon} />
                         </TouchableOpacity>
                     </View>
-                </SafeAreaView>
-            </View>
-            <Modal
-                isVisible={isModalVisible}
-                // arkaplana tıklayınca fonksiyonu
-                onBackdropPress={_onPress_ModalBackdrop}
-                style={styles.modal}
-                // açılış animasyonu
-                animationIn='bounceInLeft'
-                // kapanış animasyonu
-                animationOut='bounceOutRight'
-                animationInTiming={1000}
-                animationOutTiming={1000}
-            >
-                <EditProfile isVisibleMode={() => setIsModalVisible(false)} />
-            </Modal>
-        </>
+                </View>
+
+                <View style={{ flexGrow: 1 }}>
+                    <OptionMenu
+                        menuTitle={loc.t(Texts.language)}
+                        options={localeOptions}
+                        selectedOptionKey={currentLocale}
+                        onSelect={_onSelect_Locale}
+                    />
+                    <OptionMenu
+                        menuTitle={loc.t(Texts.colorTheme)}
+                        options={themeOptions}
+                        selectedOptionKey={currentTheme}
+                        onSelect={_onSelect_Theme}
+                    />
+                </View>
+
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.signOutTouchable} onPress={_onPress_SignOut}>
+                        <Text style={styles.signOutText}>
+                            {loc.t(Texts.signOut)}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </SafeAreaView>
+        </View>
+
     );
 };
 

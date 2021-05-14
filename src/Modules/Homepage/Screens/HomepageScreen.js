@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useLocalization, categories, useLocaleDateFormat } from '../../Localization';
+import { useLocalization, categories, useLocaleDateFormat, Texts } from '../../Localization';
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 
 import RenderBox from '../Components/RenderBox';
@@ -99,15 +99,15 @@ const HomePageScreen = props => {
                 //console.log(total)
                 total += parseFloat(eleman.price);
                 // console.log(total);
-                
+
                 if (profile !== null) {
                     updateProfile({
                         income: profile.income,
                         expense: profile.expense,
                         total,
                     })
-                    if(profile.expense<total && profile.expense!==0){
-                        dispatch(setWarningCodeAC('Limiti aştınız'+(parseFloat(profile.total)-parseFloat(profile.expense)).toString()))
+                    if (profile.expense < total && profile.expense !== 0) {
+                        dispatch(setWarningCodeAC((parseFloat(total) - parseFloat(profile.expense)).toString() + ' ' + loc.t(Texts.currencyUnit) + ' ' + loc.t(Texts.limit)))
                         //console.log('Limiti aştınız!',parseFloat(profile.expense)-parseFloat(total));
                     }
                 }

@@ -188,7 +188,7 @@ export const darkColors = {
     [colorNames.error.modalBackdropColor]:constantColors.transparent,
     [colorNames.error.iconColor]:constantColors.delete,
     //warning
-    [colorNames.warning.background]:constantColors.greys[4],
+    [colorNames.warning.background]:constantColors.greys[1],
     [colorNames.warning.containerBorderColor]:constantColors.yellow,
     [colorNames.warning.messageTextColor]:constantColors.white,
     [colorNames.warning.warningTextColor]:constantColors.white,

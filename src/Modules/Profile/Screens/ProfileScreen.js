@@ -80,7 +80,7 @@ const ProfileScreen = props => {
                             :
                             null
                     }
-                    <Text style={[styles.infoText,{color:(profile?.total > profile?.expense && profile?.expense >0)?colors[colorNames.homePage.deleteButtonBackground]:colors[colorNames.editProfile.text]}]}>{loc.t(Texts.total)}: {profile!==null?profile.total:total}TL</Text>
+                    <Text style={[styles.infoText,{color:(profile?.total > profile?.expense && profile?.expense >0)?colors[colorNames.homePage.deleteButtonBackground]:colors[colorNames.editProfile.text]}]}>{loc.t(Texts.total)}: {profile!==null?profile.total:total} {loc.t(Texts.currencyUnit)}</Text>
                 </View>
                 <TouchableOpacity style={styles.iconContainer} onPress={()=>setIsModalVisible(true)}>
                     <Icon svg={Svgs.Edit} iconStyle={styles.icon} />

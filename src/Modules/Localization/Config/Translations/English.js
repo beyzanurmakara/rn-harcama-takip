@@ -74,6 +74,8 @@ export default {
     [Texts.expenseLimit]:'Spending Limit',
     [Texts.total]:'Your Total Spending This Month',
     [Texts.notDetermined]:'Not Determined',
-    [Texts.informations]:'Informations'
+    [Texts.informations]:'Informations',
+    [Texts.limit]:'You exceeded the limit',
+    [Texts.currencyUnit]:'$',
 };
 

@@ -86,4 +86,6 @@ export const Texts = {
     total:'total',
     notDetermined:'notDetermined',
     informations:'informations',
+    limit:'limit',
+    currencyUnit:'currencyUnit'
 };

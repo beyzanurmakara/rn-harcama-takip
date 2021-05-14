@@ -4,7 +4,7 @@ import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
-import { useLocalization, days, useLocaleDateFormat } from '../../Localization';
+import { useLocalization, days, useLocaleDateFormat, Texts } from '../../Localization';
 import Icon from '../../../Components/Icon';
 
 import getStyles from '../styles/RenderBoxStyles';
@@ -63,7 +63,7 @@ const RenderBox = props => {
             </TouchableOpacity>
             <View style={styles.textsContainer}>
                 <Text style={styles.headerText}>{item.title}</Text>
-                <Text style={styles.priceText}>{item.price + 'TL'} </Text>
+                <Text style={styles.priceText}>{loc.t(Texts.currencyUnit) + item.price} </Text>
                 <Text style={styles.dateText}>{getLocaleDateString(item.date,localeDate)}</Text>
                 <Text style={styles.dayText}>{loc.t(days[item.day])}</Text>
             </View>

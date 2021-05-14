@@ -11,7 +11,7 @@ export default Colors=>StyleSheet.create({
         borderRadius:Metrics.borderRadiusStandard,
         padding:Metrics.width * 0.02,
         height:undefined,//Metrics.width * 0.3,
-        width:Metrics.width * 0.36,
+        width:Metrics.width * 0.4,
         aspectRatio:1,
         justifyContent:'center',
         alignItems:'center',

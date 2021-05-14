@@ -75,4 +75,6 @@ export default {
     [Texts.total]:'Bu Ay Yapılan Toplam Harcamanız',
     [Texts.notDetermined]:'Belirlenmedi',
     [Texts.informations]:'Bilgiler',
+    [Texts.limit]:'Limiti aştınız',
+    [Texts.currencyUnit]:'₺',
 };

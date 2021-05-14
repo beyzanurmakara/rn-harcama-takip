@@ -9,7 +9,7 @@ import Icon from '../../../Components/Icon';
 
 import getStyles from '../styles/RenderBoxStyles';
 import { Svgs } from '../../../StylingConstants';
-import { updateProfile } from '../../Settings/API/Firebase';
+import { updateProfile } from '../../Profile/API/Firebase';
 
 
 const RenderBox = props => {

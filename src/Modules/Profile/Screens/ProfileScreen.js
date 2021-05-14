@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-native-modal';
 
 import Icon from '../../../Components/Icon';
@@ -8,11 +8,12 @@ import { Svgs } from '../../../StylingConstants';
 import { getCurrentUser } from '../../Auth';
 import { totalSelector } from '../../Homepage/Redux/TotalRedux';
 import { Texts, useLocalization } from '../../Localization';
-import { getProfileSubscribe } from '../../Settings/API/Firebase';
-import { useThemedStyles } from '../../Theming';
+import { getProfileSubscribe } from '../API/Firebase';
+import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 import EditProfile from '../Components/EditProfile';
 
 import getStyles from '../styles/ProfileScreenStyles';
+import { setWarningCodeAC } from '../../Warning/WarningRedux';
 
 const ProfileScreen = props => {
 
@@ -22,9 +23,12 @@ const ProfileScreen = props => {
     const total = useSelector(totalSelector);
 
     const styles = useThemedStyles(getStyles);
+    const colors=useThemedColors();
 
     const user = getCurrentUser();
     const loc = useLocalization();
+
+    const dispatch=useDispatch();
 
     useEffect(() => {
         const off = getProfileSubscribe(data => {
@@ -36,12 +40,13 @@ const ProfileScreen = props => {
     }, []);
 
     useEffect(() => {
-        if (profile?.total === profile?.expense) {
-            console.log('Sınıra ulaştınız !!');
+        if(profile?.total > profile?.expense && profile?.expense >0){
+            //dispatch(setWarningCodeAC('Limiti aştınız'+(parseFloat(profile?.total)-parseFloat(profile?.expense)).toString()))
         }
-        else if (profile?.total > profile?.expense) {
-            console.log('Sınırı aştınız ->', parseFloat(profile?.total) - parseFloat(profile?.expense))
-        }
+        // else if () {
+        //     console.log('Sınırı aştınız ->', parseFloat(profile?.total) - parseFloat(profile?.expense))
+        // }
+        
     }, [profile?.total]);
 
     useEffect(() => {
@@ -75,7 +80,7 @@ const ProfileScreen = props => {
                             :
                             null
                     }
-                    <Text style={styles.infoText}>{loc.t(Texts.total)}: {profile!==null?profile.total:total}TL</Text>
+                    <Text style={[styles.infoText,{color:(profile?.total > profile?.expense && profile?.expense >0)?colors[colorNames.homePage.deleteButtonBackground]:colors[colorNames.editProfile.text]}]}>{loc.t(Texts.total)}: {profile!==null?profile.total:total}TL</Text>
                 </View>
                 <TouchableOpacity style={styles.iconContainer} onPress={()=>setIsModalVisible(true)}>
                     <Icon svg={Svgs.Edit} iconStyle={styles.icon} />

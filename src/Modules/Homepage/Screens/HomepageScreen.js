@@ -13,13 +13,14 @@ import getStyles from '../styles/HomepageScreenStyles';
 
 import { deleteItem, getItemDetail, subscribeToItemData } from '../../../API/Firebase';
 import { createShoppingListForRender } from '../Utils/RenderListUtils';
-import { getProfileSubscribe, updateProfile } from '../../Settings/API/Firebase';
+import { getProfileSubscribe, updateProfile } from '../../Profile/API/Firebase';
 import { getCurrentUser } from '../../Auth';
 import CreateProfile from '../Components/CreateProfile';
 import Categories from '../Components/Categories';
 import { setTotalAC, totalSelector } from '../Redux/TotalRedux'
 import SearchBar from '../Components/SearchBar';
-import { set } from 'react-native-reanimated';
+import { setIsLoadingAC } from '../../Loading/LoadingRedux';
+import { setWarningCodeAC } from '../../Warning/WarningRedux';
 
 
 
@@ -52,11 +53,13 @@ const HomePageScreen = props => {
     let totalRedux = useSelector(totalSelector);
 
     useEffect(() => {
+        dispatch(setIsLoadingAC(true));
         const off = subscribeToItemData((data) => {
             let shoppingList = createShoppingListForRender(data, dateLocale);
             //console.log(shoppingList)
             setItemList(shoppingList);
             setTempItemList(shoppingList);
+            dispatch(setIsLoadingAC(false));
         });
         return () => {
             off()
@@ -64,7 +67,7 @@ const HomePageScreen = props => {
     }, [])
 
     useEffect(() => {
-
+        dispatch(setIsLoadingAC(true));
         const off = getProfileSubscribe((data) => {
             if (data === null) {
                 setIsProfile(true);
@@ -73,6 +76,7 @@ const HomePageScreen = props => {
                 setIsProfile(false)
                 setProfile(data)
             }
+            dispatch(setIsLoadingAC(false));
         });
         return () => {
             off()
@@ -95,12 +99,17 @@ const HomePageScreen = props => {
                 //console.log(total)
                 total += parseFloat(eleman.price);
                 // console.log(total);
+                
                 if (profile !== null) {
                     updateProfile({
                         income: profile.income,
                         expense: profile.expense,
                         total,
                     })
+                    if(profile.expense<total && profile.expense!==0){
+                        dispatch(setWarningCodeAC('Limiti aştınız'+(parseFloat(profile.total)-parseFloat(profile.expense)).toString()))
+                        //console.log('Limiti aştınız!',parseFloat(profile.expense)-parseFloat(total));
+                    }
                 }
             }
         }

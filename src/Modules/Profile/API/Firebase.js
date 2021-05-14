@@ -29,11 +29,11 @@ export const getProfileSubscribe = (onRetrieved) => {
 /**burada total ve expense kontrolü yapılacak */
 export const updateProfile = async (profile) => {
     try {
-        const userID=getCurrentUser().uid;
-        const userProfile={
-            expense:profile.expense,
-            income:profile.income,
-            total:profile.total,
+        const userID = getCurrentUser().uid;
+        const userProfile = {
+            expense: profile.expense,
+            income: profile.income,
+            total: profile.total,
         }
         await database()
             .ref(`/userProfile/${userID}`)

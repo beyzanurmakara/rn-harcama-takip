@@ -13,6 +13,7 @@ const constantColors = {
     },
     delete:'#FF5739', //red
     today:'#0036C7', //lacivert
+    yellow:'#fcba03',//yellow
 };
 
 export const colorNames = {
@@ -104,7 +105,16 @@ export const colorNames = {
         containerBackGround:'createProfile/containerBackGround',
         text:'createProfile/text',
         fromHereText:'createProfile/fromHereText'
-    }
+    },
+    warning:{
+        background:'warning/background',
+        containerBorderColor:'warning/containerBorderColor',
+        messageTextColor:'warning/messageTextColor',
+        warningTextColor:'warning/warningTextColor',
+        warningTextBackground:'warning/warningTextBackground',
+        modalBackdropColor:'warning/modalBackdropColor',
+        iconColor:'warning/iconColor',
+    },
 };
 
 export const darkColors = {
@@ -177,6 +187,14 @@ export const darkColors = {
     [colorNames.error.errorTextBackground]:constantColors.delete,
     [colorNames.error.modalBackdropColor]:constantColors.transparent,
     [colorNames.error.iconColor]:constantColors.delete,
+    //warning
+    [colorNames.warning.background]:constantColors.greys[4],
+    [colorNames.warning.containerBorderColor]:constantColors.yellow,
+    [colorNames.warning.messageTextColor]:constantColors.white,
+    [colorNames.warning.warningTextColor]:constantColors.white,
+    [colorNames.warning.warningTextBackground]:constantColors.yellow,
+    [colorNames.warning.modalBackdropColor]:constantColors.transparent,
+    [colorNames.warning.iconColor]:constantColors.yellow,
     //editProfile
     [colorNames.editProfile.background]:constantColors.greys[1],
     [colorNames.editProfile.text]:constantColors.white,
@@ -263,6 +281,14 @@ export const lightColors = {
     [colorNames.error.errorTextBackground]:constantColors.delete,
     [colorNames.error.modalBackdropColor]:constantColors.transparent,
     [colorNames.error.iconColor]:constantColors.delete,
+    //warning
+    [colorNames.warning.background]:constantColors.white,
+    [colorNames.warning.containerBorderColor]:constantColors.yellow,
+    [colorNames.warning.messageTextColor]:constantColors.black,
+    [colorNames.warning.warningTextColor]:constantColors.white,
+    [colorNames.warning.warningTextBackground]:constantColors.yellow,
+    [colorNames.warning.modalBackdropColor]:constantColors.transparent,
+    [colorNames.warning.iconColor]:constantColors.yellow,
     //editProfile
     [colorNames.editProfile.background]:constantColors.white,
     [colorNames.editProfile.text]:constantColors.black,

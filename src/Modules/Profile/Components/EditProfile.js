@@ -11,6 +11,7 @@ import { updateUser } from '../../Auth/API/Firebase';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 import { createProfile } from '../API/Firebase';
 import { totalSelector } from '../../Homepage/Redux/TotalRedux';
+import { setWarningCodeAC } from '../../Warning/WarningRedux';
 
 const EditProfile = props => {
     const user =useSelector(userSelector);
@@ -41,14 +42,17 @@ const EditProfile = props => {
         const onComplete=()=>{
             dispatch(setIsLoadingAC(false));
             navigation.goBack();
+            // if(expense!==0 && totalRedux>expense){
+            //     dispatch(setWarningCodeAC('Limiti aştınız !!'+(parseFloat(totalRedux)-parseFloat(expense)).toString()))
+            // }
         }
 
         if(income.length === 0){
             alert('Aylık  gelirinizi yazmayı unuttunuz !!')
         }
-        else if(expense > income && expense > 0){
-            alert('Giderleriniz gelirinizden fazla !!')
-        }
+        // else if(expense > income && expense > 0){
+        //     alert('Giderleriniz gelirinizden fazla !!')
+        // }
         else {
             dispatch(setIsLoadingAC(true));
             const email=user.email;

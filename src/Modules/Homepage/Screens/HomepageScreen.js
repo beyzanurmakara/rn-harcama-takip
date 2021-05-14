@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
 
 import { useLocalization, categories, useLocaleDateFormat, Texts } from '../../Localization';
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
@@ -48,7 +49,7 @@ const HomePageScreen = props => {
 
     const dispatch = useDispatch();
 
-    let total = 0;
+    let total = 0;/***** */
 
     let totalRedux = useSelector(totalSelector);
 
@@ -83,23 +84,18 @@ const HomePageScreen = props => {
         }
 
     }, [])
-    let newList = [];
-    useEffect(() => {
-        // console.log(searchItem);
-        //console.log('useState:',searchList);
-        //console.log('tempItemlist -->',tempItemList);
-        console.log('Search List:', searchList)
-    }, [searchList]);
+
 
     useEffect(() => {
-        //console.log("********")
-        /**Burada total ve expense kontrolü yapılacak */
         if (itemList !== null) {
             for (let eleman of itemList) {
-                //console.log(total)
-                total += parseFloat(eleman.price);
-                // console.log(total);
+                if (parseInt(eleman.date.split('-')[1]) === parseInt(moment().format('DD-MM-YYYY').split('-')[1])){
 
+                    total += parseFloat(eleman.price);
+                    console.log(total)
+                    console.log(eleman.price)
+                }
+                
                 if (profile !== null) {
                     updateProfile({
                         income: profile.income,
@@ -107,8 +103,9 @@ const HomePageScreen = props => {
                         total,
                     })
                     if (profile.expense < total && profile.expense !== 0) {
-                        dispatch(setWarningCodeAC((parseFloat(total) - parseFloat(profile.expense)).toString() + ' ' + loc.t(Texts.currencyUnit) + ' ' + loc.t(Texts.limit)))
-                        //console.log('Limiti aştınız!',parseFloat(profile.expense)-parseFloat(total));
+                        dispatch(setWarningCodeAC(
+                            (parseFloat(total) - parseFloat(profile.expense)).toString()
+                            + ' ' + loc.t(Texts.currencyUnit) + ' ' + loc.t(Texts.limit)))
                     }
                 }
             }

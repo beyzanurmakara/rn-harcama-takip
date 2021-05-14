@@ -89,13 +89,13 @@ const HomePageScreen = props => {
     useEffect(() => {
         if (itemList !== null) {
             for (let eleman of itemList) {
-                if (parseInt(eleman.date.split('-')[1]) === parseInt(moment().format('DD-MM-YYYY').split('-')[1])){
+                if (parseInt(eleman.date.split('-')[1]) === parseInt(moment().format('DD-MM-YYYY').split('-')[1])) {
 
                     total += parseFloat(eleman.price);
                     console.log(total)
                     console.log(eleman.price)
                 }
-                
+
                 if (profile !== null) {
                     updateProfile({
                         income: profile.income,
@@ -242,6 +242,25 @@ const HomePageScreen = props => {
     const _onPress_Refresh = () => {
         setTempItemList(itemList)
     }
+
+    const _onPress_NTO = () => {
+        let copyList = [...tempItemList];
+        let sortedOldToNew = copyList.sort((a, b) => (a.date.split(' ')[0] > b.date.split(' ')[0]) ? 1 : -1) //eskiden yeniye sıralama yapıyor
+        let sortedNewtoNew = sortedOldToNew.reverse();// yeniden eskiye sıralama yapıyor
+        setTempItemList(sortedNewtoNew);
+        //setTempItemList([]);
+        //console.log(sortedOldToNew)
+
+    }
+    const _onPress_ASC = () => {
+        console.log('ASC')
+    }
+    const _onPress_DESC = () => {
+        console.log('DESC')
+    }
+    const _onPress_OTN = () => {
+        console.log('OTN')
+    }
     return (
         <>
             {
@@ -253,7 +272,13 @@ const HomePageScreen = props => {
             <Categories onPress_Item={_getCagetory} />
             {/* <Text>Toplam Harcamanız: {profile?.total} TL</Text> */}
             {/* <Text>Toplam Harcamanız: {profile!==null?profile.total:totalRedux} TL</Text> */}
-            <SearchBar onPressSearch={_onPress_Search} onPressRefresh={_onPress_Refresh} />
+            <SearchBar
+                onPressSearch={_onPress_Search}
+                onPressRefresh={_onPress_Refresh}
+                onPressSort_asc={ _onPress_ASC}
+                onPressSort_desc={ _onPress_DESC}
+                onPressSort_nto={ _onPress_NTO}
+                onPressSort_otn={_onPress_OTN} />
             <HomePageScreenUI
                 data={tempItemList}
                 renderItem={_renderShoppingList}

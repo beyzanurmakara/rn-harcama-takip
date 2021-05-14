@@ -49,5 +49,63 @@ export default Colors => StyleSheet.create({
     },
     refresh: {
         color: Colors[colorNames.header.background]
+    },    
+    sortHeaderText:{
+        color:Colors[colorNames.homePage.shoppingItemHeaderText],
+        fontFamily:Fonts.type.semiBold,
+        fontSize:Fonts.size(16),
+    },
+    sortContainer: {
+        position: 'absolute',
+        left: Metrics.width * 0.07,//0.47
+        top: Metrics.width * 0.2,
+        // width: Metrics.width * 0.05,
+        // height: undefined,
+        // aspectRatio: 1,
+    },
+    sortText:{
+        //color:Colors[colorNames.homePage.shoppingItemDateText],
+        fontFamily:Fonts.type.semiBold,
+        fontSize:Fonts.size(14),
+    },
+    sortContainer_newtoold:{
+        position: 'absolute',
+        left: Metrics.width * 0.09,//0.47
+        top: Metrics.width * 0.27,
+        borderWidth:1,
+        borderColor:Colors[colorNames.homePage.shoppingItemDateText],
+        borderBottomWidth:2,
+        padding:Metrics.width *0.02,
+        borderRadius:Metrics.borderRadiusStandard,
+    },
+    sortContainer_oldtonew:{
+        position: 'absolute',
+        left: Metrics.width * 0.43,//0.47
+        top: Metrics.width * 0.27,
+        borderWidth:1,
+        borderColor:Colors[colorNames.homePage.shoppingItemDateText],
+        borderBottomWidth:2,
+        padding:Metrics.width *0.02,        
+        borderRadius:Metrics.borderRadiusStandard,
+    },
+    sortContainer_asc:{
+        position: 'absolute',
+        left: Metrics.width * 0.09,//0.47
+        top: Metrics.width * 0.39,
+        borderWidth:1,
+        //borderColor:Colors[colorNames.homePage.shoppingItemDateText],
+        borderBottomWidth:2,
+        padding:Metrics.width *0.02,
+        borderRadius:Metrics.borderRadiusStandard,
+    },
+    sortContainer_desc:{
+        position: 'absolute',
+        left: Metrics.width * 0.47,//0.47
+        top: Metrics.width * 0.39,
+        borderWidth:1,
+        borderColor:Colors[colorNames.homePage.shoppingItemDateText],
+        borderBottomWidth:2,
+        padding:Metrics.width *0.02,
+        borderRadius:Metrics.borderRadiusStandard,
     }
 });

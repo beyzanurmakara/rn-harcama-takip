@@ -9,7 +9,6 @@ import { Texts, useLocaleDateFormat, useLocalization, useLocale } from '../../Lo
 import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
 
 import getStyles from '../styles/DateInputStyles';
-import { months } from '../../Localization/Config/TextNames';
 
 
 const DateInput = props => {
@@ -87,7 +86,6 @@ const DateInput = props => {
                 <View  style={styles.calendarContainer}>
                     <Calendar
                         onDayPress={(day)=>_onPressDay(day)}
-                        onMonthChange={(month) => { console.log('month changed', month) }}
                         firstDay={1}
                         theme={{
                             arrowColor: colors[colorNames.addNew.addButtonBackground],

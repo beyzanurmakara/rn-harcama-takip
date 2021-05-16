@@ -10,7 +10,6 @@ export const subscribeToItemData = (onDataRetrieved) => {
         .on('value', snapshot => {
             const rawData = snapshot.val();
             const convertedList = converterRawData(rawData);
-            //console.log(convertedList);
             onDataRetrieved(convertedList);
         });
     return () => {
@@ -55,7 +54,6 @@ export const addItem = async (item, onComlete) => {
 
         onComlete();
     } catch (error) {
-        console.log(error);
     }
 }
 
@@ -90,8 +88,6 @@ export const updateItem = async (item, onComplete) => {
         onComplete();
 
     } catch (error) {
-
-        console.log(error)
     }
 }
 

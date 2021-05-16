@@ -23,7 +23,6 @@ export default (Colors)=>StyleSheet.create({
         borderWidth:1,
         borderColor:Colors[colorNames.addNew.textInputBackground],
         justifyContent:'center',
-        //alignItems:'center',
         flexShrink:1,
     },
     dateText:{

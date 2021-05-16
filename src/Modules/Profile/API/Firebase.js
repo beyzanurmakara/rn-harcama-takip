@@ -9,7 +9,6 @@ export const createProfile = async (profile, onComplete) => {
             .set(profile);
         onComplete();
     } catch (error) {
-        console.log(error);
     }
 }
 export const getProfileSubscribe = (onRetrieved) => {
@@ -18,7 +17,6 @@ export const getProfileSubscribe = (onRetrieved) => {
         .ref(`/userProfile/${userID}`)
         .on('value', snapshot => {
             onRetrieved(snapshot.val());
-            //console.log('firebase',snapshot.val())
         });
     return () => {
         database()
@@ -26,7 +24,7 @@ export const getProfileSubscribe = (onRetrieved) => {
             .off('value');
     };
 }
-/**burada total ve expense kontrolü yapılacak */
+
 export const updateProfile = async (profile) => {
     try {
         const userID = getCurrentUser().uid;
@@ -38,9 +36,7 @@ export const updateProfile = async (profile) => {
         await database()
             .ref(`/userProfile/${userID}`)
             .update(userProfile)
-        //onComplete();
     } catch (error) {
-        console.log(error)
     }
 }
 

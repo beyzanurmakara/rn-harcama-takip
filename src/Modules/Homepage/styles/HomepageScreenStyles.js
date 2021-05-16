@@ -8,27 +8,20 @@ export default Colors => StyleSheet.create({
         flex: 1,
         backgroundColor:Colors[colorNames.settings.background],
         padding:Metrics.marginHorizontal/2,
-        //padding: Metrics.marginHorizontal,
     }, 
     columnWrapperStyle: {
-        // backgroundColor: 'yellow',
         justifyContent: 'space-around',
         marginVertical: Metrics.width * 0.025,
     },
     contentContainerStyle: {
-        //backgroundColor:'yellow',
         marginTop: Metrics.width * 0.035,
     },
     boxContainer:{ 
-        //flex:1, 
         paddingVertical:Metrics.width * 0.03,
         flexDirection:'row',
-        //backgroundColor:'pink',
         flexShrink:1,
-        //justifyContent:'space-around'
     },  
     button:{
-        //backgroundColor:Colors[colorNames.homePage.addButtonBackground],
         width:Metrics.width * 0.15,
         height:undefined,
         aspectRatio:1,
@@ -41,10 +34,6 @@ export default Colors => StyleSheet.create({
         position:'absolute',
         right:Metrics.width * 0.01,
         bottom:Metrics.height * 0.01,
-        // left:Metrics.width * 0.75,
-        // top:Metrics.height * 0.8,
-        //flex:0.2,
-        //backgroundColor:'yellow'
     },
     emptyFlatContainer:{
         padding:Metrics.marginHorizontal,

@@ -35,6 +35,7 @@ export default {
     [errorList.error['auth/network-request-faıled']]:'Check your network connection.',
     [errorList.error['otherMistakes']]:'An error occurred, please try again later.',
     [errorList.error['auth/too-many-requests']]:'An error occurred, please try again later.',
+    [errorList.error['checkEmail']]:'Check your email address.',
     [days['Mon']]:'Mon',
     [days['Tue']]:'Tue',
     [days['Wed']]:'Wed',
@@ -84,6 +85,7 @@ export default {
     [Texts.increasingByPrice]:'Increasing by price',
     [Texts.descendingByPrice]:'Descending by price',
     [Texts.incomeForgetten]:'You forgot to write down your monthly income!',
-    [Texts.highSpendingLimit]:'The spending limit is higher than your income. The \'no\' option is  for you :)'
+    [Texts.highSpendingLimit]:'The spending limit is higher than your income. The \'no\' option is  for you :)',
+    [Texts.digitControl]:'Your password must be at least 6 digits',
 };
 

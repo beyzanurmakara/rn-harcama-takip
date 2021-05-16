@@ -7,9 +7,8 @@ import { useLocalization, Texts } from '../../Localization';
 import getStyles from '../styles/EditProfileStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import { userSelector } from '../../Auth';
-import { updateUser } from '../../Auth/API/Firebase';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
-import { createProfile, getProfileSubscribe } from '../API/Firebase';
+import { createProfile, getProfileSubscribe, updateProfile } from '../API/Firebase';
 import { totalSelector } from '../../Homepage/Redux/TotalRedux';
 import { setWarningCodeAC } from '../../Warning/WarningRedux';
 
@@ -49,19 +48,25 @@ const EditProfile = props => {
     }, []);
 
     const _onPress_OK = () => {
-        /**Burada kontrol yapıldı ancak localize edilecek ve ekran oluşturulacak(warning) */
+        if (profile !== null) {
+            const profile = {
+                income: income.length === 0 ? profile?.income : income,
+                expense,
+                total: totalRedux,
+            }
+            updateProfile(profile)
+        }
         const onComplete = () => {
             dispatch(setIsLoadingAC(false));
-            navigation.goBack();
-            // if(expense!==0 && totalRedux>expense){
-            //     dispatch(setWarningCodeAC('Limiti aştınız !!'+(parseFloat(totalRedux)-parseFloat(expense)).toString()))
-            // }
+            navigation.navigate('homepage-screen');
         }
-        console.log(income.length);
-        if (income.length === 0) {
-            console.log(income.length);
-            //alert('Aylık  gelirinizi yazmayı unuttunuz !!')
-            dispatch(setWarningCodeAC(loc.t(Texts.incomeForgetten)))
+        if (income.length === 0) {          
+            if(profile!==null) {
+                setIncome(profile?.income);
+            }
+            else{
+                dispatch(setWarningCodeAC(loc.t(Texts.incomeForgetten)))
+            }
         }
         else if (expense > income && expense > 0) {
             dispatch(setWarningCodeAC(loc.t(Texts.highSpendingLimit)));
@@ -85,12 +90,12 @@ const EditProfile = props => {
         }
         else {
             setExpenseLimit(false);
-            setExpense(profile.expense)
+            setExpense(profile?.expense)
         }
     }
     const onPressSetExpenseYes = () => {
         setExpenseLimit(true);
-        setExpense(profile.expense)
+        setExpense(profile?.expense)
     }
     return (
         <View style={styles.container}>

@@ -5,7 +5,6 @@ import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-nati
 import { useLocalization, Texts } from '../../Localization';
 import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 import Icon from '../../../Components/Icon';
-import DummyShoppingData from '../DummyShoppingList';
 
 import CancelText from '../../../Components/CancelText';
 

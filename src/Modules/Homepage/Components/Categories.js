@@ -16,7 +16,6 @@ const Categories = props => {
     const loc=useLocalization();
 
     const onPress_Item = (item) => {
-        //setSelected(item.id);
         if (selected === item.id) {
             setSelected(0);
             props.onPress_Item(null);

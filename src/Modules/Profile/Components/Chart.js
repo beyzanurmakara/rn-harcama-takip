@@ -8,7 +8,6 @@ import { Metrics, Fonts } from '../../../StylingConstants';
 const Chart = props => {
 
     const profile = props.profile;
-    console.log('PROFİLE >> ', profile);
     const [fill, setFill] = useState(profile.expense === 0 ? (profile.total * 100) / profile.income : (profile.total * 100) / profile.expense);
 
     const loc = useLocalization();
@@ -22,7 +21,7 @@ const Chart = props => {
             fontSize: Fonts.size(16)
         },
     });
-    console.log(fill);
+
     return (
         <AnimatedCircularProgress
             size={300}
@@ -33,7 +32,6 @@ const Chart = props => {
             {
                 (fill) => (
                     <>
-                        {/* <Text style={styles.infoHeader}>{loc.t(Texts.informations).toUpperCase()}</Text> */}
                         <Text style={styles.infoText}>{loc.t(Texts.income)}: ₺{profile.income}</Text>
                         <Text style={styles.infoText}>{loc.t(Texts.expenseLimit)}:{profile.expense !== 0 ? '₺' + profile.expense : loc.t(Texts.notDetermined)}</Text>
                         <Text style={styles.infoText}>{loc.t(Texts.total)}: </Text>

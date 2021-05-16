@@ -35,6 +35,7 @@ export default {
     [errorList.error['auth/network-request-faıled']]:'Lütfen ağ bağlantınızı kontrol ediniz.',
     [errorList.error['otherMistakes']]:'Bir hata oluştu, lütfen daha sonra tekrar deneyin.',
     [errorList.error['auth/too-many-requests']]:'Bir hata oluştu, lütfen daha sonra tekrar deneyin.',
+    [errorList.error['checkEmail']]:'E-posta adresinizi kontrol edin',
     [days['Mon']]:'Pzt',
     [days['Tue']]:'Sal',
     [days['Wed']]:'Çar',
@@ -85,4 +86,5 @@ export default {
     [Texts.descendingByPrice]:'Fiyata göre azalan',
     [Texts.incomeForgetten]:'Aylık gelirinizi yazmayı unuttunuz!',
     [Texts.highSpendingLimit]:'Harcama limiti gelirinizden daha yüksek. \'Hayır\' seçeneği tam size göre :)',
+    [Texts.digitControl]:'Şifreniz en az 6 haneli olmalıdır',
 };

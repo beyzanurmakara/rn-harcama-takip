@@ -61,7 +61,6 @@ export default Colors => StyleSheet.create({
         width:Metrics.width * 0.15,
         height:undefined,
         aspectRatio:1,
-        //backgroundColor:'pink'
     },
     icon:{
         color:Colors[colorNames.header.background]

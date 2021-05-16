@@ -7,7 +7,6 @@ import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 import getStyles from '../Styles/AuthButtonStyles';
 
 const AuthButton = (props) => {
-    //const {colors, styles} = useThemedValues(getStyles);
     const styles = useThemedStyles(getStyles);
     const colors = useThemedColors();
     

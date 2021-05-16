@@ -17,12 +17,6 @@ const SearchBar = props => {
     const [selectNTO,setSelectNTO]=useState(false);
     const [selectOTN,setSelectOTN]=useState(false);
 
-    /*
-    setSelectASC(false);
-    setSelectDESC(false);
-    setSelectNTO(false);
-    setSelectOTN(false);
-    */
 
     let textInput = useRef('');
 
@@ -33,9 +27,6 @@ const SearchBar = props => {
 
     const _onChangeText = (text) => {
         setSearchText(text);
-        if (text.length === 0) {
-            console.log('boş')
-        }
     }
 
     const _onPress = () => {

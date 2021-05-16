@@ -1,16 +1,13 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
 import { useLocalization, categories, useLocaleDateFormat, Texts } from '../../Localization';
-import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 
 import RenderBox from '../Components/RenderBox';
 import HomePageScreenUI from './HomeScreenUI';
 
-import getStyles from '../styles/HomepageScreenStyles';
 
 import { deleteItem, getItemDetail, subscribeToItemData } from '../../../API/Firebase';
 import { createShoppingListForRender } from '../Utils/RenderListUtils';
@@ -34,22 +31,14 @@ const HomePageScreen = props => {
     const [profile, setProfile] = useState(null);
     const [isProfile, setIsProfile] = useState(false);
     const [category, setCategory] = useState('');
-    const [searchItem, setSearchItem] = useState(null);
-    const [searchList, setSearchList] = useState([]);
 
-    const styles = useThemedStyles(getStyles);
-    const colors = useThemedColors();
 
     const loc = useLocalization();
     const dateLocale = useLocaleDateFormat();
 
-
-    const userID = getCurrentUser().uid;
     const navigation = useNavigation();
 
     const dispatch = useDispatch();
-
-    let total = 0;/***** */
 
     let totalRedux = useSelector(totalSelector);
 
@@ -57,7 +46,6 @@ const HomePageScreen = props => {
         dispatch(setIsLoadingAC(true));
         const off = subscribeToItemData((data) => {
             let shoppingList = createShoppingListForRender(data, dateLocale);
-            //console.log(shoppingList)
             setItemList(shoppingList);
             setTempItemList(shoppingList);
             dispatch(setIsLoadingAC(false));
@@ -70,7 +58,6 @@ const HomePageScreen = props => {
     useEffect(() => {
         dispatch(setIsLoadingAC(true));
         const off = getProfileSubscribe((data) => {
-            console.log('Profile >> ',data)
             if (data === null) {
                 setIsProfile(true);
             }
@@ -87,20 +74,18 @@ const HomePageScreen = props => {
     }, [])
     
     useEffect(()=>{
-        profile!==null?setIsProfile(false):null;
+        profile!==null?setIsProfile(false):setIsProfile(true);
     },[profile])
 
 
     useEffect(() => {
+        let total = 0;/***** */
         if (itemList !== null) {
             for (let eleman of itemList) {
                 if (parseInt(eleman.date.split('-')[1]) === parseInt(moment().format('DD-MM-YYYY').split('-')[1])) {
 
                     total += parseFloat(eleman.price);
-                    console.log(total)
-                    console.log(eleman.price)
                 }
-                console.log(profile);
                 if (profile !== null) {
                     updateProfile({
                         income: profile.income,
@@ -119,9 +104,7 @@ const HomePageScreen = props => {
     }, [itemList]);
 
     const _onPress_Delete = () => {
-        console.log('---------')
         for (let key of selectedItemList) {
-            console.log('*', key)
             profile !== null &&
                 getItemDetail(key, item => {
                     updateProfile({
@@ -211,7 +194,6 @@ const HomePageScreen = props => {
                     newItemList.push(eleman);
                 }
             }
-            console.log(newItemList)
             if (newItemList.length !== 0) {
                 setTempItemList(newItemList);
             }
@@ -250,20 +232,15 @@ const HomePageScreen = props => {
 
     const _onPress_NTO = () => {
         let copyList = [...tempItemList];
-        let sortedOldToNew = copyList.sort((a, b) => (a.date.split(' ')[0] > b.date.split(' ')[0]) ? 1 : -1) //eskiden yeniye sıralama yapıyor
-        let sortedNewtoNew = sortedOldToNew.reverse();// yeniden eskiye sıralama yapıyor
+        let sortedOldToNew = copyList.sort((a, b) => (a.date.split(' ')[0] > b.date.split(' ')[0]) ? 1 : -1) 
+        let sortedNewtoNew = sortedOldToNew.reverse();
         setTempItemList(sortedNewtoNew);
-        //setTempItemList([]);
-        //console.log(sortedOldToNew)
 
     }
     const _onPress_ASC = () => {
         let copyList = [...tempItemList];
         let sortedASC = copyList.sort(function (a, b) { return a.price - b.price})
         setTempItemList(sortedASC)
-        /*
-        list.sort((a, b) => (a.color > b.color) ? 1 : (a.color === b.color) ? ((a.size > b.size) ? 1 : -1) : -1 )
-        */
     }
     const _onPress_DESC = () => {
         let copyList = [...tempItemList];
@@ -272,9 +249,8 @@ const HomePageScreen = props => {
     }
     const _onPress_OTN = () => {
         let copyList = [...tempItemList];
-        let sortedOldToNew = copyList.sort((a, b) => (a.date.split(' ')[0] > b.date.split(' ')[0]) ? 1 : -1) //eskiden yeniye sıralama yapıyor
+        let sortedOldToNew = copyList.sort((a, b) => (a.date.split(' ')[0] > b.date.split(' ')[0]) ? 1 : -1) 
         setTempItemList(sortedOldToNew);
-        console.log('OTN')
     }
     return (
         <>
@@ -285,8 +261,6 @@ const HomePageScreen = props => {
                     null
             }
             <Categories onPress_Item={_getCagetory} />
-            {/* <Text>Toplam Harcamanız: {profile?.total} TL</Text> */}
-            {/* <Text>Toplam Harcamanız: {profile!==null?profile.total:totalRedux} TL</Text> */}
             <SearchBar
                 onPressSearch={_onPress_Search}
                 onPressRefresh={_onPress_Refresh}

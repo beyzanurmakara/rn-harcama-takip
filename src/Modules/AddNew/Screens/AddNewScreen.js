@@ -1,12 +1,9 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
-import { Keyboard, Text, TextInput, TouchableOpacity, View, Button, Platform, ScrollView } from 'react-native';
+import { Keyboard, TouchableOpacity, View, ScrollView } from 'react-native';
 
 import { Texts, useLocalization, useLocaleDateFormat, categories } from '../../Localization';
-import { colorNames, useThemedColors, useThemedStyles } from '../../Theming';
-import Icon from '../../../Components/Icon';
-import { Svgs } from '../../../StylingConstants';
-import BorderedBox from '../../../Components/BorderedBox';
+import { useThemedColors, useThemedStyles } from '../../Theming';
 
 import AddNewInput from '../Components/AddNewInput';
 import DateInput from '../Components/DateInput';
@@ -15,8 +12,6 @@ import AddNewMultilineInput from '../Components/AddNewMultilineInput';
 import CancelText from '../../../Components/CancelText';
 
 import getStyles from '../styles/AddNewScreenStyle';
-import { ErrorManager } from '../../Error';
-import DummyShoppingList from '../../Homepage/DummyShoppingList';
 import { useDispatch } from 'react-redux';
 import { addItem, getItemDetail, updateItem } from '../../../API/Firebase';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
@@ -74,12 +69,10 @@ const AddNewScreen = props => {
         const userId = getCurrentUser().uid;
         getProfile(userId, prof => {
             setProfile(prof);
-            //console.log(prof)
         });
     }, [])
 
     const _onPress_Cancel = () => {
-        console.log('düzenleme modunda iptal işlemi yapılacak');
         getItemDetail(key, item => {
             setShoppingType(item.title);
             setMomentDate(item.date);
@@ -89,13 +82,15 @@ const AddNewScreen = props => {
 
     }
     const onPress_add = () => {
-
+        const onComplete = () => {
+            navigation.navigate('homepage-screen');
+            dispatch(setIsLoadingAC(false));
+        }
         if (shoppingType.length !== 0
             && momentDate.length !== 0
             && totalPrice.length !== 0
             && detail.length !== 0) {
 
-            console.log('onPress add >> ' ,profile)
             if (profile !== null) {
                 dispatch(setIsLoadingAC(true));
                 const shoppingItem = {
@@ -105,14 +100,18 @@ const AddNewScreen = props => {
                     detail,
                 }
 
-                const onComplete = () => {
-                    dispatch(setIsLoadingAC(false));
-                    navigation.goBack();
-                }
-
                 addItem(shoppingItem, onComplete);
-                console.log('onPress add inner >> ' ,profile)
-                //updateProfile(profile);
+                updateProfile(profile);
+            }
+            else {
+                dispatch(setIsLoadingAC(true));
+                const shoppingItem = {
+                    title: shoppingType,
+                    date: momentDate,
+                    price: totalPrice,
+                    detail,
+                }
+                addItem(shoppingItem, onComplete);
             }
         }
         else {
@@ -183,7 +182,7 @@ const AddNewScreen = props => {
                             placeHolder={loc.t(Texts.price)}
                             editable={true}
                             keyboardType={'numeric'}
-                            onChangeText={(text) => { setTotalPrice(text); console.log(text) }} />
+                            onChangeText={(text) => { setTotalPrice(text) }} />
                     </View>
                     <View style={styles.inputContainer}>
                         <AddNewMultilineInput value={detail} onChange_detail={(text) => { setDetail(text) }} />

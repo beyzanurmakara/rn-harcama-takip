@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import Modal from 'react-native-modal';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 import Icon from '../../../Components/Icon';
 import { Svgs } from '../../../StylingConstants';
@@ -14,7 +13,6 @@ import { useThemedColors, useThemedStyles, colorNames } from '../../Theming';
 import EditProfile from '../Components/EditProfile';
 
 import getStyles from '../styles/ProfileScreenStyles';
-import { setWarningCodeAC } from '../../Warning/WarningRedux';
 import Chart from '../Components/Chart';
 
 const ProfileScreen = props => {
@@ -30,7 +28,6 @@ const ProfileScreen = props => {
     const user = getCurrentUser();
     const loc = useLocalization();
 
-    const dispatch = useDispatch();
 
     useEffect(() => {
         const off = getProfileSubscribe(data => {
@@ -41,19 +38,9 @@ const ProfileScreen = props => {
         }
     }, []);
 
-    useEffect(() => {
-        if (profile?.total > profile?.expense && profile?.expense > 0) {
-            //dispatch(setWarningCodeAC('Limiti aştınız'+(parseFloat(profile?.total)-parseFloat(profile?.expense)).toString()))
-        }
-        // else if () {
-        //     console.log('Sınırı aştınız ->', parseFloat(profile?.total) - parseFloat(profile?.expense))
-        // }
-
-    }, [profile?.total]);
 
     useEffect(() => {
         const mode = props.route.params;
-        //console.log('settings screen mode', mode)
         if (mode) {
             setIsModalVisible(mode)
         }
@@ -71,19 +58,6 @@ const ProfileScreen = props => {
                         <Text style={styles.text}>{user.email}</Text>
                     </TouchableOpacity>
                 </View>
-                {/* <View style={styles.infoContainer}>
-                    <Text style={styles.infoHeader}>{loc.t(Texts.informations).toUpperCase()}</Text>
-                    {
-                        profile !== null ?
-                            <>
-                                <Text style={styles.infoText}>{loc.t(Texts.income)}: ₺{profile?.income}</Text>
-                                <Text style={styles.infoText}>{loc.t(Texts.expenseLimit)}:{profile?.expense !== 0 ? '₺' + profile?.expense : loc.t(Texts.notDetermined)}</Text>
-                            </>
-                            :
-                            null
-                    }
-                    <Text style={[styles.infoText, { color: (profile?.total > profile?.expense && profile?.expense > 0) ? colors[colorNames.homePage.deleteButtonBackground] : colors[colorNames.editProfile.text] }]}>{loc.t(Texts.total)}: ₺{profile !== null ? profile.total : total}</Text>
-                </View> */}
                 {
                     profile !== null ?
                         <Chart profile={profile} />
@@ -93,7 +67,7 @@ const ProfileScreen = props => {
                             <Text style={[styles.infoText, { color: (profile?.total > profile?.expense && profile?.expense > 0) ? colors[colorNames.homePage.deleteButtonBackground] : colors[colorNames.editProfile.text] }]}>{loc.t(Texts.total)}: ₺{profile !== null ? profile.total : total}</Text>
                         </View>
                 }
-                <TouchableOpacity style={styles.iconContainer} onPress={() => setIsModalVisible(true)}>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => setIsModalVisible(true)} disabled={profile!==null?false:true}>
                     <Icon svg={Svgs.Edit} iconStyle={styles.icon} />
                 </TouchableOpacity>
             </View>

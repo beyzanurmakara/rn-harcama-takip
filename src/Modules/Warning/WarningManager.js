@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, TouchableOpacity, TextInput } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-native-modal';
 import { setWarningCodeAC, warningSelector } from './WarningRedux';
@@ -15,7 +15,6 @@ const WarningManager = props => {
     const [warnState, setWarnState] = useState(warning);
 
     let isVisible=warning.length!==0;
-    console.log(isVisible);
     const dispatch = useDispatch();
 
     const styles = useThemedStyles(getStyles);
@@ -42,7 +41,7 @@ const WarningManager = props => {
                 <TextInput
                     numberOfLines={4}
                     multiline
-                    value={warning}//loc.t(errorList.error[errorState])
+                    value={warning}
                     editable={false}
                     style={styles.messageText} />
                 <TouchableOpacity style={styles.buttonContainer} onPress={_onPress_OK}>

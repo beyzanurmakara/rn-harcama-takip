@@ -8,6 +8,7 @@ export const errorList = {
         'auth/network-request-faıled': 'auth/network-request-faıled',
         'otherMistakes': 'otherMistakes',
         'auth/too-many-requests': 'auth/too-many-requests',
+        'checkEmail':'checkEmail',
     }
 }
 
@@ -96,4 +97,5 @@ export const Texts = {
     descendingByPrice: 'descendingByPrice',
     incomeForgetten:'incomeForgetten',
     highSpendingLimit:'highSpendingLimit',
+    digitControl:'digitControl',
 };

@@ -122,9 +122,9 @@ export const darkColors = {
     //[colorNames.auth.background]: constantColors.pink, // örnek
     [colorNames.auth.background]: constantColors.mainColor1,
     [colorNames.auth.inputBorder]: constantColors.greys[1],
-    [colorNames.auth.inputBackground]: 'rgba(56, 56, 56, 10)',
+    [colorNames.auth.inputBackground]: 'rgba(56, 56, 56, 0.1)',
     [colorNames.auth.inputText]: constantColors.greys[1],
-    [colorNames.auth.inputPlaceholder]: 'rgba(56, 56, 56, 40)',
+    [colorNames.auth.inputPlaceholder]: 'rgba(56, 56, 56, 0.4)',
     [colorNames.auth.coloredButtonBackground]: constantColors.greys[1],
     [colorNames.auth.coloredButtonText]: constantColors.white,
     [colorNames.auth.paleButtonBackground]: constantColors.transparent,
@@ -180,7 +180,7 @@ export const darkColors = {
     [colorNames.header.backIcon]: constantColors.greys[1],
     [colorNames.header.rightIcon]: constantColors.greys[1],
     //error
-    [colorNames.error.background]:constantColors.greys[4],
+    [colorNames.error.background]:constantColors.greys[1],
     [colorNames.error.containerBorderColor]:constantColors.delete,
     [colorNames.error.messageTextColor]:constantColors.white,
     [colorNames.error.errorTextColor]:constantColors.white,

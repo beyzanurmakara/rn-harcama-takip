@@ -59,12 +59,8 @@ export default Colors => StyleSheet.create({
         position: 'absolute',
         left: Metrics.width * 0.07,//0.47
         top: Metrics.width * 0.2,
-        // width: Metrics.width * 0.05,
-        // height: undefined,
-        // aspectRatio: 1,
     },
     sortText:{
-        //color:Colors[colorNames.homePage.shoppingItemDateText],
         fontFamily:Fonts.type.semiBold,
         fontSize:Fonts.size(14),
     },
@@ -93,7 +89,6 @@ export default Colors => StyleSheet.create({
         left: Metrics.width * 0.09,//0.47
         top: Metrics.width * 0.39,
         borderWidth:1,
-        //borderColor:Colors[colorNames.homePage.shoppingItemDateText],
         borderBottomWidth:2,
         padding:Metrics.width *0.02,
         borderRadius:Metrics.borderRadiusStandard,

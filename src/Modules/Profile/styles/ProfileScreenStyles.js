@@ -22,19 +22,6 @@ export default Colors => StyleSheet.create({
         borderRadius:Metrics.borderRadiusFullRound,
         backgroundColor: 'transparent'
     },
-    /*editContainer: {
-        margin: Metrics.width * 0.03,
-        padding: Metrics.width * 0.01,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        borderColor: 'black',
-        borderWidth: 1,
-        width: Metrics.width * 0.2,
-        height: Metrics.width * 0.1,
-        borderRadius:Metrics.borderRadiusSmall,
-        flexDirection: 'row',
-        backgroundColor: 'transparent'
-    },*/
     infoContainer: {
         borderColor: Colors[colorNames.editProfile.buttonBackground],
         borderWidth: 2,

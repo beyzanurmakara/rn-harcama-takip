@@ -74,13 +74,13 @@ const ProfileScreen = props => {
                     {
                         profile !== null ?
                             <>
-                                <Text style={styles.infoText}>{loc.t(Texts.income)}: {profile?.income}</Text>
-                                <Text style={styles.infoText}>{loc.t(Texts.expenseLimit)}: {profile?.expense !== 0 ? profile?.expense : loc.t(Texts.notDetermined)}</Text>
+                                <Text style={styles.infoText}>{loc.t(Texts.income)}: ₺{profile?.income}</Text>
+                                <Text style={styles.infoText}>{loc.t(Texts.expenseLimit)}: ₺{profile?.expense !== 0 ? profile?.expense : loc.t(Texts.notDetermined)}</Text>
                             </>
                             :
                             null
                     }
-                    <Text style={[styles.infoText,{color:(profile?.total > profile?.expense && profile?.expense >0)?colors[colorNames.homePage.deleteButtonBackground]:colors[colorNames.editProfile.text]}]}>{loc.t(Texts.total)}: {profile!==null?profile.total:total} {loc.t(Texts.currencyUnit)}</Text>
+                    <Text style={[styles.infoText,{color:(profile?.total > profile?.expense && profile?.expense >0)?colors[colorNames.homePage.deleteButtonBackground]:colors[colorNames.editProfile.text]}]}>{loc.t(Texts.total)}: ₺{profile!==null?profile.total:total}</Text>
                 </View>
                 <TouchableOpacity style={styles.iconContainer} onPress={()=>setIsModalVisible(true)}>
                     <Icon svg={Svgs.Edit} iconStyle={styles.icon} />

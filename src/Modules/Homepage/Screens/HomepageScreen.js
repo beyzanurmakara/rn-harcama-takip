@@ -253,12 +253,22 @@ const HomePageScreen = props => {
 
     }
     const _onPress_ASC = () => {
-        console.log('ASC')
+        let copyList = [...tempItemList];
+        let sortedASC = copyList.sort(function (a, b) { return a.price - b.price})
+        setTempItemList(sortedASC)
+        /*
+        list.sort((a, b) => (a.color > b.color) ? 1 : (a.color === b.color) ? ((a.size > b.size) ? 1 : -1) : -1 )
+        */
     }
     const _onPress_DESC = () => {
-        console.log('DESC')
+        let copyList = [...tempItemList];
+        let sortedDESC= copyList.sort(function (a, b) { return a.price - b.price}).reverse()
+        setTempItemList(sortedDESC)
     }
     const _onPress_OTN = () => {
+        let copyList = [...tempItemList];
+        let sortedOldToNew = copyList.sort((a, b) => (a.date.split(' ')[0] > b.date.split(' ')[0]) ? 1 : -1) //eskiden yeniye sıralama yapıyor
+        setTempItemList(sortedOldToNew);
         console.log('OTN')
     }
     return (
@@ -275,9 +285,9 @@ const HomePageScreen = props => {
             <SearchBar
                 onPressSearch={_onPress_Search}
                 onPressRefresh={_onPress_Refresh}
-                onPressSort_asc={ _onPress_ASC}
-                onPressSort_desc={ _onPress_DESC}
-                onPressSort_nto={ _onPress_NTO}
+                onPressSort_asc={_onPress_ASC}
+                onPressSort_desc={_onPress_DESC}
+                onPressSort_nto={_onPress_NTO}
                 onPressSort_otn={_onPress_OTN} />
             <HomePageScreenUI
                 data={tempItemList}

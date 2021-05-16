@@ -48,33 +48,37 @@ const SearchBar = props => {
         setIsVisible(!isVisible);
     }
 
-    const _onPress_asc=()=>{        
+    const _onPress_asc=()=>{      
+        props.onPressSort_asc();  
         setSelectASC(!selectASC);
         setSelectDESC(false);
         setSelectNTO(false);
         setSelectOTN(false);
-        props.onPressSort_asc;
+        setIsVisible(false);
     }
-    const _onPress_desc=()=>{        
+    const _onPress_desc=()=>{    
+        props.onPressSort_desc();    
         setSelectDESC(!selectDESC);
         setSelectASC(false);
         setSelectNTO(false);
         setSelectOTN(false);
-        props.onPressSort_desc;
+        setIsVisible(false);
     }
-    const _onPress_nto=()=>{        
+    const _onPress_nto=()=>{  
+        props.onPressSort_nto();     
         setSelectNTO(!selectNTO);
         setSelectASC(false);
         setSelectDESC(false);
         setSelectOTN(false);
-        props.onPressSort_nto;
+        setIsVisible(false);
     }
-    const _onPress_otn=()=>{        
+    const _onPress_otn=()=>{    
+        props.onPressSort_otn();    
         setSelectOTN(!selectOTN);
         setSelectASC(false);
         setSelectDESC(false);
         setSelectNTO(false);
-        props.onPressSort_otn;
+        setIsVisible(false);
     }
 
     return (

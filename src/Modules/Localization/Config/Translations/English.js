@@ -82,5 +82,7 @@ export default {
     [Texts.oldToNew]:'Old to new',
     [Texts.increasingByPrice]:'Increasing by price',
     [Texts.descendingByPrice]:'Descending by price',
+    [Texts.incomeForgetten]:'You forgot to write down your monthly income!',
+    [Texts.highSpendingLimit]:'The spending limit is higher than your income. The \'no\' option is  for you :)'
 };
 

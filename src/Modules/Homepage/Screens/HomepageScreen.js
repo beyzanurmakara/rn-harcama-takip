@@ -70,6 +70,7 @@ const HomePageScreen = props => {
     useEffect(() => {
         dispatch(setIsLoadingAC(true));
         const off = getProfileSubscribe((data) => {
+            console.log('Profile >> ',data)
             if (data === null) {
                 setIsProfile(true);
             }
@@ -274,7 +275,7 @@ const HomePageScreen = props => {
     return (
         <>
             {
-                profile === null ?
+                isProfile?
                     <CreateProfile isProfile={isProfile} />
                     :
                     null

@@ -23,12 +23,12 @@ const ProfileScreen = props => {
     const total = useSelector(totalSelector);
 
     const styles = useThemedStyles(getStyles);
-    const colors=useThemedColors();
+    const colors = useThemedColors();
 
     const user = getCurrentUser();
     const loc = useLocalization();
 
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const off = getProfileSubscribe(data => {
@@ -40,13 +40,13 @@ const ProfileScreen = props => {
     }, []);
 
     useEffect(() => {
-        if(profile?.total > profile?.expense && profile?.expense >0){
+        if (profile?.total > profile?.expense && profile?.expense > 0) {
             //dispatch(setWarningCodeAC('Limiti aştınız'+(parseFloat(profile?.total)-parseFloat(profile?.expense)).toString()))
         }
         // else if () {
         //     console.log('Sınırı aştınız ->', parseFloat(profile?.total) - parseFloat(profile?.expense))
         // }
-        
+
     }, [profile?.total]);
 
     useEffect(() => {
@@ -75,16 +75,19 @@ const ProfileScreen = props => {
                         profile !== null ?
                             <>
                                 <Text style={styles.infoText}>{loc.t(Texts.income)}: ₺{profile?.income}</Text>
-                                <Text style={styles.infoText}>{loc.t(Texts.expenseLimit)}: ₺{profile?.expense !== 0 ? profile?.expense : loc.t(Texts.notDetermined)}</Text>
+                                <Text style={styles.infoText}>{loc.t(Texts.expenseLimit)}:{profile?.expense !== 0 ? '₺'+ profile?.expense : loc.t(Texts.notDetermined)}</Text>
                             </>
                             :
                             null
                     }
-                    <Text style={[styles.infoText,{color:(profile?.total > profile?.expense && profile?.expense >0)?colors[colorNames.homePage.deleteButtonBackground]:colors[colorNames.editProfile.text]}]}>{loc.t(Texts.total)}: ₺{profile!==null?profile.total:total}</Text>
+                    <Text style={[styles.infoText, { color: (profile?.total > profile?.expense && profile?.expense > 0) ? colors[colorNames.homePage.deleteButtonBackground] : colors[colorNames.editProfile.text] }]}>{loc.t(Texts.total)}: ₺{profile !== null ? profile.total : total}</Text>
                 </View>
-                <TouchableOpacity style={styles.iconContainer} onPress={()=>setIsModalVisible(true)}>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => setIsModalVisible(true)}>
                     <Icon svg={Svgs.Edit} iconStyle={styles.icon} />
                 </TouchableOpacity>
+            </View>
+            <View style={{ backgroundColor: 'pink', height: 300 }}>
+                <Text>İstatistiksel Bilgiler Yer Alacak</Text>
             </View>
             <Modal
                 isVisible={isModalVisible}

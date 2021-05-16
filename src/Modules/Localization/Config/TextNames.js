@@ -93,4 +93,6 @@ export const Texts = {
     oldToNew: 'oldToNew',
     increasingByPrice: 'increasingByPrice',
     descendingByPrice: 'descendingByPrice',
+    incomeForgetten:'incomeForgetten',
+    highSpendingLimit:'highSpendingLimit',
 };

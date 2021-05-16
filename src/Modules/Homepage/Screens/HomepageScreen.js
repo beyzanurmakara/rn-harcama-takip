@@ -85,6 +85,10 @@ const HomePageScreen = props => {
         }
 
     }, [])
+    
+    useEffect(()=>{
+        profile!==null?setIsProfile(false):null;
+    },[profile])
 
 
     useEffect(() => {
@@ -96,7 +100,7 @@ const HomePageScreen = props => {
                     console.log(total)
                     console.log(eleman.price)
                 }
-
+                console.log(profile);
                 if (profile !== null) {
                     updateProfile({
                         income: profile.income,

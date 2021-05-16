@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-native-modal';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 import Icon from '../../../Components/Icon';
 import { Svgs } from '../../../StylingConstants';
@@ -14,6 +15,7 @@ import EditProfile from '../Components/EditProfile';
 
 import getStyles from '../styles/ProfileScreenStyles';
 import { setWarningCodeAC } from '../../Warning/WarningRedux';
+import Chart from '../Components/Chart';
 
 const ProfileScreen = props => {
 
@@ -69,25 +71,31 @@ const ProfileScreen = props => {
                         <Text style={styles.text}>{user.email}</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.infoContainer}>
+                {/* <View style={styles.infoContainer}>
                     <Text style={styles.infoHeader}>{loc.t(Texts.informations).toUpperCase()}</Text>
                     {
                         profile !== null ?
                             <>
                                 <Text style={styles.infoText}>{loc.t(Texts.income)}: ₺{profile?.income}</Text>
-                                <Text style={styles.infoText}>{loc.t(Texts.expenseLimit)}:{profile?.expense !== 0 ? '₺'+ profile?.expense : loc.t(Texts.notDetermined)}</Text>
+                                <Text style={styles.infoText}>{loc.t(Texts.expenseLimit)}:{profile?.expense !== 0 ? '₺' + profile?.expense : loc.t(Texts.notDetermined)}</Text>
                             </>
                             :
                             null
                     }
                     <Text style={[styles.infoText, { color: (profile?.total > profile?.expense && profile?.expense > 0) ? colors[colorNames.homePage.deleteButtonBackground] : colors[colorNames.editProfile.text] }]}>{loc.t(Texts.total)}: ₺{profile !== null ? profile.total : total}</Text>
-                </View>
+                </View> */}
+                {
+                    profile !== null ?
+                        <Chart profile={profile} />
+                        :
+                        <View style={styles.infoContainer}>
+                            <Text style={styles.infoHeader}>{loc.t(Texts.informations).toUpperCase()}</Text>
+                            <Text style={[styles.infoText, { color: (profile?.total > profile?.expense && profile?.expense > 0) ? colors[colorNames.homePage.deleteButtonBackground] : colors[colorNames.editProfile.text] }]}>{loc.t(Texts.total)}: ₺{profile !== null ? profile.total : total}</Text>
+                        </View>
+                }
                 <TouchableOpacity style={styles.iconContainer} onPress={() => setIsModalVisible(true)}>
                     <Icon svg={Svgs.Edit} iconStyle={styles.icon} />
                 </TouchableOpacity>
-            </View>
-            <View style={{ backgroundColor: 'pink', height: 300 }}>
-                <Text>İstatistiksel Bilgiler Yer Alacak</Text>
             </View>
             <Modal
                 isVisible={isModalVisible}

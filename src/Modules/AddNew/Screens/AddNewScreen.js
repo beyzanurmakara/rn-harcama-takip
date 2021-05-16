@@ -22,6 +22,8 @@ import { addItem, getItemDetail, updateItem } from '../../../API/Firebase';
 import { setIsLoadingAC } from '../../Loading/LoadingRedux';
 import Category from '../Components/Category';
 import { setErrorCodeAC } from '../../Error/ErrorRedux';
+import { getProfile, updateProfile } from '../../Profile/API/Firebase';
+import { getCurrentUser } from '../../Auth';
 
 
 const AddNewScreen = props => {
@@ -30,6 +32,7 @@ const AddNewScreen = props => {
     const [momentDate, setMomentDate] = useState('');
     const [totalPrice, setTotalPrice] = useState('');
     const [detail, setDetail] = useState('');
+    const [profile, setProfile] = useState(null);
 
     const navigation = useNavigation();
 
@@ -67,6 +70,13 @@ const AddNewScreen = props => {
         }
     }, [])
 
+    useEffect(() => {
+        const userId = getCurrentUser().uid;
+        getProfile(userId, prof => {
+            setProfile(prof);
+            //console.log(prof)
+        });
+    }, [])
 
     const _onPress_Cancel = () => {
         console.log('düzenleme modunda iptal işlemi yapılacak');
@@ -84,20 +94,26 @@ const AddNewScreen = props => {
             && momentDate.length !== 0
             && totalPrice.length !== 0
             && detail.length !== 0) {
-            dispatch(setIsLoadingAC(true));
-            const shoppingItem = {
-                title: shoppingType,
-                date: momentDate,
-                price: totalPrice,
-                detail,
-            }
 
-            const onComplete = () => {
-                dispatch(setIsLoadingAC(false));
-                navigation.goBack();
-            }
+            console.log('onPress add >> ' ,profile)
+            if (profile !== null) {
+                dispatch(setIsLoadingAC(true));
+                const shoppingItem = {
+                    title: shoppingType,
+                    date: momentDate,
+                    price: totalPrice,
+                    detail,
+                }
 
-            addItem(shoppingItem, onComplete);
+                const onComplete = () => {
+                    dispatch(setIsLoadingAC(false));
+                    navigation.goBack();
+                }
+
+                addItem(shoppingItem, onComplete);
+                console.log('onPress add inner >> ' ,profile)
+                //updateProfile(profile);
+            }
         }
         else {
             dispatch(setErrorCodeAC('emptySpace'))

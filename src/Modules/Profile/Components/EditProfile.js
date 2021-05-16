@@ -78,6 +78,20 @@ const EditProfile = props => {
             props.isVisibleMode();
         }
     }
+    const onPressSetExpense = () => {
+        if (profile === null) {
+            setExpenseLimit(false);
+            setExpense(0)
+        }
+        else {
+            setExpenseLimit(false);
+            setExpense(profile.expense)
+        }
+    }
+    const onPressSetExpenseYes = () => {
+        setExpenseLimit(true);
+        setExpense(profile.expense)
+    }
     return (
         <View style={styles.container}>
             <View style={styles.emailContainer}>
@@ -92,15 +106,15 @@ const EditProfile = props => {
                         placeholderTextColor={colors[colorNames.editProfile.placeHolder]}
                         keyboardType={'numeric'}
                         onChangeText={_onChange_Income}
-                        defaultValue={profile!==null?profile.income:null}
+                        defaultValue={profile !== null ? profile.income : null}
                     />
                 </View>
                 <Text style={styles.text}>{loc.t(Texts.monthlyExpenseQuestion)}</Text>
                 <View style={[styles.textInputContainer, { justifyContent: 'space-around' }]}>
-                    <TouchableOpacity style={styles.optionTouch} onPress={() => setExpenseLimit(true)}>
+                    <TouchableOpacity style={styles.optionTouch} onPress={onPressSetExpenseYes}>
                         <Text style={styles.inputText}>{loc.t(Texts.yes)}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.optionTouch} onPress={() => { setExpenseLimit(false); setExpense(0) }}>
+                    <TouchableOpacity style={styles.optionTouch} onPress={onPressSetExpense}>
                         <Text style={styles.inputText}>{loc.t(Texts.no)}</Text>
                     </TouchableOpacity>
                 </View>

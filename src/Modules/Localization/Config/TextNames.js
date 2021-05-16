@@ -28,6 +28,7 @@ export const categories = {
     'gift': 'gift',
     'bill': 'bill',
     'other': 'other',
+    'online':'online'
 }
 
 export const days = {

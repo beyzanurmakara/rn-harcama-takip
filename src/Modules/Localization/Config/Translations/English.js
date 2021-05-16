@@ -65,6 +65,7 @@ export default {
     [categories['stationery&book']]:'Stationery & Book',
     [categories['vacation&pastime']]:'Vacation & Pastime',
     [categories['cosmetic']]:'Cosmetic',
+    [categories['online']]:'Online',
     [Texts.categories]:'Categories',
     [Texts.createProfileText1]:'If you create a profile, you can use advanced features',
     [Texts.createProfileText2]:'You can create',

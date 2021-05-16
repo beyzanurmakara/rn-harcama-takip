@@ -65,6 +65,7 @@ export default {
     [categories['stationery&book']]:'Kırtasiye & Kitap',
     [categories['vacation&pastime']]:'Tatil & Eğlence',
     [categories['cosmetic']]:'Kozmetik',
+    [categories['online']]:'Online',
     [Texts.categories]:'Kategoriler',
     [Texts.createProfileText1]:'Profil oluşturursanız gelişmiş özellikleri kullanabilirsiniz',
     [Texts.createProfileText2]:'oluşturabilirsin',

@@ -43,3 +43,12 @@ export const updateProfile = async (profile) => {
         console.log(error)
     }
 }
+
+export const getProfile = (userID, onRetrieved) => {
+    database()
+        .ref(`/userProfile/${userID}`)
+        .once('value')
+        .then(snapshot => {
+            onRetrieved(snapshot.val());
+        })
+}

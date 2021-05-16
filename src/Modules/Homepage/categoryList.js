@@ -58,5 +58,9 @@ export const categoryList=[
     {
         id:16,
         name:'other'
+    },
+    {
+        id:17,
+        name:'online',
     }
 ]

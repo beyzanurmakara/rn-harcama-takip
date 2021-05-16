@@ -76,6 +76,11 @@ export default {
     [Texts.notDetermined]:'Not Determined',
     [Texts.informations]:'Informations',
     [Texts.limit]:'You exceeded the limit',
-    [Texts.currencyUnit]:'$',
+    [Texts.currencyUnit]:'$',// DÜZENLE
+    [Texts.sort]:'SORT',
+    [Texts.newToOld]:'New to old',
+    [Texts.oldToNew]:'Old to new',
+    [Texts.increasingByPrice]:'Increasing by price',
+    [Texts.descendingByPrice]:'Descending by price',
 };
 

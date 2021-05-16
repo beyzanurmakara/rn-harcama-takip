@@ -76,5 +76,10 @@ export default {
     [Texts.notDetermined]:'Belirlenmedi',
     [Texts.informations]:'Bilgiler',
     [Texts.limit]:'Limiti aştınız',
-    [Texts.currencyUnit]:'₺',
+    [Texts.currencyUnit]:'₺',// DÜZENLE
+    [Texts.sort]:'SIRALA',
+    [Texts.newToOld]:'Yeniden eskiye',
+    [Texts.oldToNew]:'Eskiden yeniye',
+    [Texts.increasingByPrice]:'Fiyata göre artan',
+    [Texts.descendingByPrice]:'Fiyata göre azalan',
 };

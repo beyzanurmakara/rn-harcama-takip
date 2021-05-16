@@ -99,27 +99,35 @@ const SearchBar = props => {
                 <Icon svg={Svgs.Refresh} iconStyle={styles.refresh} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.sortContainer} onPress={onPress_Sort}>
-                <Text style={styles.sortHeaderText}>{'Sırala'}</Text>
+                <Text style={styles.sortHeaderText}>{loc.t(Texts.sort)}</Text>
             </TouchableOpacity>
             <TouchableOpacity 
                 onPress={_onPress_nto} 
                 style={[styles.sortContainer_newtoold,{borderColor:selectNTO?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>
-                <Text style={[styles.sortText,{color:selectNTO?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>{'Yeniden Eskiye'}</Text>
+                <Text style={[styles.sortText,{color:selectNTO?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>
+                    {loc.t(Texts.newToOld)}
+                </Text>
             </TouchableOpacity>
             <TouchableOpacity  
                 onPress={_onPress_otn}
                 style={[styles.sortContainer_oldtonew,{borderColor:selectOTN?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>
-                <Text style={[styles.sortText,{color:selectOTN?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>{'Eskiden Yeniye'}</Text>
+                <Text style={[styles.sortText,{color:selectOTN?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>
+                    {loc.t(Texts.oldToNew)}
+                </Text>
             </TouchableOpacity>
             <TouchableOpacity 
                 onPress={_onPress_asc} 
                 style={[styles.sortContainer_asc,{borderColor:selectASC?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>
-                <Text style={[styles.sortText,{color:selectASC?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>{'Fiyata göre artan'}</Text>
+                <Text style={[styles.sortText,{color:selectASC?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>
+                    {loc.t(Texts.increasingByPrice)}
+                </Text>
             </TouchableOpacity>
             <TouchableOpacity 
                 onPress={_onPress_desc}
                 style={[styles.sortContainer_desc,{borderColor:selectDESC?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>
-                <Text style={[styles.sortText,{color:selectDESC?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>{'Fiyata göre azalan'}</Text>
+                <Text style={[styles.sortText,{color:selectDESC?colors[colorNames.homePage.shoppingItemPriceText]:colors[colorNames.homePage.shoppingItemDayText]}]}>
+                    {loc.t(Texts.descendingByPrice)}
+                </Text>
             </TouchableOpacity>
         </View>
     );
